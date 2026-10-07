@@ -5,7 +5,7 @@ consulta de **Inteligencia de Negocios, Grupo 50, 2026-II**, Institución
 Universitaria Pascual Bravo.
 
 - **Integrante 1:** Samuel Alfonso Avendaño
-- **Integrante 2:** `[PENDIENTE: nombre completo integrante 2]`
+- **Integrante 2:** Juana Andres Usuga Serna 
 - **Docente:** Ramiro Grisales Montoya
 - **Enfoque del grupo:** Calidad y desempeño (KPIs: % de datos válidos, yield,
   Performance Ratio, ahorro, disponibilidad, alarmas, energía)
