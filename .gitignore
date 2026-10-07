@@ -1,0 +1,45 @@
+# Entorno y credenciales — NUNCA subir
+.env
+.env.*
+!.env.example
+*.pgpass
+.pgpass_secret
+*secret*
+*credential*
+*password*
+*token*
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# PostgreSQL
+*.sql.bak
+pg_dump_*.sql
+*.dump
+
+# Power BI
+*.pbix
+~$*.pbix
+.pbi/cache/
+*.pbit
+
+# Logs y temporales
+logs/
+*.log
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# Entornos / IDE
+.vscode/
+.idea/

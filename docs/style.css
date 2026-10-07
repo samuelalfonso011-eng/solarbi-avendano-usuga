@@ -1,0 +1,22 @@
+body { font-family: 'DejaVu Sans', Arial, sans-serif; font-size: 10.5pt; line-height: 1.35; margin: 1.6cm; color:#111; }
+h1 { font-size: 16pt; border-bottom: 2px solid #1a5276; padding-bottom: 4px; margin-top: 0.6em;}
+h2 { font-size: 13pt; color:#1a5276; margin-top: 1em; margin-bottom: 0.3em;}
+h3 { font-size: 11.5pt; color:#154360; margin-top: 0.9em; margin-bottom: 0.2em;}
+table { border-collapse: collapse; width: 100%; font-size: 8.5pt; margin: 0.5em 0; }
+th, td { border: 1px solid #999; padding: 3px 5px; text-align: left; vertical-align: top;}
+th { background: #eaf2f8; }
+pre { background:#f4f4f4; padding:6px; font-size:8.5pt; border-radius:3px; white-space: pre-wrap; }
+code { font-size: 8.8pt; }
+hr { border: none; border-top: 1px solid #ccc; }
+p { margin: 0.35em 0; text-align: justify;}
+#title-block-header { display: none; }
+.pagebreak { page-break-before: always; }
+.cover { text-align: center; padding-top: 5cm; }
+.cover-inst { font-size: 13pt; font-weight: bold; margin-bottom: 2px; }
+.cover-course { font-size: 11pt; color: #333; margin-bottom: 1.5cm; }
+.cover-label { font-size: 12pt; letter-spacing: 2px; text-transform: uppercase; color: #555; }
+.cover-title { font-size: 30pt; color: #1a5276; margin: 0.3em 0; border: none; }
+.cover-sub { font-size: 12pt; color: #333; margin-bottom: 2cm; font-style: italic; }
+.cover-names p { font-size: 12pt; margin: 4px 0; }
+.cover-teacher { margin-top: 2cm; font-size: 11.5pt; }
+.cover-date { font-size: 11pt; color: #555; margin-top: 0.3cm; }
