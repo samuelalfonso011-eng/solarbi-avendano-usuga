@@ -1,0 +1,86 @@
+{
+  "title": "SolarBI Pascual — Calidad y Desempeño",
+  "uid": "solarbi-pascual-g50",
+  "schemaVersion": 39,
+  "version": 1,
+  "editable": true,
+  "timezone": "America/Bogota",
+  "time": { "from": "now-3d", "to": "now" },
+  "refresh": "5m",
+  "templating": {
+    "list": [
+      {
+        "name": "dispositivo",
+        "type": "query",
+        "datasource": { "type": "postgres", "uid": "solarbi-postgres" },
+        "query": "SELECT DISTINCT dispositivo_id FROM silver.lectura_5min ORDER BY 1",
+        "refresh": 2,
+        "includeAll": true,
+        "multi": false,
+        "current": { "text": "INV-01", "value": "INV-01" }
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Irradiancia y Potencia — $dispositivo",
+      "type": "timeseries",
+      "gridPos": { "h": 10, "w": 16, "x": 0, "y": 0 },
+      "datasource": { "type": "postgres", "uid": "solarbi-postgres" },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "time_series",
+          "rawSql": "SELECT ts AS \"time\", irradiancia_wm2 AS \"Irradiancia (W/m2)\" FROM silver.lectura_5min WHERE dispositivo_id = '$dispositivo' AND $__timeFilter(ts) ORDER BY 1",
+          "rawQuery": true
+        },
+        {
+          "refId": "B",
+          "format": "time_series",
+          "rawSql": "SELECT ts AS \"time\", p_ac_kw AS \"Potencia AC (kW)\" FROM silver.lectura_5min WHERE dispositivo_id = '$dispositivo' AND $__timeFilter(ts) ORDER BY 1",
+          "rawQuery": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "none", "custom": { "drawStyle": "line", "lineWidth": 2 } },
+        "overrides": []
+      }
+    },
+    {
+      "id": 2,
+      "title": "% Datos Válidos (última corrida ETL)",
+      "type": "stat",
+      "gridPos": { "h": 10, "w": 8, "x": 16, "y": 0 },
+      "datasource": { "type": "postgres", "uid": "solarbi-postgres" },
+      "targets": [
+        {
+          "refId": "A",
+          "format": "table",
+          "rawSql": "SELECT porcentaje_datos_validos AS \"pct_datos_validos\" FROM silver.metricas_calidad ORDER BY corrida_id DESC LIMIT 1",
+          "rawQuery": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percent",
+          "min": 0,
+          "max": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "red", "value": null },
+              { "color": "yellow", "value": 90 },
+              { "color": "green", "value": 97 }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "graphMode": "none",
+        "reduceOptions": { "calcs": ["lastNotNull"] }
+      }
+    }
+  ]
+}
