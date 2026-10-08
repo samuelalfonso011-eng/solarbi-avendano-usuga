@@ -1,4 +1,4 @@
-# SolarBI Pascual
+﻿# SolarBI Pascual
 
 Power BI y Grafana, gobernanza de datos, automatización ETL e IoT — trabajo de
 consulta de **Inteligencia de Negocios, Grupo 50, 2026-II**, Institución
@@ -178,8 +178,9 @@ Ver `grafana/dashboard.json` (dashboard propuesto) y
 
 | Integrante | Aportes |
 |---|---|
-| Samuel Alfonso Avendaño | `[PENDIENTE: detallar aportes]` |
-| `[PENDIENTE: nombre completo integrante 2]` | `[PENDIENTE: detallar aportes]` |
+| Samuel Alfonso Avendaño | Arquitectura en capas, creación de dashboard en PowerBI y Grafana, creación y manejo del repo de GitHub (en conjunto) |
+| Juan Andrés Usuga Serna | Creación de la base de datos, archivos python, creación y manejo del repo de GitHub (en conjunto) |
 
 *(Completar esta tabla con el reparto real de tareas y los commits de cada
 quien antes de entregar — ver punto "Commits" más abajo.)*
+
