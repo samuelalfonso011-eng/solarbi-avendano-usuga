@@ -6,9 +6,9 @@ repo_name = "solarbi-avendano-usuga"
 
 # Define authors
 author1_name = "Samuel Alfonso Avendano"
-author1_email = "samuel@example.com"
+author1_email = "samuel.alfonso011@pascualbravo.edu.co"
 author2_name = "Juan Andres Usuga"
-author2_email = "juan.usuga@example.com"
+author2_email = "juan.usuga547@pascualbravo.edu.co"
 
 # Initialize git
 subprocess.run(["git", "init"], check=True)
