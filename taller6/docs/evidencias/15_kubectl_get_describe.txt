@@ -1,62 +1,62 @@
 
 ========== kubectl get all,configmap,secret,pvc -n microrred-bi ==========
 NAME                            READY   STATUS      RESTARTS   AGE
-pod/etl-carga-historica-s4b6k   0/1     Completed   0          11m
-pod/grafana-69d4db9778-5nq4s    1/1     Running     0          6m52s
-pod/postgres-0                  1/1     Running     0          6m59s
-pod/simulador-29914891-btr56    0/1     Completed   0          2m49s
-pod/simulador-29914892-wxcn5    0/1     Completed   0          109s
-pod/simulador-29914893-h9pnh    0/1     Completed   0          49s
+pod/etl-carga-historica-6cd5r   0/1     Completed   0          3m19s
+pod/grafana-55b499c9d-c7mtq     1/1     Running     0          7m31s
+pod/postgres-0                  1/1     Running     0          7m31s
+pod/simulador-29914916-cdqwf    0/1     Completed   0          2m24s
+pod/simulador-29914917-2bgfn    0/1     Completed   0          84s
+pod/simulador-29914918-6bdvr    0/1     Completed   0          24s
 
-NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
-service/grafana            NodePort    10.96.254.3    <none>        3000:30300/TCP   25m
-service/postgres           ClusterIP   None           <none>        5432/TCP         25m
-service/postgres-externo   NodePort    10.96.129.38   <none>        5432:30432/TCP   25m
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/grafana            NodePort    10.96.231.26    <none>        3000:30300/TCP   7m31s
+service/postgres           ClusterIP   None            <none>        5432/TCP         7m31s
+service/postgres-externo   NodePort    10.96.237.236   <none>        5432:30432/TCP   7m31s
 
 NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/grafana   1/1     1            1           25m
+deployment.apps/grafana   1/1     1            1           7m31s
 
-NAME                                 DESIRED   CURRENT   READY   AGE
-replicaset.apps/grafana-69d4db9778   1         1         1       25m
+NAME                                DESIRED   CURRENT   READY   AGE
+replicaset.apps/grafana-55b499c9d   1         1         1       7m31s
 
 NAME                        READY   AGE
-statefulset.apps/postgres   1/1     25m
+statefulset.apps/postgres   1/1     7m31s
 
 NAME                      SCHEDULE    TIMEZONE   SUSPEND   ACTIVE   LAST SCHEDULE   AGE
-cronjob.batch/simulador   * * * * *   <none>     False     0        49s             25m
+cronjob.batch/simulador   * * * * *   <none>     False     0        24s             7m31s
 
 NAME                            STATUS     COMPLETIONS   DURATION   AGE
-job.batch/etl-carga-historica   Complete   1/1           2m59s      11m
-job.batch/simulador-29914891    Complete   1/1           6s         2m49s
-job.batch/simulador-29914892    Complete   1/1           6s         109s
-job.batch/simulador-29914893    Complete   1/1           6s         49s
+job.batch/etl-carga-historica   Complete   1/1           3m14s      3m19s
+job.batch/simulador-29914916    Complete   1/1           6s         2m24s
+job.batch/simulador-29914917    Complete   1/1           7s         84s
+job.batch/simulador-29914918    Complete   1/1           19s        24s
 
 NAME                                              DATA   AGE
-configmap/grafana-alertas-46952kggc2              1      25m
-configmap/grafana-datasources-782tdmt58h          1      25m
-configmap/grafana-proveedor-tableros-dkf2mtthgh   1      25m
-configmap/grafana-scripts-bk6tg669hk              1      25m
-configmap/grafana-tableros-h6kcdbckkc             1      25m
-configmap/kube-root-ca.crt                        1      25m
-configmap/microrred-config-ddd996m7hg             25     25m
-configmap/postgres-initdb-9c4gt8t48t              5      25m
+configmap/grafana-alertas-f47kcgmb4g              1      7m32s
+configmap/grafana-datasources-782tdmt58h          1      7m32s
+configmap/grafana-proveedor-tableros-dkf2mtthgh   1      7m32s
+configmap/grafana-scripts-bk6tg669hk              1      7m32s
+configmap/grafana-tableros-h6kcdbckkc             1      7m32s
+configmap/kube-root-ca.crt                        1      7m32s
+configmap/microrred-config-ddd996m7hg             25     7m32s
+configmap/postgres-initdb-9c4gt8t48t              5      7m32s
 
 NAME                            TYPE     DATA   AGE
-secret/microrred-credenciales   Opaque   8      25m
+secret/microrred-credenciales   Opaque   8      7m32s
 
 NAME                                     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
-persistentvolumeclaim/datos-postgres-0   Bound    pvc-88ac1a4c-aeac-41e4-815a-aadd2f0dcac9   2Gi        RWO            standard       <unset>                 25m
+persistentvolumeclaim/datos-postgres-0   Bound    pvc-dee27edd-b054-4f5f-aca9-08fdf6520b19   2Gi        RWO            standard       <unset>                 7m31s
 
 ========== kubectl get pv ; kubectl get nodes -o wide ==========
 NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                           STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
-pvc-88ac1a4c-aeac-41e4-815a-aadd2f0dcac9   2Gi        RWO            Delete           Bound    microrred-bi/datos-postgres-0   standard       <unset>                          25m
-NAME                      STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION                              CONTAINER-RUNTIME
-microrred-control-plane   Ready    control-plane   31m   v1.37.0   172.19.0.3    <none>        Debian GNU/Linux 13 (trixie)   6.18.33.2-microsoft-standard-WSL2 (amd64)   containerd://2.3.4
+pvc-dee27edd-b054-4f5f-aca9-08fdf6520b19   2Gi        RWO            Delete           Bound    microrred-bi/datos-postgres-0   standard       <unset>                          7m23s
+NAME                      STATUS   ROLES           AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION                              CONTAINER-RUNTIME
+microrred-control-plane   Ready    control-plane   8m40s   v1.37.0   172.19.0.3    <none>        Debian GNU/Linux 13 (trixie)   6.18.33.2-microsoft-standard-WSL2 (amd64)   containerd://2.3.4
 
 ========== kubectl describe statefulset/postgres -n microrred-bi ==========
 Name:               postgres
 Namespace:          microrred-bi
-CreationTimestamp:  Tue, 17 Nov 2026 00:08:24 -0500
+CreationTimestamp:  Tue, 17 Nov 2026 00:50:53 -0500
 Selector:           app=postgres
 Labels:             app=postgres
                     app.kubernetes.io/part-of=microrred-bi
@@ -109,15 +109,15 @@ Volume Claims:
   Capacity:      2Gi
   Access Modes:  [ReadWriteOnce]
 Events:
-  Type    Reason            Age                  From                    Message
-  ----    ------            ----                 ----                    -------
-  Normal  SuccessfulCreate  25m                  statefulset-controller  Create Claim datos-postgres-0 Pod postgres-0 in StatefulSet postgres success
-  Normal  SuccessfulCreate  6m59s (x2 over 25m)  statefulset-controller  Create Pod postgres-0 in StatefulSet postgres successful
+  Type    Reason            Age    From                    Message
+  ----    ------            ----   ----                    -------
+  Normal  SuccessfulCreate  7m32s  statefulset-controller  Create Claim datos-postgres-0 Pod postgres-0 in StatefulSet postgres success
+  Normal  SuccessfulCreate  7m32s  statefulset-controller  Create Pod postgres-0 in StatefulSet postgres successful
 
 ========== kubectl describe deployment/grafana -n microrred-bi ==========
 Name:                   grafana
 Namespace:              microrred-bi
-CreationTimestamp:      Tue, 17 Nov 2026 00:08:24 -0500
+CreationTimestamp:      Tue, 17 Nov 2026 00:50:53 -0500
 Labels:                 app=grafana
                         app.kubernetes.io/part-of=microrred-bi
 Annotations:            deployment.kubernetes.io/revision: 1
@@ -198,7 +198,7 @@ Pod Template:
     Optional:  false
    plantilla-alerting:
     Type:      ConfigMap (a volume populated by a ConfigMap)
-    Name:      grafana-alertas-46952kggc2
+    Name:      grafana-alertas-f47kcgmb4g
     Optional:  false
    dashboards:
     Type:      ConfigMap (a volume populated by a ConfigMap)
@@ -217,21 +217,19 @@ Pod Template:
 Conditions:
   Type           Status  Reason
   ----           ------  ------
-  Progressing    True    NewReplicaSetAvailable
   Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
 OldReplicaSets:  <none>
-NewReplicaSet:   grafana-69d4db9778 (1/1 replicas created)
+NewReplicaSet:   grafana-55b499c9d (1/1 replicas created)
 Events:
   Type    Reason             Age    From                   Message
   ----    ------             ----   ----                   -------
-  Normal  ScalingReplicaSet  25m    deployment-controller  Scaled up replica set grafana-69d4db9778 from 0 to 1
-  Normal  ScalingReplicaSet  2m57s  deployment-controller  Scaled up replica set grafana-69d4db9778 from 1 to 2
-  Normal  ScalingReplicaSet  2m45s  deployment-controller  Scaled down replica set grafana-69d4db9778 from 2 to 1
+  Normal  ScalingReplicaSet  7m32s  deployment-controller  Scaled up replica set grafana-55b499c9d from 0 to 1
 
 ========== kubectl describe job/etl-carga-historica -n microrred-bi ==========
 Name:                     etl-carga-historica
 Namespace:                microrred-bi
-Selector:                 batch.kubernetes.io/controller-uid=c44b4817-f9d4-4a9a-ba39-77f1a9943427
+Selector:                 batch.kubernetes.io/controller-uid=abbf9f45-5f7f-4b2d-9887-b5ae948a1a34
 Labels:                   app=etl
                           app.kubernetes.io/part-of=microrred-bi
 Annotations:              <none>
@@ -240,16 +238,16 @@ Completions:              1
 Completion Mode:          NonIndexed
 Suspend:                  false
 Backoff Limit:            2
-Start Time:               Tue, 17 Nov 2026 00:22:21 -0500
-Completed At:             Tue, 17 Nov 2026 00:25:20 -0500
-Duration:                 2m59s
+Start Time:               Tue, 17 Nov 2026 00:55:05 -0500
+Completed At:             Tue, 17 Nov 2026 00:58:19 -0500
+Duration:                 3m14s
 Active Deadline Seconds:  1800s
 Pods Statuses:            0 Active (0 Ready) / 1 Succeeded / 0 Failed
 Pod Template:
   Labels:  app=etl
-           batch.kubernetes.io/controller-uid=c44b4817-f9d4-4a9a-ba39-77f1a9943427
+           batch.kubernetes.io/controller-uid=abbf9f45-5f7f-4b2d-9887-b5ae948a1a34
            batch.kubernetes.io/job-name=etl-carga-historica
-           controller-uid=c44b4817-f9d4-4a9a-ba39-77f1a9943427
+           controller-uid=abbf9f45-5f7f-4b2d-9887-b5ae948a1a34
            job-name=etl-carga-historica
   Init Containers:
    esperar-postgres:
@@ -303,8 +301,8 @@ Pod Template:
 Events:
   Type    Reason            Age    From            Message
   ----    ------            ----   ----            -------
-  Normal  SuccessfulCreate  11m    job-controller  Created pod: etl-carga-historica-s4b6k
-  Normal  Completed         8m30s  job-controller  Job completed
+  Normal  SuccessfulCreate  3m21s  job-controller  Created pod: etl-carga-historica-6cd5r
+  Normal  Completed         7s     job-controller  Job completed
 
 ========== kubectl describe cronjob/simulador -n microrred-bi ==========
 Name:                          simulador
@@ -346,36 +344,31 @@ Pod Template:
   Volumes:           <none>
   Node-Selectors:    <none>
   Tolerations:       <none>
-Last Schedule Time:  Tue, 17 Nov 2026 00:33:00 -0500
+Last Schedule Time:  Tue, 17 Nov 2026 00:58:00 -0500
 Active Jobs:         <none>
 Events:
-  Type    Reason            Age                   From                Message
-  ----    ------            ----                  ----                -------
-  Normal  SuccessfulCreate  24m                   cronjob-controller  Created job simulador-29914869
-  Normal  SawCompletedJob   24m                   cronjob-controller  Saw completed job: simulador-29914869, condition: Complete
-  Normal  SuccessfulCreate  23m                   cronjob-controller  Created job simulador-29914870
-  Normal  SawCompletedJob   23m                   cronjob-controller  Saw completed job: simulador-29914870, condition: Complete
-  Normal  SuccessfulCreate  22m                   cronjob-controller  Created job simulador-29914871
-  Normal  SawCompletedJob   22m                   cronjob-controller  Saw completed job: simulador-29914871, condition: Complete
-  Normal  SuccessfulCreate  21m                   cronjob-controller  Created job simulador-29914872
-  Normal  SuccessfulDelete  21m                   cronjob-controller  Deleted job simulador-29914869
-  Normal  SawCompletedJob   21m                   cronjob-controller  Saw completed job: simulador-29914872, condition: Complete
-  Normal  SuccessfulCreate  20m                   cronjob-controller  Created job simulador-29914873
-  Normal  SuccessfulDelete  20m                   cronjob-controller  Deleted job simulador-29914870
-  Normal  SawCompletedJob   20m (x2 over 20m)     cronjob-controller  Saw completed job: simulador-29914873, condition: Complete
-  Normal  SuccessfulCreate  19m                   cronjob-controller  Created job simulador-29914874
-  Normal  SuccessfulDelete  19m                   cronjob-controller  Deleted job simulador-29914871
-  Normal  SawCompletedJob   19m                   cronjob-controller  Saw completed job: simulador-29914874, condition: Complete
-  Normal  SuccessfulCreate  18m                   cronjob-controller  Created job simulador-29914875
-  Normal  SuccessfulDelete  18m                   cronjob-controller  Deleted job simulador-29914872
-  Normal  SawCompletedJob   18m                   cronjob-controller  Saw completed job: simulador-29914875, condition: Complete
-  Normal  SuccessfulCreate  17m                   cronjob-controller  Created job simulador-29914876
-  Normal  SuccessfulDelete  17m                   cronjob-controller  Deleted job simulador-29914873
-  Normal  SawCompletedJob   17m                   cronjob-controller  Saw completed job: simulador-29914876, condition: Complete
-  Normal  SuccessfulCreate  16m                   cronjob-controller  Created job simulador-29914877
-  Normal  SuccessfulDelete  16m                   cronjob-controller  Deleted job simulador-29914874
-  Normal  SawCompletedJob   16m                   cronjob-controller  Saw completed job: simulador-29914877, condition: Complete
-  Normal  SuccessfulCreate  4m50s (x12 over 15m)  cronjob-controller  (combined from similar events): Created job simulador-29914889
+  Type    Reason            Age                    From                Message
+  ----    ------            ----                   ----                -------
+  Normal  SuccessfulCreate  7m26s                  cronjob-controller  Created job simulador-29914911
+  Normal  SawCompletedJob   7m14s                  cronjob-controller  Saw completed job: simulador-29914911, condition: Failed
+  Normal  SuccessfulCreate  6m26s                  cronjob-controller  Created job simulador-29914912
+  Normal  SawCompletedJob   6m19s                  cronjob-controller  Saw completed job: simulador-29914912, condition: Complete
+  Normal  SuccessfulCreate  5m26s                  cronjob-controller  Created job simulador-29914913
+  Normal  SawCompletedJob   5m6s                   cronjob-controller  Saw completed job: simulador-29914913, condition: Complete
+  Normal  SuccessfulCreate  4m26s                  cronjob-controller  Created job simulador-29914914
+  Normal  SawCompletedJob   4m20s                  cronjob-controller  Saw completed job: simulador-29914914, condition: Complete
+  Normal  SuccessfulCreate  3m26s                  cronjob-controller  Created job simulador-29914915
+  Normal  SuccessfulDelete  3m21s                  cronjob-controller  Deleted job simulador-29914912
+  Normal  SawCompletedJob   3m21s                  cronjob-controller  Saw completed job: simulador-29914915, condition: Complete
+  Normal  SuccessfulCreate  2m26s                  cronjob-controller  Created job simulador-29914916
+  Normal  SuccessfulDelete  2m20s                  cronjob-controller  Deleted job simulador-29914913
+  Normal  SawCompletedJob   2m20s (x2 over 2m20s)  cronjob-controller  Saw completed job: simulador-29914916, condition: Complete
+  Normal  SuccessfulCreate  86s                    cronjob-controller  Created job simulador-29914917
+  Normal  SuccessfulDelete  79s                    cronjob-controller  Deleted job simulador-29914914
+  Normal  SawCompletedJob   79s                    cronjob-controller  Saw completed job: simulador-29914917, condition: Complete
+  Normal  SuccessfulCreate  26s                    cronjob-controller  Created job simulador-29914918
+  Normal  SuccessfulDelete  7s                     cronjob-controller  Deleted job simulador-29914915
+  Normal  SawCompletedJob   7s                     cronjob-controller  Saw completed job: simulador-29914918, condition: Complete
 
 ========== kubectl describe service/postgres -n microrred-bi ==========
 Name:                     postgres
@@ -391,7 +384,7 @@ IP:                       None
 IPs:                      None
 Port:                     postgres  5432/TCP
 TargetPort:               postgres/TCP
-Endpoints:                10.244.0.31:5432
+Endpoints:                10.244.0.9:5432
 Session Affinity:         None
 Internal Traffic Policy:  Cluster
 Events:                   <none>
@@ -406,12 +399,12 @@ Selector:                 app=postgres
 Type:                     NodePort
 IP Family Policy:         SingleStack
 IP Families:              IPv4
-IP:                       10.96.129.38
-IPs:                      10.96.129.38
+IP:                       10.96.237.236
+IPs:                      10.96.237.236
 Port:                     postgres  5432/TCP
 TargetPort:               postgres/TCP
 NodePort:                 postgres  30432/TCP
-Endpoints:                10.244.0.31:5432
+Endpoints:                10.244.0.9:5432
 Session Affinity:         None
 External Traffic Policy:  Cluster
 Internal Traffic Policy:  Cluster
@@ -427,12 +420,12 @@ Selector:                 app=grafana
 Type:                     NodePort
 IP Family Policy:         SingleStack
 IP Families:              IPv4
-IP:                       10.96.254.3
-IPs:                      10.96.254.3
+IP:                       10.96.231.26
+IPs:                      10.96.231.26
 Port:                     http  3000/TCP
 TargetPort:               http/TCP
 NodePort:                 http  30300/TCP
-Endpoints:                10.244.0.32:3000
+Endpoints:                10.244.0.5:3000
 Session Affinity:         None
 External Traffic Policy:  Cluster
 Internal Traffic Policy:  Cluster
@@ -443,7 +436,7 @@ Name:          datos-postgres-0
 Namespace:     microrred-bi
 StorageClass:  standard
 Status:        Bound
-Volume:        pvc-88ac1a4c-aeac-41e4-815a-aadd2f0dcac9
+Volume:        pvc-dee27edd-b054-4f5f-aca9-08fdf6520b19
 Labels:        app=postgres
 Annotations:   pv.kubernetes.io/bind-completed: yes
                pv.kubernetes.io/bound-by-controller: yes
@@ -458,14 +451,14 @@ Used By:       postgres-0
 Conditions:
   Type     Status  LastProbeTime                     LastTransitionTime                Reason        Message
   ----     ------  -----------------                 ------------------                ------        -------
-  Unused   False   Mon, 01 Jan 0001 00:00:00 +0000   Tue, 17 Nov 2026 00:26:50 -0500   PodUsingPVC   A pod is currently referencing this PVC
+  Unused   False   Mon, 01 Jan 0001 00:00:00 +0000   Tue, 17 Nov 2026 00:51:02 -0500   PodUsingPVC   A pod is currently referencing this PVC
 Events:
-  Type    Reason                 Age                From                                                                                                Message
-  ----    ------                 ----               ----                                                                                                -------
-  Normal  WaitForFirstConsumer   25m                persistentvolume-controller                                                                         waiting for first consumer to be created before binding
-  Normal  ExternalProvisioning   25m (x2 over 25m)  persistentvolume-controller                                                                         Waiting for a volume to be created either by the external provisioner 'rancher.io/local-path' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.
-  Normal  Provisioning           25m                rancher.io/local-path_local-path-provisioner-75f7fc7dc5-l42fj_b753913a-fd41-475b-a5ab-6bcdbef90a90  External provisioner is provisioning volume for claim "microrred-bi/datos-postgres-0"
-  Normal  ProvisioningSucceeded  25m                rancher.io/local-path_local-path-provisioner-75f7fc7dc5-l42fj_b753913a-fd41-475b-a5ab-6bcdbef90a90  Successfully provisioned volume pvc-88ac1a4c-aeac-41e4-815a-aadd2f0dcac9
+  Type    Reason                 Age                    From                                                                                                Message
+  ----    ------                 ----                   ----                                                                                                -------
+  Normal  WaitForFirstConsumer   7m34s                  persistentvolume-controller                                                                         waiting for first consumer to be created before binding
+  Normal  ExternalProvisioning   7m34s (x3 over 7m34s)  persistentvolume-controller                                                                         Waiting for a volume to be created either by the external provisioner 'rancher.io/local-path' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.
+  Normal  Provisioning           7m34s                  rancher.io/local-path_local-path-provisioner-75f7fc7dc5-pw9l4_9451e19b-cccb-4713-b8cd-0135616b76b1  External provisioner is provisioning volume for claim "microrred-bi/datos-postgres-0"
+  Normal  ProvisioningSucceeded  7m25s                  rancher.io/local-path_local-path-provisioner-75f7fc7dc5-pw9l4_9451e19b-cccb-4713-b8cd-0135616b76b1  Successfully provisioned volume pvc-dee27edd-b054-4f5f-aca9-08fdf6520b19
 
 ========== kubectl describe secret/microrred-credenciales -n microrred-bi ==========
 Name:         microrred-credenciales

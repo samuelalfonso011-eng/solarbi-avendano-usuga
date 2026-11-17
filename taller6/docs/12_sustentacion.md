@@ -42,7 +42,7 @@ nadie las convierte en decisiones.
 | Paso | Qué se muestra | Comando o herramienta |
 | --- | --- | --- |
 | 1 | Se parte de cero | `bash scripts/down.sh` ; `kubectl config get-contexts` |
-| 2 | **Un solo comando** levanta todo (≈ 6–8 min con las imágenes ya descargadas) | `bash scripts/up.sh` |
+| 2 | **Un solo comando** levanta todo (5 min 30 s medidos, con las imágenes ya descargadas) | `bash scripts/up.sh` |
 | 3 | Mientras carga: problema, fuente, checksum, diagnóstico y reglas de calidad | PDF, `docs/evidencias/01_descarga_sha256.txt` |
 | 4 | Objetos del clúster | `kubectl -n microrred-bi get all,cm,secret,pvc` |
 | 5 | Evidencia del ETL: reglas, conciliación, huella | `kubectl -n microrred-bi logs job/etl-carga-historica --tail=40` |

@@ -1,50 +1,50 @@
 Defaulted container "etl" out of: etl, esperar-postgres (init)
-2026-11-17 05:18:50,774 INFO Corrida 4 | ETL 1.0.0 | fuente /datos/bronze/opencem-v1.0.0.sqlite
-2026-11-17 05:18:50,777 INFO [1/6] Inventario de Bronze
-2026-11-17 05:18:55,248 INFO   analog_measurements     2,989,759 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
-2026-11-17 05:18:55,248 INFO   context                    25,178 filas  2024-04-30T16:00:00+00:00 -> 2026-07-22T15:59:59+00:00
-2026-11-17 05:18:55,248 INFO   fault_history           2,129,517 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
-2026-11-17 05:18:55,248 INFO   settings                2,284,775 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
-2026-11-17 05:18:55,248 INFO   specs                   1,333,174 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-02-02T18:40:30.734813+00:00
-2026-11-17 05:18:55,248 INFO   statistics              2,285,904 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
-2026-11-17 05:18:55,248 INFO   status                  2,240,052 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
-2026-11-17 05:18:55,248 INFO   totals                  2,279,918 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
-2026-11-17 05:19:29,039 INFO   sha256 = 5fe1f213a4a6804cdfc75f6173f437772c918f45dc0f127eb7e8936c2c2d9fbb
-2026-11-17 05:19:29,039 INFO [2/6] Lecturas: reglas de calidad + agregacion a 5 min
-2026-11-17 05:19:39,133 INFO   500,000 lecturas procesadas
-2026-11-17 05:19:49,248 INFO   1,000,000 lecturas procesadas
-2026-11-17 05:19:58,937 INFO   1,500,000 lecturas procesadas
-2026-11-17 05:20:09,330 INFO   2,000,000 lecturas procesadas
-2026-11-17 05:20:18,974 INFO   2,500,000 lecturas procesadas
-2026-11-17 05:20:27,381 INFO   inv 1  R1_FILA_VACIA              RECHAZA_FILA     antes= 1,610,276 afectadas=        1 despues= 1,610,275
-2026-11-17 05:20:27,381 INFO   inv 1  R2_CAMPO_CRITICO_NULO      RECHAZA_FILA     antes= 1,610,275 afectadas=    7,348 despues= 1,602,927
-2026-11-17 05:20:27,381 INFO   inv 1  R3_FUERA_DE_RANGO          RECHAZA_FILA     antes= 1,602,927 afectadas=       10 despues= 1,602,917
-2026-11-17 05:20:27,381 INFO   inv 1  R4_LECTURA_CRUZADA         RECHAZA_FILA     antes= 1,602,917 afectadas=   40,215 despues= 1,562,702
-2026-11-17 05:20:27,381 INFO   inv 1  R5_LLAVE_DUPLICADA         RECHAZA_FILA     antes= 1,562,702 afectadas=        0 despues= 1,562,702
-2026-11-17 05:20:27,381 INFO   inv 1  A1_TEMPERATURA_CENTINELA   ANULA_CAMPO      antes= 1,562,702 afectadas=1,561,769 despues= 1,562,702
-2026-11-17 05:20:27,382 INFO   inv 1  A2_BATERIA_EN_REPOSO       ANULA_CAMPO      antes= 1,562,702 afectadas=1,016,061 despues= 1,562,702
-2026-11-17 05:20:27,382 INFO   inv 1  E1_SIN_RED                 CLASIFICA_EVENTO antes= 1,562,702 afectadas=  254,764 despues= 1,562,702
-2026-11-17 05:20:27,382 INFO   inv 1  E2_SALIDA_APAGADA          CLASIFICA_EVENTO antes= 1,562,702 afectadas=        2 despues= 1,562,702
-2026-11-17 05:20:27,382 INFO   inv 1  E3_BATERIA_BAJA            CLASIFICA_EVENTO antes= 1,562,702 afectadas=    1,823 despues= 1,562,702
-2026-11-17 05:20:27,382 INFO   inv 2  R1_FILA_VACIA              RECHAZA_FILA     antes= 1,379,483 afectadas=   55,613 despues= 1,323,870
-2026-11-17 05:20:27,382 INFO   inv 2  R2_CAMPO_CRITICO_NULO      RECHAZA_FILA     antes= 1,323,870 afectadas=   13,102 despues= 1,310,768
-2026-11-17 05:20:27,382 INFO   inv 2  R3_FUERA_DE_RANGO          RECHAZA_FILA     antes= 1,310,768 afectadas=        6 despues= 1,310,762
-2026-11-17 05:20:27,382 INFO   inv 2  R4_LECTURA_CRUZADA         RECHAZA_FILA     antes= 1,310,762 afectadas=      270 despues= 1,310,492
-2026-11-17 05:20:27,382 INFO   inv 2  R5_LLAVE_DUPLICADA         RECHAZA_FILA     antes= 1,310,492 afectadas=        0 despues= 1,310,492
-2026-11-17 05:20:27,382 INFO   inv 2  A1_TEMPERATURA_CENTINELA   ANULA_CAMPO      antes= 1,310,492 afectadas=1,309,229 despues= 1,310,492
-2026-11-17 05:20:27,382 INFO   inv 2  A2_BATERIA_EN_REPOSO       ANULA_CAMPO      antes= 1,310,492 afectadas=  928,274 despues= 1,310,492
-2026-11-17 05:20:27,382 INFO   inv 2  E1_SIN_RED                 CLASIFICA_EVENTO antes= 1,310,492 afectadas=   58,616 despues= 1,310,492
-2026-11-17 05:20:27,382 INFO   inv 2  E2_SALIDA_APAGADA          CLASIFICA_EVENTO antes= 1,310,492 afectadas=  114,110 despues= 1,310,492
-2026-11-17 05:20:27,382 INFO   inv 2  E3_BATERIA_BAJA            CLASIFICA_EVENTO antes= 1,310,492 afectadas=   27,534 despues= 1,310,492
-2026-11-17 05:20:27,382 INFO   episodios descartados por durar < 60.0s: 66
-2026-11-17 05:20:27,382 INFO [3/6] Eventos de alarma y fallas, configuracion y contadores
-2026-11-17 05:20:48,053 INFO   eventos por tipo: {'SIN_DATOS': 314, 'SALIDA_APAGADA': 401, 'BATERIA_BAJA': 29, 'SIN_RED': 18, 'ALARMA_ACTIVA': 4542, 'FALLA_REGISTRADA': 2566}
-2026-11-17 05:21:00,132 INFO   versiones de configuracion (SCD2): [(1, 20284, 20328, 2, 2, 95), (1, 20329, 20459, 0, 2, 100), (1, 20460, None, 0, 3, 100), (2, 20284, 20459, 0, 2, 100), (2, 20460, None, 0, 3, 100)]
-2026-11-17 05:21:24,351 INFO [4/6] Contexto JSON
-2026-11-17 05:21:25,184 INFO   leidos=25178 cargados=25178 rechazados={} clasificados_sin_tipo=61
-2026-11-17 05:21:25,186 INFO [5/6] Carga transaccional Silver + Gold
-2026-11-17 05:21:58,644 INFO [6/6] Conciliacion y cierre
-2026-11-17 05:21:58,646 INFO   conciliacion carga  dias=498 contador=4430.5 kWh  integrado=4410.6 kWh  diferencia=-0.45 %
-2026-11-17 05:21:58,646 INFO   conciliacion red    dias=498 contador=2305.0 kWh  integrado=2970.5 kWh  diferencia=28.87 %
-2026-11-17 05:21:58,646 INFO   conciliacion solar  dias=498 contador=1791.1 kWh  integrado=1814.1 kWh  diferencia=1.29 %
-2026-11-17 05:21:58,647 INFO OK corrida=4 filas_fuente=2,989,759 filas_silver=178,968 filas_gold=178,968 huella=542622b6dbba4c989722d9e477f13576 duracion=188s
+2026-11-17 05:51:16,777 INFO Corrida 1 | ETL 1.0.0 | fuente /datos/bronze/opencem-v1.0.0.sqlite
+2026-11-17 05:51:16,790 INFO [1/6] Inventario de Bronze
+2026-11-17 05:51:22,288 INFO   analog_measurements     2,989,759 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
+2026-11-17 05:51:22,288 INFO   context                    25,178 filas  2024-04-30T16:00:00+00:00 -> 2026-07-22T15:59:59+00:00
+2026-11-17 05:51:22,288 INFO   fault_history           2,129,517 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
+2026-11-17 05:51:22,288 INFO   settings                2,284,775 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
+2026-11-17 05:51:22,288 INFO   specs                   1,333,174 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-02-02T18:40:30.734813+00:00
+2026-11-17 05:51:22,288 INFO   statistics              2,285,904 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
+2026-11-17 05:51:22,288 INFO   status                  2,240,052 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
+2026-11-17 05:51:22,288 INFO   totals                  2,279,918 filas  2025-07-12T13:31:35.265811+00:00 -> 2026-07-13T05:13:53.451776+00:00
+2026-11-17 05:52:02,867 INFO   sha256 = 5fe1f213a4a6804cdfc75f6173f437772c918f45dc0f127eb7e8936c2c2d9fbb
+2026-11-17 05:52:02,867 INFO [2/6] Lecturas: reglas de calidad + agregacion a 5 min
+2026-11-17 05:52:13,791 INFO   500,000 lecturas procesadas
+2026-11-17 05:52:24,690 INFO   1,000,000 lecturas procesadas
+2026-11-17 05:52:34,792 INFO   1,500,000 lecturas procesadas
+2026-11-17 05:52:45,230 INFO   2,000,000 lecturas procesadas
+2026-11-17 05:52:56,335 INFO   2,500,000 lecturas procesadas
+2026-11-17 05:53:19,888 INFO   inv 1  R1_FILA_VACIA              RECHAZA_FILA     antes= 1,610,276 afectadas=        1 despues= 1,610,275
+2026-11-17 05:53:19,888 INFO   inv 1  R2_CAMPO_CRITICO_NULO      RECHAZA_FILA     antes= 1,610,275 afectadas=    7,348 despues= 1,602,927
+2026-11-17 05:53:19,888 INFO   inv 1  R3_FUERA_DE_RANGO          RECHAZA_FILA     antes= 1,602,927 afectadas=       10 despues= 1,602,917
+2026-11-17 05:53:19,888 INFO   inv 1  R4_LECTURA_CRUZADA         RECHAZA_FILA     antes= 1,602,917 afectadas=   40,215 despues= 1,562,702
+2026-11-17 05:53:19,888 INFO   inv 1  R5_LLAVE_DUPLICADA         RECHAZA_FILA     antes= 1,562,702 afectadas=        0 despues= 1,562,702
+2026-11-17 05:53:19,888 INFO   inv 1  A1_TEMPERATURA_CENTINELA   ANULA_CAMPO      antes= 1,562,702 afectadas=1,561,769 despues= 1,562,702
+2026-11-17 05:53:19,888 INFO   inv 1  A2_BATERIA_EN_REPOSO       ANULA_CAMPO      antes= 1,562,702 afectadas=1,016,061 despues= 1,562,702
+2026-11-17 05:53:19,888 INFO   inv 1  E1_SIN_RED                 CLASIFICA_EVENTO antes= 1,562,702 afectadas=  254,764 despues= 1,562,702
+2026-11-17 05:53:19,888 INFO   inv 1  E2_SALIDA_APAGADA          CLASIFICA_EVENTO antes= 1,562,702 afectadas=        2 despues= 1,562,702
+2026-11-17 05:53:19,888 INFO   inv 1  E3_BATERIA_BAJA            CLASIFICA_EVENTO antes= 1,562,702 afectadas=    1,823 despues= 1,562,702
+2026-11-17 05:53:19,888 INFO   inv 2  R1_FILA_VACIA              RECHAZA_FILA     antes= 1,379,483 afectadas=   55,613 despues= 1,323,870
+2026-11-17 05:53:19,888 INFO   inv 2  R2_CAMPO_CRITICO_NULO      RECHAZA_FILA     antes= 1,323,870 afectadas=   13,102 despues= 1,310,768
+2026-11-17 05:53:19,888 INFO   inv 2  R3_FUERA_DE_RANGO          RECHAZA_FILA     antes= 1,310,768 afectadas=        6 despues= 1,310,762
+2026-11-17 05:53:19,889 INFO   inv 2  R4_LECTURA_CRUZADA         RECHAZA_FILA     antes= 1,310,762 afectadas=      270 despues= 1,310,492
+2026-11-17 05:53:19,889 INFO   inv 2  R5_LLAVE_DUPLICADA         RECHAZA_FILA     antes= 1,310,492 afectadas=        0 despues= 1,310,492
+2026-11-17 05:53:19,889 INFO   inv 2  A1_TEMPERATURA_CENTINELA   ANULA_CAMPO      antes= 1,310,492 afectadas=1,309,229 despues= 1,310,492
+2026-11-17 05:53:19,889 INFO   inv 2  A2_BATERIA_EN_REPOSO       ANULA_CAMPO      antes= 1,310,492 afectadas=  928,274 despues= 1,310,492
+2026-11-17 05:53:19,889 INFO   inv 2  E1_SIN_RED                 CLASIFICA_EVENTO antes= 1,310,492 afectadas=   58,616 despues= 1,310,492
+2026-11-17 05:53:19,889 INFO   inv 2  E2_SALIDA_APAGADA          CLASIFICA_EVENTO antes= 1,310,492 afectadas=  114,110 despues= 1,310,492
+2026-11-17 05:53:19,889 INFO   inv 2  E3_BATERIA_BAJA            CLASIFICA_EVENTO antes= 1,310,492 afectadas=   27,534 despues= 1,310,492
+2026-11-17 05:53:19,889 INFO   episodios descartados por durar < 60.0s: 66
+2026-11-17 05:53:19,889 INFO [3/6] Eventos de alarma y fallas, configuracion y contadores
+2026-11-17 05:53:42,472 INFO   eventos por tipo: {'SIN_DATOS': 314, 'SALIDA_APAGADA': 401, 'BATERIA_BAJA': 29, 'SIN_RED': 18, 'ALARMA_ACTIVA': 4542, 'FALLA_REGISTRADA': 2566}
+2026-11-17 05:53:54,894 INFO   versiones de configuracion (SCD2): [(1, 20284, 20328, 2, 2, 95), (1, 20329, 20459, 0, 2, 100), (1, 20460, None, 0, 3, 100), (2, 20284, 20459, 0, 2, 100), (2, 20460, None, 0, 3, 100)]
+2026-11-17 05:54:20,063 INFO [4/6] Contexto JSON
+2026-11-17 05:54:20,678 INFO   leidos=25178 cargados=25178 rechazados={} clasificados_sin_tipo=61
+2026-11-17 05:54:20,679 INFO [5/6] Carga transaccional Silver + Gold
+2026-11-17 05:54:43,014 INFO [6/6] Conciliacion y cierre
+2026-11-17 05:54:43,016 INFO   conciliacion carga  dias=498 contador=4430.5 kWh  integrado=4410.6 kWh  diferencia=-0.45 %
+2026-11-17 05:54:43,016 INFO   conciliacion red    dias=498 contador=2305.0 kWh  integrado=2970.5 kWh  diferencia=28.87 %
+2026-11-17 05:54:43,016 INFO   conciliacion solar  dias=498 contador=1791.1 kWh  integrado=1814.1 kWh  diferencia=1.29 %
+2026-11-17 05:54:43,017 INFO OK corrida=1 filas_fuente=2,989,759 filas_silver=178,968 filas_gold=178,968 huella=542622b6dbba4c989722d9e477f13576 duracion=206s

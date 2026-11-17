@@ -39,4 +39,4 @@ tests/test_transformar.py::test_versiones_de_configuracion_ignoran_copias_y_dias
 tests/test_transformar.py::test_contadores PASSED
 tests/test_transformar.py::test_simulador_elige_intervalo_historico PASSED
 tests/test_transformar.py::test_simulador_escenarios PASSED
-============================= 41 passed in 2.83s ==============================
+============================= 41 passed in 2.96s ==============================
