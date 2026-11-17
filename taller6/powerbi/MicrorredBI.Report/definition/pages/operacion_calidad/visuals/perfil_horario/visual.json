@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "perfil_horario",
+  "position": {
+    "x": 20,
+    "y": 262,
+    "z": 10,
+    "height": 220,
+    "width": 620,
+    "tabOrder": 10
+  },
+  "visual": {
+    "visualType": "areaChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tiempo"
+                    }
+                  },
+                  "Property": "Franja horaria"
+                }
+              },
+              "queryRef": "Tiempo.Franja horaria",
+              "nativeQueryRef": "Franja horaria",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tiempo"
+                    }
+                  },
+                  "Property": "Hora"
+                }
+              },
+              "queryRef": "Tiempo.Hora",
+              "nativeQueryRef": "Hora"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Energia"
+                    }
+                  },
+                  "Property": "Energía solar kWh"
+                }
+              },
+              "queryRef": "Energia.Energía solar kWh",
+              "nativeQueryRef": "Energía solar kWh"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Energia"
+                    }
+                  },
+                  "Property": "Energía importada de red kWh"
+                }
+              },
+              "queryRef": "Energia.Energía importada de red kWh",
+              "nativeQueryRef": "Energía importada de red kWh"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Energia"
+                    }
+                  },
+                  "Property": "Energía a la carga kWh"
+                }
+              },
+              "queryRef": "Energia.Energía a la carga kWh",
+              "nativeQueryRef": "Energía a la carga kWh"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Perfil por franja horaria (profundizar a hora)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+expression Servidor = "localhost:15432" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 495c97b5-5e54-6e0c-b73d-2591f462fb4d
+
+	annotation PBI_ResultType = Text
+
+expression BaseDatos = "microrred" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 392db4f0-186c-ac5a-bfc0-8b964ac66cf8
+
+	annotation PBI_ResultType = Text
+

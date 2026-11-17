@@ -1,0 +1,24 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-CO
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["Servidor", "BaseDatos", "Fecha", "Tiempo", "Inversor", "Tipo de evento", "Tipo de contexto", "Energia", "Eventos", "Contexto"]
+
+ref cultureInfo es-ES
+
+ref table Fecha
+ref table Tiempo
+ref table Inversor
+ref table 'Tipo de evento'
+ref table 'Tipo de contexto'
+ref table Energia
+ref table Eventos
+ref table Contexto
+ref table Tarifa
+ref table Flujo

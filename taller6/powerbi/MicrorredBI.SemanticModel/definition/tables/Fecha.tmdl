@@ -1,0 +1,127 @@
+table Fecha
+	lineageTag: 5c7ae279-8afd-ee35-9254-63bd107f75ab
+	dataCategory: Time
+
+	column fecha_key
+		dataType: int64
+		isHidden
+		lineageTag: 616caedc-74da-571b-161f-e6c5820dc41d
+		summarizeBy: none
+		sourceColumn: fecha_key
+
+	column Fecha
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		lineageTag: 1fc59157-36a6-5f96-ab70-d090a566fdc9
+		summarizeBy: none
+		sourceColumn: fecha
+
+	column 'Año'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4aeb8495-457b-7aae-c598-c89d6a6c8423
+		summarizeBy: none
+		sourceColumn: anio
+
+	column Trimestre
+		dataType: int64
+		formatString: 0
+		lineageTag: dc992f23-fcdf-e3b6-202e-9d593ac2b6bd
+		summarizeBy: none
+		sourceColumn: trimestre
+
+	column 'Mes num'
+		dataType: int64
+		isHidden
+		lineageTag: fa6a6c95-eb76-eb6a-1afa-47476b50c181
+		summarizeBy: none
+		sourceColumn: mes
+
+	column Mes
+		dataType: string
+		lineageTag: 6098990a-c348-7173-fbbe-2fd31f59f8ff
+		summarizeBy: none
+		sourceColumn: nombre_mes
+		sortByColumn: 'Mes num'
+
+	column 'Año-Mes'
+		dataType: string
+		lineageTag: 89b4efd2-e607-bf55-dc51-889f46637f04
+		summarizeBy: none
+		sourceColumn: anio_mes
+
+	column 'Semana ISO'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5228dfe6-0abd-ace9-0f3d-dbb63eaa2bdd
+		summarizeBy: none
+		sourceColumn: semana_iso
+
+	column 'Día'
+		dataType: int64
+		formatString: 0
+		lineageTag: a3db330c-193c-e496-6c54-0bb04ff511d7
+		summarizeBy: none
+		sourceColumn: dia_mes
+
+	column 'Día semana num'
+		dataType: int64
+		isHidden
+		lineageTag: 7784a0d1-57df-2bb0-64eb-51a5deb9be1a
+		summarizeBy: none
+		sourceColumn: dia_semana
+
+	column 'Día semana'
+		dataType: string
+		lineageTag: 1c35dc5c-f383-2658-e16e-270dc82e2c22
+		summarizeBy: none
+		sourceColumn: nombre_dia
+		sortByColumn: 'Día semana num'
+
+	column 'Es fin de semana'
+		dataType: boolean
+		lineageTag: 2b38b4db-d9f1-7a3c-a2ad-8b15acd111b8
+		summarizeBy: none
+		sourceColumn: es_fin_semana
+
+	column 'Es festivo'
+		dataType: boolean
+		lineageTag: 2b056dcc-f251-9e06-fd53-f5d1166390bc
+		summarizeBy: none
+		sourceColumn: es_festivo
+
+	column 'Tipo de día'
+		dataType: string
+		lineageTag: 50f70d8c-77e9-3fd0-80b2-ba477406dc22
+		summarizeBy: none
+		sourceColumn: tipo_dia
+
+	hierarchy Calendario
+		lineageTag: 64894b6e-7f8b-d125-cc11-c0e72a2f2e60
+
+		level 'Año'
+			lineageTag: b31fd584-3c97-ee9b-b346-7fae02300d7a
+			column: 'Año'
+
+		level Trimestre
+			lineageTag: 50b1d5d4-73d5-c542-d92d-2761a13b1b5b
+			column: Trimestre
+
+		level Mes
+			lineageTag: 63ded088-071f-5961-43c2-1345e1782813
+			column: Mes
+
+		level 'Día'
+			lineageTag: c505a009-30c2-cff5-b966-5ee1e4c36bcf
+			column: 'Día'
+
+	partition Fecha = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database(Servidor, BaseDatos),
+				    Tabla = Origen{[Schema="gold", Item="dim_fecha"]}[Data]
+				in
+				    Tabla
+

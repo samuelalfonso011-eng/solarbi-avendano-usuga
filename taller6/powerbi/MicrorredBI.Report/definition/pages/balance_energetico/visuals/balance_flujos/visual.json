@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "balance_flujos",
+  "position": {
+    "x": 20,
+    "y": 262,
+    "z": 10,
+    "height": 440,
+    "width": 500,
+    "tabOrder": 10
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Flujo"
+                    }
+                  },
+                  "Property": "Flujo"
+                }
+              },
+              "queryRef": "Flujo.Flujo",
+              "nativeQueryRef": "Flujo",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Flujo"
+                    }
+                  },
+                  "Property": "Sentido"
+                }
+              },
+              "queryRef": "Flujo.Sentido",
+              "nativeQueryRef": "Sentido",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Energia"
+                    }
+                  },
+                  "Property": "Balance kWh"
+                }
+              },
+              "queryRef": "Energia.Balance kWh",
+              "nativeQueryRef": "Balance kWh"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'De dónde viene y a dónde va la energía (kWh)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "MicrorredBI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "00639c71-ba1d-bde8-4db8-4b3eb15d6820"
+  }
+}

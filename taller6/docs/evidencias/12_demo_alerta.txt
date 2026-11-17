@@ -1,0 +1,24 @@
+
+========== 3. Llegan datos nuevos con bateria baja: la alerta reacciona ==========
+--- estado inicial
+SOC de bateria bajo          estado=inactive  salud=ok     inv 1=Normal, inv 2=Normal 
+Telemetria atrasada          estado=inactive  salud=ok     inv 1=Normal, inv 2=Normal 
+Red electrica ausente        estado=inactive  salud=ok     inv 1=Normal, inv 2=Normal 
+Importacion de red alta      estado=inactive  salud=ok     inv 1=Normal, inv 2=Normal 
+ultima lectura: inv 1 soc=89 escenario=normal
+ultima lectura: inv 2 soc=83 escenario=normal
+--- se cambia el escenario del simulador (variable de entorno, sin reconstruir la imagen)
+cronjob.batch/simulador env updated
+t+20s  SOC de bateria bajo          estado=inactive  salud=ok     inv 1=Normal, inv 2=Normal 
+t+40s  SOC de bateria bajo          estado=inactive  salud=ok     inv 1=Normal, inv 2=Normal 
+t+60s  SOC de bateria bajo          estado=pending   salud=ok     inv 2=Pending, inv 1=Normal 
+t+80s  SOC de bateria bajo          estado=pending   salud=ok     inv 2=Pending, inv 1=Normal 
+t+100s  SOC de bateria bajo          estado=pending   salud=ok     inv 2=Pending, inv 1=Normal 
+t+120s  SOC de bateria bajo          estado=firing    salud=ok     inv 2=Alerting, inv 1=Normal 
+ultima lectura: inv 1 soc=89 escenario=normal
+ultima lectura: inv 2 soc=8 escenario=bateria_baja
+--- se vuelve al escenario normal (valor del ConfigMap)
+cronjob.batch/simulador env updated
+t+20s  SOC de bateria bajo          estado=firing    salud=ok     inv 2=Alerting, inv 1=Normal 
+t+40s  SOC de bateria bajo          estado=firing    salud=ok     inv 2=Alerting, inv 1=Normal 
+t+60s  SOC de bateria bajo          estado=inactive  salud=ok     inv 1=Normal, inv 2=Normal 

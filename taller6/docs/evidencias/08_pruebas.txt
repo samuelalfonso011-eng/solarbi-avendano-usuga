@@ -1,0 +1,42 @@
+tests/test_integracion.py::test_filas_fuente_igual_a_validas_mas_rechazadas PASSED
+tests/test_integracion.py::test_lecturas_crudas_de_silver_igual_a_la_fuente PASSED
+tests/test_integracion.py::test_gold_conserva_los_totales_de_silver PASSED
+tests/test_integracion.py::test_energia_integrada_concuerda_con_los_contadores_del_inversor PASSED
+tests/test_integracion.py::test_dos_corridas_dejan_la_misma_huella PASSED
+tests/test_integracion.py::test_grano_y_llaves_del_hecho_de_energia PASSED
+tests/test_integracion.py::test_dimensiones PASSED
+tests/test_integracion.py::test_indicadores_en_rango PASSED
+tests/test_integracion.py::test_eventos_operativos_no_se_pierden_como_datos_invalidos PASSED
+tests/test_integracion.py::test_consulta_json_nativa PASSED
+tests/test_integracion.py::test_contexto_sin_campos_sensibles PASSED
+tests/test_integracion.py::test_tarifa_cargada PASSED
+tests/test_transformar.py::test_fila_vacia_se_rechaza PASSED
+tests/test_transformar.py::test_campo_critico_nulo_se_rechaza PASSED
+tests/test_transformar.py::test_fuera_de_rango_se_rechaza
+tests/test_transformar.py::test_fuera_de_rango_se_rechaza
+tests/test_transformar.py::test_fuera_de_rango_se_rechaza
+tests/test_transformar.py::test_fuera_de_rango_se_rechaza
+tests/test_transformar.py::test_fuera_de_rango_se_rechaza
+tests/test_transformar.py::test_evento_operativo_no_es_dato_invalido PASSED
+tests/test_transformar.py::test_temperatura_opcional_no_rechaza PASSED
+tests/test_transformar.py::test_lectura_cruzada_rechaza_al_inversor_que_salta PASSED
+tests/test_transformar.py::test_lectura_cruzada_sin_historia_rechaza_ambas PASSED
+tests/test_transformar.py::test_llave_duplicada PASSED
+tests/test_transformar.py::test_conteos_por_regla_cuadran_con_las_filas_leidas PASSED
+tests/test_transformar.py::test_energia_se_integra_con_el_valor_anterior PASSED
+tests/test_transformar.py::test_energia_se_reparte_al_cruzar_el_intervalo PASSED
+tests/test_transformar.py::test_hueco_mayor_al_umbral_no_se_integra_y_genera_evento PASSED
+tests/test_transformar.py::test_una_lectura_rechazada_se_puentea_si_el_hueco_es_corto PASSED
+tests/test_transformar.py::test_bateria_signos_y_banda_de_reposo PASSED
+tests/test_transformar.py::test_temperatura_centinela_se_anula PASSED
+tests/test_transformar.py::test_fila_silver_acota_y_promedia PASSED
+tests/test_transformar.py::test_episodio_de_bateria_baja PASSED
+tests/test_transformar.py::test_episodio_corto_se_descarta PASSED
+tests/test_transformar.py::test_alarmas_y_fallas PASSED
+tests/test_transformar.py::test_contexto_minimiza_campos_sensibles PASSED
+tests/test_transformar.py::test_contexto_clasifica_registros_sin_tipo_y_rechaza_invalidos PASSED
+tests/test_transformar.py::test_versiones_de_configuracion_ignoran_copias_y_dias_sueltos PASSED
+tests/test_transformar.py::test_contadores PASSED
+tests/test_transformar.py::test_simulador_elige_intervalo_historico PASSED
+tests/test_transformar.py::test_simulador_escenarios PASSED
+============================= 41 passed in 2.96s ==============================

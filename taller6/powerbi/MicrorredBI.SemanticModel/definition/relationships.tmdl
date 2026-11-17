@@ -1,0 +1,44 @@
+relationship b2aaafde-42d5-dd9c-0720-545289d3840b
+	fromColumn: Energia.fecha_key
+	toColumn: Fecha.fecha_key
+
+relationship 02477a88-5578-594b-0b80-fca9536e5038
+	fromColumn: Energia.tiempo_key
+	toColumn: Tiempo.tiempo_key
+
+relationship 8319dd9d-f1c8-4819-54c6-eb9e1ea1c154
+	fromColumn: Energia.inversor_key
+	toColumn: Inversor.inversor_key
+
+relationship f7f4864b-e8f6-0523-8bca-02f373916d59
+	fromColumn: Eventos.fecha_key
+	toColumn: Fecha.fecha_key
+
+relationship d49bb436-cfd6-3a04-cbd9-965ada53ec2f
+	fromColumn: Eventos.tiempo_key
+	toColumn: Tiempo.tiempo_key
+
+relationship 4057c839-4f4e-f83c-ee00-22ae5331835d
+	fromColumn: Eventos.inversor_key
+	toColumn: Inversor.inversor_key
+
+relationship 0ec4ed35-055c-76e3-262c-ce589faf76fd
+	fromColumn: Eventos.tipo_evento_key
+	toColumn: 'Tipo de evento'.tipo_evento_key
+
+relationship 6fbb526c-ede3-61a7-68af-f06af662c6f5
+	fromColumn: Contexto.fecha_key
+	toColumn: Fecha.fecha_key
+
+relationship b3858d3f-e068-aeb9-2d27-698a7fe312bf
+	fromColumn: Contexto.tiempo_key
+	toColumn: Tiempo.tiempo_key
+
+relationship 942584c1-6c0d-960f-82aa-e255883ba5c6
+	fromColumn: Contexto.inversor_key
+	toColumn: Inversor.inversor_key
+
+relationship ddad80f8-12db-b2e4-a2d1-7cc9f422b4cc
+	fromColumn: Contexto.tipo_contexto_key
+	toColumn: 'Tipo de contexto'.tipo_contexto_key
+

@@ -1,5 +1,9 @@
 ﻿# SolarBI Pascual
 
+> **Taller 6 (microrred híbrida en Kubernetes):** la solución completa está en la carpeta
+> [`taller6/`](taller6/README.md), con su propio README, manifiestos, ETL, tableros e informe.
+> Lo que sigue en este archivo corresponde al trabajo anterior del grupo.
+
 Power BI y Grafana, gobernanza de datos, automatización ETL e IoT — trabajo de
 consulta de **Inteligencia de Negocios, Grupo 50, 2026-II**, Institución
 Universitaria Pascual Bravo.

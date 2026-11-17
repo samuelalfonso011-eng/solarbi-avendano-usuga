@@ -1,0 +1,12 @@
+# Proveedor de tableros: carga los JSON versionados en Git al iniciar Grafana.
+apiVersion: 1
+providers:
+  - name: microrred
+    orgId: 1
+    folder: Microrred
+    type: file
+    disableDeletion: true
+    allowUiUpdates: false
+    updateIntervalSeconds: 30
+    options:
+      path: /var/lib/grafana/dashboards

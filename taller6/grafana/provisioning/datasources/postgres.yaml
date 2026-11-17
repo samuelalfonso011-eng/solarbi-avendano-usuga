@@ -1,0 +1,22 @@
+# Fuente de datos aprovisionada al iniciar Grafana (sin clics en la interfaz).
+# Host, base y contrasena llegan por variables de entorno: ConfigMap y Secret.
+apiVersion: 1
+datasources:
+  - name: PostgreSQL-Microrred
+    uid: pg-microrred
+    type: grafana-postgresql-datasource
+    access: proxy
+    url: ${PGHOST}:${PGPORT}
+    user: grafana_ro                 # rol de solo lectura
+    isDefault: true
+    editable: false
+    jsonData:
+      database: ${PGDATABASE}
+      sslmode: disable               # trafico interno del cluster (ver docs/10_etica_seguridad.md)
+      postgresVersion: 1600
+      timescaledb: false
+      maxOpenConns: 5
+      maxIdleConns: 2
+      connMaxLifetime: 14400
+    secureJsonData:
+      password: ${GRAFANA_DB_PASSWORD}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "contexto_cat",
+  "position": {
+    "x": 650,
+    "y": 492,
+    "z": 13,
+    "height": 210,
+    "width": 610,
+    "tabOrder": 13
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tipo de contexto"
+                    }
+                  },
+                  "Property": "Categoría de contexto"
+                }
+              },
+              "queryRef": "Tipo de contexto.Categoría de contexto",
+              "nativeQueryRef": "Categoría de contexto",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tipo de contexto"
+                    }
+                  },
+                  "Property": "Dispositivo"
+                }
+              },
+              "queryRef": "Tipo de contexto.Dispositivo",
+              "nativeQueryRef": "Dispositivo",
+              "active": true
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Contexto"
+                    }
+                  },
+                  "Property": "Registros de contexto"
+                }
+              },
+              "queryRef": "Contexto.Registros de contexto",
+              "nativeQueryRef": "Registros de contexto"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Contexto"
+                    }
+                  },
+                  "Property": "Horas de contexto"
+                }
+              },
+              "queryRef": "Contexto.Horas de contexto",
+              "nativeQueryRef": "Horas de contexto"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Contexto de las cargas (registros JSON)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

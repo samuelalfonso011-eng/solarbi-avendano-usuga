@@ -1,0 +1,480 @@
+
+========== kubectl get all,configmap,secret,pvc -n microrred-bi ==========
+NAME                            READY   STATUS      RESTARTS   AGE
+pod/etl-carga-historica-6cd5r   0/1     Completed   0          3m19s
+pod/grafana-55b499c9d-c7mtq     1/1     Running     0          7m31s
+pod/postgres-0                  1/1     Running     0          7m31s
+pod/simulador-29914916-cdqwf    0/1     Completed   0          2m24s
+pod/simulador-29914917-2bgfn    0/1     Completed   0          84s
+pod/simulador-29914918-6bdvr    0/1     Completed   0          24s
+
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/grafana            NodePort    10.96.231.26    <none>        3000:30300/TCP   7m31s
+service/postgres           ClusterIP   None            <none>        5432/TCP         7m31s
+service/postgres-externo   NodePort    10.96.237.236   <none>        5432:30432/TCP   7m31s
+
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/grafana   1/1     1            1           7m31s
+
+NAME                                DESIRED   CURRENT   READY   AGE
+replicaset.apps/grafana-55b499c9d   1         1         1       7m31s
+
+NAME                        READY   AGE
+statefulset.apps/postgres   1/1     7m31s
+
+NAME                      SCHEDULE    TIMEZONE   SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+cronjob.batch/simulador   * * * * *   <none>     False     0        24s             7m31s
+
+NAME                            STATUS     COMPLETIONS   DURATION   AGE
+job.batch/etl-carga-historica   Complete   1/1           3m14s      3m19s
+job.batch/simulador-29914916    Complete   1/1           6s         2m24s
+job.batch/simulador-29914917    Complete   1/1           7s         84s
+job.batch/simulador-29914918    Complete   1/1           19s        24s
+
+NAME                                              DATA   AGE
+configmap/grafana-alertas-f47kcgmb4g              1      7m32s
+configmap/grafana-datasources-782tdmt58h          1      7m32s
+configmap/grafana-proveedor-tableros-dkf2mtthgh   1      7m32s
+configmap/grafana-scripts-bk6tg669hk              1      7m32s
+configmap/grafana-tableros-h6kcdbckkc             1      7m32s
+configmap/kube-root-ca.crt                        1      7m32s
+configmap/microrred-config-ddd996m7hg             25     7m32s
+configmap/postgres-initdb-9c4gt8t48t              5      7m32s
+
+NAME                            TYPE     DATA   AGE
+secret/microrred-credenciales   Opaque   8      7m32s
+
+NAME                                     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/datos-postgres-0   Bound    pvc-dee27edd-b054-4f5f-aca9-08fdf6520b19   2Gi        RWO            standard       <unset>                 7m31s
+
+========== kubectl get pv ; kubectl get nodes -o wide ==========
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                           STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+pvc-dee27edd-b054-4f5f-aca9-08fdf6520b19   2Gi        RWO            Delete           Bound    microrred-bi/datos-postgres-0   standard       <unset>                          7m23s
+NAME                      STATUS   ROLES           AGE     VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION                              CONTAINER-RUNTIME
+microrred-control-plane   Ready    control-plane   8m40s   v1.37.0   172.19.0.3    <none>        Debian GNU/Linux 13 (trixie)   6.18.33.2-microsoft-standard-WSL2 (amd64)   containerd://2.3.4
+
+========== kubectl describe statefulset/postgres -n microrred-bi ==========
+Name:               postgres
+Namespace:          microrred-bi
+CreationTimestamp:  Tue, 17 Nov 2026 00:50:53 -0500
+Selector:           app=postgres
+Labels:             app=postgres
+                    app.kubernetes.io/part-of=microrred-bi
+Annotations:        <none>
+Replicas:           1 desired | 1 total
+Update Strategy:    RollingUpdate
+  Partition:        0
+  MaxUnavailable:   1
+Pods Status:        1 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=postgres
+  Containers:
+   postgres:
+    Image:      postgres:16.4-alpine
+    Port:       5432/TCP (postgres)
+    Host Port:  0/TCP (postgres)
+    Limits:
+      cpu:     1
+      memory:  768Mi
+    Requests:
+      cpu:      250m
+      memory:   256Mi
+    Liveness:   exec [sh -c pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB" -h 127.0.0.1] delay=0s timeout=3s period=20s #success=1 #failure=3
+    Readiness:  exec [sh -c pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB" -h 127.0.0.1] delay=0s timeout=3s period=10s #success=1 #failure=3
+    Startup:    exec [sh -c pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB" -h 127.0.0.1] delay=0s timeout=1s period=5s #success=1 #failure=24
+    Environment:
+      POSTGRES_DB:          <set to the key 'PGDATABASE' of config map 'microrred-config-ddd996m7hg'>  Optional: false
+      PGDATA:               /var/lib/postgresql/data/pgdata
+      POSTGRES_USER:        <set to the key 'POSTGRES_USER' in secret 'microrred-credenciales'>        Optional: false
+      POSTGRES_PASSWORD:    <set to the key 'POSTGRES_PASSWORD' in secret 'microrred-credenciales'>    Optional: false
+      ETL_PASSWORD:         <set to the key 'ETL_PASSWORD' in secret 'microrred-credenciales'>         Optional: false
+      SIM_PASSWORD:         <set to the key 'SIM_PASSWORD' in secret 'microrred-credenciales'>         Optional: false
+      GRAFANA_DB_PASSWORD:  <set to the key 'GRAFANA_DB_PASSWORD' in secret 'microrred-credenciales'>  Optional: false
+      BI_PASSWORD:          <set to the key 'BI_PASSWORD' in secret 'microrred-credenciales'>          Optional: false
+    Mounts:
+      /docker-entrypoint-initdb.d from initdb (ro)
+      /var/lib/postgresql/data from datos (rw)
+  Volumes:
+   initdb:
+    Type:          ConfigMap (a volume populated by a ConfigMap)
+    Name:          postgres-initdb-9c4gt8t48t
+    Optional:      false
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Volume Claims:
+  Name:          datos
+  StorageClass:  
+  Labels:        <none>
+  Annotations:   <none>
+  Capacity:      2Gi
+  Access Modes:  [ReadWriteOnce]
+Events:
+  Type    Reason            Age    From                    Message
+  ----    ------            ----   ----                    -------
+  Normal  SuccessfulCreate  7m32s  statefulset-controller  Create Claim datos-postgres-0 Pod postgres-0 in StatefulSet postgres success
+  Normal  SuccessfulCreate  7m32s  statefulset-controller  Create Pod postgres-0 in StatefulSet postgres successful
+
+========== kubectl describe deployment/grafana -n microrred-bi ==========
+Name:                   grafana
+Namespace:              microrred-bi
+CreationTimestamp:      Tue, 17 Nov 2026 00:50:53 -0500
+Labels:                 app=grafana
+                        app.kubernetes.io/part-of=microrred-bi
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=grafana
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  0 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=grafana
+  Init Containers:
+   render-provisioning:
+    Image:      grafana/grafana:11.4.0
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      /scripts/render_provisioning.sh
+      /plantilla
+      /provisioning
+    Limits:
+      cpu:     100m
+      memory:  64Mi
+    Requests:
+      cpu:     20m
+      memory:  16Mi
+    Environment Variables from:
+      microrred-config-ddd996m7hg  ConfigMap  Optional: false
+    Environment:                   <none>
+    Mounts:
+      /plantilla/alerting from plantilla-alerting (ro)
+      /plantilla/dashboards from plantilla-dashboards (ro)
+      /plantilla/datasources from plantilla-datasources (ro)
+      /provisioning from provisioning (rw)
+      /scripts from scripts (ro)
+  Containers:
+   grafana:
+    Image:      grafana/grafana:11.4.0
+    Port:       3000/TCP (http)
+    Host Port:  0/TCP (http)
+    Limits:
+      cpu:     500m
+      memory:  384Mi
+    Requests:
+      cpu:      100m
+      memory:   128Mi
+    Liveness:   http-get http://:http/api/health delay=0s timeout=3s period=20s #success=1 #failure=3
+    Readiness:  http-get http://:http/api/health delay=0s timeout=3s period=10s #success=1 #failure=3
+    Startup:    http-get http://:http/api/health delay=0s timeout=1s period=5s #success=1 #failure=24
+    Environment Variables from:
+      microrred-config-ddd996m7hg  ConfigMap  Optional: false
+    Environment:
+      GF_PATHS_PROVISIONING:                      /provisioning
+      GF_SECURITY_ADMIN_USER:                     <set to the key 'GF_SECURITY_ADMIN_USER' in secret 'microrred-credenciales'>      Optional: false
+      GF_SECURITY_ADMIN_PASSWORD:                 <set to the key 'GF_SECURITY_ADMIN_PASSWORD' in secret 'microrred-credenciales'>  Optional: false
+      GRAFANA_DB_PASSWORD:                        <set to the key 'GRAFANA_DB_PASSWORD' in secret 'microrred-credenciales'>         Optional: false
+      GF_USERS_ALLOW_SIGN_UP:                     false
+      GF_AUTH_ANONYMOUS_ENABLED:                  false
+      GF_ANALYTICS_REPORTING_ENABLED:             false
+      GF_ANALYTICS_CHECK_FOR_UPDATES:             false
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH:  /var/lib/grafana/dashboards/microrred_operacion.json
+    Mounts:
+      /provisioning from provisioning (ro)
+      /var/lib/grafana from datos (rw)
+      /var/lib/grafana/dashboards from dashboards (ro)
+  Volumes:
+   scripts:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-scripts-bk6tg669hk
+    Optional:  false
+   plantilla-datasources:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-datasources-782tdmt58h
+    Optional:  false
+   plantilla-dashboards:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-proveedor-tableros-dkf2mtthgh
+    Optional:  false
+   plantilla-alerting:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-alertas-f47kcgmb4g
+    Optional:  false
+   dashboards:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      grafana-tableros-h6kcdbckkc
+    Optional:  false
+   provisioning:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+   datos:
+    Type:          EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:        
+    SizeLimit:     <unset>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   grafana-55b499c9d (1/1 replicas created)
+Events:
+  Type    Reason             Age    From                   Message
+  ----    ------             ----   ----                   -------
+  Normal  ScalingReplicaSet  7m32s  deployment-controller  Scaled up replica set grafana-55b499c9d from 0 to 1
+
+========== kubectl describe job/etl-carga-historica -n microrred-bi ==========
+Name:                     etl-carga-historica
+Namespace:                microrred-bi
+Selector:                 batch.kubernetes.io/controller-uid=abbf9f45-5f7f-4b2d-9887-b5ae948a1a34
+Labels:                   app=etl
+                          app.kubernetes.io/part-of=microrred-bi
+Annotations:              <none>
+Parallelism:              1
+Completions:              1
+Completion Mode:          NonIndexed
+Suspend:                  false
+Backoff Limit:            2
+Start Time:               Tue, 17 Nov 2026 00:55:05 -0500
+Completed At:             Tue, 17 Nov 2026 00:58:19 -0500
+Duration:                 3m14s
+Active Deadline Seconds:  1800s
+Pods Statuses:            0 Active (0 Ready) / 1 Succeeded / 0 Failed
+Pod Template:
+  Labels:  app=etl
+           batch.kubernetes.io/controller-uid=abbf9f45-5f7f-4b2d-9887-b5ae948a1a34
+           batch.kubernetes.io/job-name=etl-carga-historica
+           controller-uid=abbf9f45-5f7f-4b2d-9887-b5ae948a1a34
+           job-name=etl-carga-historica
+  Init Containers:
+   esperar-postgres:
+    Image:      postgres:16.4-alpine
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      sh
+      -c
+      until pg_isready -h "$PGHOST" -p "$PGPORT" -d "$PGDATABASE"; do sleep 2; done
+    Limits:
+      cpu:     100m
+      memory:  64Mi
+    Requests:
+      cpu:     10m
+      memory:  16Mi
+    Environment Variables from:
+      microrred-config-ddd996m7hg  ConfigMap  Optional: false
+    Environment:                   <none>
+    Mounts:                        <none>
+  Containers:
+   etl:
+    Image:      microrred-etl:1.0.0
+    Port:       <none>
+    Host Port:  <none>
+    Limits:
+      cpu:     1
+      memory:  1536Mi
+    Requests:
+      cpu:     250m
+      memory:  384Mi
+    Environment Variables from:
+      microrred-config-ddd996m7hg  ConfigMap  Optional: false
+    Environment:
+      PGUSER:      etl_app
+      PGPASSWORD:  <set to the key 'ETL_PASSWORD' in secret 'microrred-credenciales'>  Optional: false
+    Mounts:
+      /datos/bronze from bronze (ro)
+      /tmp from tmp (rw)
+  Volumes:
+   tmp:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  1Gi
+   bronze:
+    Type:          HostPath (bare host directory volume)
+    Path:          /datos/bronze
+    HostPathType:  Directory
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Events:
+  Type    Reason            Age    From            Message
+  ----    ------            ----   ----            -------
+  Normal  SuccessfulCreate  3m21s  job-controller  Created pod: etl-carga-historica-6cd5r
+  Normal  Completed         7s     job-controller  Job completed
+
+========== kubectl describe cronjob/simulador -n microrred-bi ==========
+Name:                          simulador
+Namespace:                     microrred-bi
+Labels:                        app=simulador
+                               app.kubernetes.io/part-of=microrred-bi
+Annotations:                   <none>
+Schedule:                      * * * * *
+Concurrency Policy:            Forbid
+Suspend:                       False
+Time Zone:                     <unset>
+Successful Job History Limit:  3
+Failed Job History Limit:      3
+Starting Deadline Seconds:     30s
+Selector:                      <unset>
+Parallelism:                   <unset>
+Completions:                   <unset>
+Active Deadline Seconds:       50s
+Pod Template:
+  Labels:  app=simulador
+  Containers:
+   simulador:
+    Image:      microrred-simulador:1.0.0
+    Port:       <none>
+    Host Port:  <none>
+    Limits:
+      cpu:     200m
+      memory:  128Mi
+    Requests:
+      cpu:     50m
+      memory:  48Mi
+    Environment Variables from:
+      microrred-config-ddd996m7hg  ConfigMap  Optional: false
+    Environment:
+      PGUSER:        sim_app
+      PGPASSWORD:    <set to the key 'SIM_PASSWORD' in secret 'microrred-credenciales'>  Optional: false
+      SIM_MODO:      una_vez
+    Mounts:          <none>
+  Volumes:           <none>
+  Node-Selectors:    <none>
+  Tolerations:       <none>
+Last Schedule Time:  Tue, 17 Nov 2026 00:58:00 -0500
+Active Jobs:         <none>
+Events:
+  Type    Reason            Age                    From                Message
+  ----    ------            ----                   ----                -------
+  Normal  SuccessfulCreate  7m26s                  cronjob-controller  Created job simulador-29914911
+  Normal  SawCompletedJob   7m14s                  cronjob-controller  Saw completed job: simulador-29914911, condition: Failed
+  Normal  SuccessfulCreate  6m26s                  cronjob-controller  Created job simulador-29914912
+  Normal  SawCompletedJob   6m19s                  cronjob-controller  Saw completed job: simulador-29914912, condition: Complete
+  Normal  SuccessfulCreate  5m26s                  cronjob-controller  Created job simulador-29914913
+  Normal  SawCompletedJob   5m6s                   cronjob-controller  Saw completed job: simulador-29914913, condition: Complete
+  Normal  SuccessfulCreate  4m26s                  cronjob-controller  Created job simulador-29914914
+  Normal  SawCompletedJob   4m20s                  cronjob-controller  Saw completed job: simulador-29914914, condition: Complete
+  Normal  SuccessfulCreate  3m26s                  cronjob-controller  Created job simulador-29914915
+  Normal  SuccessfulDelete  3m21s                  cronjob-controller  Deleted job simulador-29914912
+  Normal  SawCompletedJob   3m21s                  cronjob-controller  Saw completed job: simulador-29914915, condition: Complete
+  Normal  SuccessfulCreate  2m26s                  cronjob-controller  Created job simulador-29914916
+  Normal  SuccessfulDelete  2m20s                  cronjob-controller  Deleted job simulador-29914913
+  Normal  SawCompletedJob   2m20s (x2 over 2m20s)  cronjob-controller  Saw completed job: simulador-29914916, condition: Complete
+  Normal  SuccessfulCreate  86s                    cronjob-controller  Created job simulador-29914917
+  Normal  SuccessfulDelete  79s                    cronjob-controller  Deleted job simulador-29914914
+  Normal  SawCompletedJob   79s                    cronjob-controller  Saw completed job: simulador-29914917, condition: Complete
+  Normal  SuccessfulCreate  26s                    cronjob-controller  Created job simulador-29914918
+  Normal  SuccessfulDelete  7s                     cronjob-controller  Deleted job simulador-29914915
+  Normal  SawCompletedJob   7s                     cronjob-controller  Saw completed job: simulador-29914918, condition: Complete
+
+========== kubectl describe service/postgres -n microrred-bi ==========
+Name:                     postgres
+Namespace:                microrred-bi
+Labels:                   app=postgres
+                          app.kubernetes.io/part-of=microrred-bi
+Annotations:              <none>
+Selector:                 app=postgres
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       None
+IPs:                      None
+Port:                     postgres  5432/TCP
+TargetPort:               postgres/TCP
+Endpoints:                10.244.0.9:5432
+Session Affinity:         None
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+
+========== kubectl describe service/postgres-externo -n microrred-bi ==========
+Name:                     postgres-externo
+Namespace:                microrred-bi
+Labels:                   app=postgres
+                          app.kubernetes.io/part-of=microrred-bi
+Annotations:              <none>
+Selector:                 app=postgres
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.96.237.236
+IPs:                      10.96.237.236
+Port:                     postgres  5432/TCP
+TargetPort:               postgres/TCP
+NodePort:                 postgres  30432/TCP
+Endpoints:                10.244.0.9:5432
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+
+========== kubectl describe service/grafana -n microrred-bi ==========
+Name:                     grafana
+Namespace:                microrred-bi
+Labels:                   app=grafana
+                          app.kubernetes.io/part-of=microrred-bi
+Annotations:              <none>
+Selector:                 app=grafana
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.96.231.26
+IPs:                      10.96.231.26
+Port:                     http  3000/TCP
+TargetPort:               http/TCP
+NodePort:                 http  30300/TCP
+Endpoints:                10.244.0.5:3000
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+
+========== kubectl describe pvc/datos-postgres-0 -n microrred-bi ==========
+Name:          datos-postgres-0
+Namespace:     microrred-bi
+StorageClass:  standard
+Status:        Bound
+Volume:        pvc-dee27edd-b054-4f5f-aca9-08fdf6520b19
+Labels:        app=postgres
+Annotations:   pv.kubernetes.io/bind-completed: yes
+               pv.kubernetes.io/bound-by-controller: yes
+               volume.beta.kubernetes.io/storage-provisioner: rancher.io/local-path
+               volume.kubernetes.io/selected-node: microrred-control-plane
+               volume.kubernetes.io/storage-provisioner: rancher.io/local-path
+Finalizers:    [kubernetes.io/pvc-protection]
+Capacity:      2Gi
+Access Modes:  RWO
+VolumeMode:    Filesystem
+Used By:       postgres-0
+Conditions:
+  Type     Status  LastProbeTime                     LastTransitionTime                Reason        Message
+  ----     ------  -----------------                 ------------------                ------        -------
+  Unused   False   Mon, 01 Jan 0001 00:00:00 +0000   Tue, 17 Nov 2026 00:51:02 -0500   PodUsingPVC   A pod is currently referencing this PVC
+Events:
+  Type    Reason                 Age                    From                                                                                                Message
+  ----    ------                 ----                   ----                                                                                                -------
+  Normal  WaitForFirstConsumer   7m34s                  persistentvolume-controller                                                                         waiting for first consumer to be created before binding
+  Normal  ExternalProvisioning   7m34s (x3 over 7m34s)  persistentvolume-controller                                                                         Waiting for a volume to be created either by the external provisioner 'rancher.io/local-path' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.
+  Normal  Provisioning           7m34s                  rancher.io/local-path_local-path-provisioner-75f7fc7dc5-pw9l4_9451e19b-cccb-4713-b8cd-0135616b76b1  External provisioner is provisioning volume for claim "microrred-bi/datos-postgres-0"
+  Normal  ProvisioningSucceeded  7m25s                  rancher.io/local-path_local-path-provisioner-75f7fc7dc5-pw9l4_9451e19b-cccb-4713-b8cd-0135616b76b1  Successfully provisioned volume pvc-dee27edd-b054-4f5f-aca9-08fdf6520b19
+
+========== kubectl describe secret/microrred-credenciales -n microrred-bi ==========
+Name:         microrred-credenciales
+Namespace:    microrred-bi
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+BI_PASSWORD:                 32 bytes
+ETL_PASSWORD:                32 bytes
+GF_SECURITY_ADMIN_PASSWORD:  32 bytes
+GF_SECURITY_ADMIN_USER:      5 bytes
+GRAFANA_DB_PASSWORD:         32 bytes
+POSTGRES_PASSWORD:           32 bytes
+POSTGRES_USER:               8 bytes
+SIM_PASSWORD:                32 bytes

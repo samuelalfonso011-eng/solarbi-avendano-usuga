@@ -1,0 +1,16 @@
+1) Descarga
+  descargado opencem-v1.0.0-SHA256SUMS.txt (849 bytes)
+  descargado README.md (4,442 bytes)
+  descargado LICENSE-DATA.txt (609 bytes)
+  descargado opencem-v1.0.0-support.zip (9,972,654 bytes)
+  descargado opencem-v1.0.0.sqlite.zst (302,059,978 bytes)
+2) Verificacion SHA-256
+  OK              033f94ce388117c5a7076dc0a083f9c66e466ab94aa7a977784751bec4568ba9  README.md
+  OK              de91bd60a296d7fa093efbc097a3a2b1383e82950005fc5683092a976917a7d7  LICENSE-DATA.txt
+  OK              5debdbebb82ed784e1c11ac70c81fe876400a049a001a8dc2230446e2f460439  opencem-v1.0.0-support.zip
+  OK              8e38f98209029367a3775799ee9a7c0757cc7e8f2742e4df4eccc45dd4b27517  opencem-v1.0.0.sqlite.zst
+3) Descompresion
+  SIN_REFERENCIA  5fe1f213a4a6804cdfc75f6173f437772c918f45dc0f127eb7e8936c2c2d9fbb  opencem-v1.0.0.sqlite (4,439,408,640 bytes)
+4) Manifiesto escrito en data\bronze\bronze_manifest.json
+
+[exited with code 0]

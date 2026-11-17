@@ -1,0 +1,97 @@
+# PostgreSQL: StatefulSet + PersistentVolumeClaim + Services
+#
+# Por que StatefulSet y no Deployment: la base necesita identidad estable
+# (postgres-0) y un volumen propio que la siga en cada reinicio. El
+# volumeClaimTemplate crea el PVC "datos-postgres-0"; al borrar el pod, el
+# StatefulSet lo recrea y vuelve a montar el MISMO volumen: los datos siguen ahi.
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres            # nombre DNS que usan ETL, simulador y Grafana (nunca una IP)
+  labels: {app: postgres}
+spec:
+  clusterIP: None           # headless: servicio gobernante del StatefulSet
+  selector: {app: postgres}
+  ports:
+    - {name: postgres, port: 5432, targetPort: postgres}
+---
+# Acceso desde el anfitrion (Power BI, DBeaver): NodePort 30432 -> localhost:15432 (mapeo de kind)
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-externo
+  labels: {app: postgres}
+spec:
+  type: NodePort
+  selector: {app: postgres}
+  ports:
+    - {name: postgres, port: 5432, targetPort: postgres, nodePort: 30432}
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  labels: {app: postgres}
+spec:
+  serviceName: postgres
+  replicas: 1               # PostgreSQL no escala horizontalmente con replicas: ver docs/11_kubernetes.md
+  selector:
+    matchLabels: {app: postgres}
+  template:
+    metadata:
+      labels: {app: postgres}
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: postgres
+          image: postgres:16.4-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - {name: postgres, containerPort: 5432}
+          env:
+            - name: POSTGRES_DB
+              valueFrom: {configMapKeyRef: {name: microrred-config, key: PGDATABASE}}
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+            - name: POSTGRES_USER
+              valueFrom: {secretKeyRef: {name: microrred-credenciales, key: POSTGRES_USER}}
+            - name: POSTGRES_PASSWORD
+              valueFrom: {secretKeyRef: {name: microrred-credenciales, key: POSTGRES_PASSWORD}}
+            - name: ETL_PASSWORD
+              valueFrom: {secretKeyRef: {name: microrred-credenciales, key: ETL_PASSWORD}}
+            - name: SIM_PASSWORD
+              valueFrom: {secretKeyRef: {name: microrred-credenciales, key: SIM_PASSWORD}}
+            - name: GRAFANA_DB_PASSWORD
+              valueFrom: {secretKeyRef: {name: microrred-credenciales, key: GRAFANA_DB_PASSWORD}}
+            - name: BI_PASSWORD
+              valueFrom: {secretKeyRef: {name: microrred-credenciales, key: BI_PASSWORD}}
+          volumeMounts:
+            - {name: datos, mountPath: /var/lib/postgresql/data}
+            - {name: initdb, mountPath: /docker-entrypoint-initdb.d, readOnly: true}
+          # Sondas: pg_isready comprueba que el servidor acepta conexiones.
+          startupProbe:      # da hasta 2 min al primer arranque (initdb + DDL)
+            exec: {command: ["sh", "-c", "pg_isready -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -h 127.0.0.1"]}
+            periodSeconds: 5
+            failureThreshold: 24
+          readinessProbe:    # saca el pod del Service si deja de aceptar conexiones
+            exec: {command: ["sh", "-c", "pg_isready -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -h 127.0.0.1"]}
+            periodSeconds: 10
+            timeoutSeconds: 3
+          livenessProbe:     # reinicia el contenedor si el servidor se cuelga
+            exec: {command: ["sh", "-c", "pg_isready -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -h 127.0.0.1"]}
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests: {cpu: 250m, memory: 256Mi}
+            limits: {cpu: "1", memory: 768Mi}
+      volumes:
+        - name: initdb
+          configMap: {name: postgres-initdb}
+  volumeClaimTemplates:
+    - metadata:
+        name: datos
+      spec:
+        accessModes: [ReadWriteOnce]
+        resources:
+          requests: {storage: 2Gi}

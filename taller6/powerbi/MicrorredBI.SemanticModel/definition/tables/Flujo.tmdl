@@ -1,0 +1,38 @@
+table Flujo
+	lineageTag: 138b6ae3-f1d7-f3c2-1235-f064e6a71f12
+
+	column Flujo
+		dataType: string
+		lineageTag: 413a108f-c9e2-e4b6-445f-ab78f77d947b
+		summarizeBy: none
+		sourceColumn: [Flujo]
+		sortByColumn: Orden
+
+	column Sentido
+		dataType: string
+		lineageTag: d1719ac4-a9fc-4eb7-cd53-8cc14d2552fa
+		summarizeBy: none
+		sourceColumn: [Sentido]
+
+	column Orden
+		dataType: int64
+		isHidden
+		lineageTag: 797db209-30ef-d3d5-4d2c-06cd1ea8a4b4
+		summarizeBy: none
+		sourceColumn: [Orden]
+
+	partition Flujo = calculated
+		mode: import
+		source =
+				DATATABLE(
+				    "Flujo", STRING, "Sentido", STRING, "Orden", INTEGER,
+				    {
+				        {"Solar", "Origen", 1},
+				        {"Red", "Origen", 2},
+				        {"Batería (descarga)", "Origen", 3},
+				        {"Carga", "Destino", 4},
+				        {"Batería (carga)", "Destino", 5},
+				        {"Pérdidas", "Destino", 6}
+				    }
+				)
+

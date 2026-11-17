@@ -1,0 +1,44 @@
+# Simulador: CronJob (una pasada por minuto)
+#
+# Por que CronJob y no Deployment con un bucle: Kubernetes se encarga del
+# calendario, cada pasada es un pod corto con sus propios logs y, al leer el
+# ConfigMap en cada arranque, un cambio de escenario o de umbral se aplica en el
+# minuto siguiente sin reconstruir la imagen ni reiniciar nada.
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: simulador
+  labels: {app: simulador}
+spec:
+  schedule: "* * * * *"
+  concurrencyPolicy: Forbid          # nunca dos pasadas a la vez
+  startingDeadlineSeconds: 30
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      activeDeadlineSeconds: 50
+      ttlSecondsAfterFinished: 300
+      template:
+        metadata:
+          labels: {app: simulador}
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: simulador
+              image: microrred-simulador:1.0.0
+              imagePullPolicy: IfNotPresent
+              envFrom:
+                - configMapRef: {name: microrred-config}
+              env:
+                - {name: PGUSER, value: sim_app}
+                - name: PGPASSWORD
+                  valueFrom: {secretKeyRef: {name: microrred-credenciales, key: SIM_PASSWORD}}
+                - {name: SIM_MODO, value: una_vez}
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+              resources:
+                requests: {cpu: 50m, memory: 48Mi}
+                limits: {cpu: 200m, memory: 128Mi}

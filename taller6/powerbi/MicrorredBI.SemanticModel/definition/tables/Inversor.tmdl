@@ -1,0 +1,86 @@
+table Inversor
+	lineageTag: 62d97143-005b-3b83-9df9-4696efd227c4
+
+	column inversor_key
+		dataType: int64
+		isHidden
+		lineageTag: bbef7222-552d-afe3-ad80-8d2c8bbd5fa5
+		summarizeBy: none
+		sourceColumn: inversor_key
+
+	column inversor_id
+		dataType: int64
+		isHidden
+		lineageTag: 842fd76c-129e-e45f-ceaf-383867812fb0
+		summarizeBy: none
+		sourceColumn: inversor_id
+
+	column Inversor
+		dataType: string
+		lineageTag: bf245ea2-1cd5-530d-7963-cf4a1840d360
+		summarizeBy: none
+		sourceColumn: nombre
+
+	column 'Carga principal'
+		dataType: string
+		lineageTag: 2e4dc679-cc5c-4f8d-75ae-d030034cf49b
+		summarizeBy: none
+		sourceColumn: carga_principal
+
+	column 'Prioridad de salida'
+		dataType: int64
+		formatString: 0
+		lineageTag: dc0e16d0-37c9-32fc-4741-8d19b3fe3d0e
+		summarizeBy: none
+		sourceColumn: prioridad_salida
+
+	column 'Prioridad de carga'
+		dataType: int64
+		formatString: 0
+		lineageTag: be85975a-08ad-a292-92ec-3f6659549e26
+		summarizeBy: none
+		sourceColumn: prioridad_carga
+
+	column 'SOC batería llena'
+		dataType: int64
+		formatString: 0
+		lineageTag: 73faa0ed-0aee-02b9-a7d8-858ae72ea28f
+		summarizeBy: none
+		sourceColumn: soc_bateria_llena
+
+	column 'Capacidad batería kWh'
+		dataType: double
+		isHidden
+		lineageTag: 0369a7c4-3c7c-c3d3-c12f-0e0f1f842858
+		summarizeBy: none
+		sourceColumn: capacidad_bateria_kwh
+
+	column 'Válido desde'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 734b874d-5b4b-b497-2200-4aebf241157c
+		summarizeBy: none
+		sourceColumn: valido_desde
+
+	column 'Válido hasta'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2a76353c-4942-0fa0-29b3-1c2867d6045f
+		summarizeBy: none
+		sourceColumn: valido_hasta
+
+	column 'Es versión actual'
+		dataType: boolean
+		lineageTag: 625a995e-cea0-4e58-ca9a-8da65e69092b
+		summarizeBy: none
+		sourceColumn: es_actual
+
+	partition Inversor = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database(Servidor, BaseDatos),
+				    Tabla = Origen{[Schema="gold", Item="dim_inversor"]}[Data]
+				in
+				    Tabla
+

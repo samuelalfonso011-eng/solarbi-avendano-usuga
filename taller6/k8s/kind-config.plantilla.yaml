@@ -1,0 +1,18 @@
+# Cluster local de un solo nodo (kind). scripts/up.sh sustituye __BRONZE_DIR__ por la
+# ruta absoluta de data/bronze y escribe k8s/kind-config.generado.yaml (no versionado).
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: microrred
+nodes:
+  - role: control-plane
+    # La capa Bronze (SQLite de 4,4 GB) no entra en ninguna imagen: se monta en el nodo
+    # en solo lectura y el Job del ETL la lee con un volumen hostPath.
+    extraMounts:
+      - hostPath: __BRONZE_DIR__
+        containerPath: /datos/bronze
+        readOnly: true
+    # Acceso desde el anfitrion a los Services NodePort (Power BI, DBeaver, navegador).
+    # Solo en 127.0.0.1: los servicios no quedan expuestos a la red local.
+    extraPortMappings:
+      - {containerPort: 30432, hostPort: 15432, listenAddress: "127.0.0.1", protocol: TCP}
+      - {containerPort: 30300, hostPort: 13000, listenAddress: "127.0.0.1", protocol: TCP}

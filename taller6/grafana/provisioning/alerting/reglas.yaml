@@ -1,0 +1,177 @@
+# Reglas de alerta aprovisionadas desde archivo (Grafana Unified Alerting).
+#
+# PLANTILLA: los marcadores de umbral (ALERTA_...) se sustituyen al arrancar el pod por
+# grafana/render_provisioning.sh con los valores del ConfigMap (Grafana no
+# interpola variables de entorno dentro de las reglas). Cambiar un umbral =
+# editar config/microrred.env y ejecutar scripts/aplicar_config.sh (reinicia
+# Grafana solo); no se reconstruye ninguna imagen ni se toca la interfaz.
+#
+# Cada consulta devuelve el MARGEN respecto al umbral: la alerta se dispara
+# cuando el margen es negativo. Formato tabla: la columna de texto "inversor"
+# es la etiqueta (una instancia de alerta por inversor) y la columna numerica
+# es el valor evaluado.
+apiVersion: 1
+groups:
+  - orgId: 1
+    name: microrred-operacion
+    folder: Microrred
+    interval: 30s
+    rules:
+      # --- 1. Bateria baja -------------------------------------------------
+      # Umbral 15 %: es el ajuste batsoclowalarm de ambos inversores (tabla settings).
+      # Por debajo, el inversor corta la salida al llegar a 5 % (batstopsoc).
+      - uid: microrred-soc-bajo
+        title: SOC de bateria bajo
+        condition: B
+        for: 1m
+        noDataState: NoData
+        execErrState: Error
+        labels:
+          severidad: advertencia
+          kpi: soc
+        annotations:
+          summary: 'Inversor {{ $labels.inversor }}: SOC por debajo del umbral de __ALERTA_SOC_BAJO_PCT__ %'
+          description: 'Margen actual respecto al umbral: {{ $values.A }} puntos porcentuales. Revisar carga conectada y disponibilidad de red.'
+        data:
+          - refId: A
+            datasourceUid: pg-microrred
+            relativeTimeRange: {from: 600, to: 0}
+            model:
+              refId: A
+              format: table
+              rawQuery: true
+              editorMode: code
+              rawSql: "SELECT inversor_id::text AS inversor, (soc_pct - __ALERTA_SOC_BAJO_PCT__)::float8 AS margen FROM live.vw_estado_actual"
+          - refId: B
+            datasourceUid: __expr__
+            relativeTimeRange: {from: 600, to: 0}
+            model:
+              refId: B
+              type: threshold
+              expression: A
+              datasource: {type: __expr__, uid: __expr__}
+              conditions:
+                - evaluator: {type: lt, params: [0]}
+                  operator: {type: and}
+                  query: {params: [B]}
+                  reducer: {type: last, params: []}
+                  type: query
+
+      # --- 2. Telemetria atrasada -------------------------------------------
+      # Umbral 300 s: cinco ciclos del simulador (1/min). Equivale a perder la
+      # disponibilidad del registro, el KPI de calidad del catalogo.
+      - uid: microrred-sin-datos
+        title: Telemetria atrasada
+        condition: B
+        for: 1m
+        noDataState: Alerting
+        execErrState: Error
+        labels:
+          severidad: critica
+          kpi: disponibilidad
+        annotations:
+          summary: 'Inversor {{ $labels.inversor }}: sin lecturas nuevas hace mas de __ALERTA_SIN_DATOS_S__ s'
+          description: 'Verificar el CronJob del simulador (kubectl get cronjob,job -n microrred-bi).'
+        data:
+          - refId: A
+            datasourceUid: pg-microrred
+            relativeTimeRange: {from: 600, to: 0}
+            model:
+              refId: A
+              format: table
+              rawQuery: true
+              editorMode: code
+              rawSql: "SELECT inversor_id::text AS inversor, (__ALERTA_SIN_DATOS_S__ - segundos_desde_ultima_lectura)::float8 AS margen FROM live.vw_estado_actual"
+          - refId: B
+            datasourceUid: __expr__
+            relativeTimeRange: {from: 600, to: 0}
+            model:
+              refId: B
+              type: threshold
+              expression: A
+              datasource: {type: __expr__, uid: __expr__}
+              conditions:
+                - evaluator: {type: lt, params: [0]}
+                  operator: {type: and}
+                  query: {params: [B]}
+                  reducer: {type: last, params: []}
+                  type: query
+
+      # --- 3. Red ausente ---------------------------------------------------
+      # Evento operativo: el inversor queda en modo isla y la bateria asume la carga.
+      - uid: microrred-red-ausente
+        title: Red electrica ausente
+        condition: B
+        for: 1m
+        noDataState: NoData
+        execErrState: Error
+        labels:
+          severidad: critica
+          kpi: red
+        annotations:
+          summary: 'Inversor {{ $labels.inversor }}: red ausente, operando en modo isla'
+          description: 'La autonomia depende del SOC actual. Reducir cargas no criticas.'
+        data:
+          - refId: A
+            datasourceUid: pg-microrred
+            relativeTimeRange: {from: 600, to: 0}
+            model:
+              refId: A
+              format: table
+              rawQuery: true
+              editorMode: code
+              rawSql: "SELECT inversor_id::text AS inversor, (CASE WHEN red_disponible THEN 1 ELSE -1 END)::float8 AS margen FROM live.vw_estado_actual"
+          - refId: B
+            datasourceUid: __expr__
+            relativeTimeRange: {from: 600, to: 0}
+            model:
+              refId: B
+              type: threshold
+              expression: A
+              datasource: {type: __expr__, uid: __expr__}
+              conditions:
+                - evaluator: {type: lt, params: [0]}
+                  operator: {type: and}
+                  query: {params: [B]}
+                  reducer: {type: last, params: []}
+                  type: query
+
+      # --- 4. Importacion de red alta ----------------------------------------
+      # Umbral 3 000 W promedio en 5 min: por encima del percentil 99 historico
+      # de importacion (ver docs/02_indicadores.md); indica carga anormal o FV caida.
+      - uid: microrred-red-alta
+        title: Importacion de red alta
+        condition: B
+        for: 2m
+        noDataState: NoData
+        execErrState: Error
+        labels:
+          severidad: advertencia
+          kpi: importacion_red
+        annotations:
+          summary: 'Inversor {{ $labels.inversor }}: importacion media de red sobre __ALERTA_RED_ALTA_W__ W'
+          description: 'Promedio de los ultimos 5 minutos por encima del umbral.'
+        data:
+          - refId: A
+            datasourceUid: pg-microrred
+            relativeTimeRange: {from: 600, to: 0}
+            model:
+              refId: A
+              format: table
+              rawQuery: true
+              editorMode: code
+              rawSql: "SELECT inversor_id::text AS inversor, (__ALERTA_RED_ALTA_W__ - AVG(p_red_w))::float8 AS margen FROM live.lectura WHERE ts > now() - interval '5 minutes' GROUP BY inversor_id"
+          - refId: B
+            datasourceUid: __expr__
+            relativeTimeRange: {from: 600, to: 0}
+            model:
+              refId: B
+              type: threshold
+              expression: A
+              datasource: {type: __expr__, uid: __expr__}
+              conditions:
+                - evaluator: {type: lt, params: [0]}
+                  operator: {type: and}
+                  query: {params: [B]}
+                  reducer: {type: last, params: []}
+                  type: query
