@@ -19,7 +19,7 @@ import markdown
 RAIZ = Path(__file__).resolve().parents[1]
 DOCS = RAIZ / "docs"
 SALIDA = DOCS / "informe"
-NOMBRE = "BI_Taller6_Avendano_Usuga"
+NOMBRE = "BI_Taller6_Avendano_Usuga_Usuga_Ocampo"
 EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 REPO = "https://github.com/samuelalfonso011-eng/solarbi-avendano-usuga"
 
