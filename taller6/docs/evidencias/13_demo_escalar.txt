@@ -1,0 +1,15 @@
+
+========== 4. Bonificacion: escalar Grafana a 2 replicas y volver a 1 ==========
+deployment.apps/grafana scaled
+Waiting for deployment "grafana" rollout to finish: 1 of 2 updated replicas are available...
+deployment "grafana" successfully rolled out
+NAME                       READY   STATUS    RESTARTS   AGE    IP            NODE                      NOMINATED NODE   READINESS GATES
+grafana-69d4db9778-5nq4s   1/1     Running   0          4m8s   10.244.0.32   microrred-control-plane   <none>           <none>
+grafana-69d4db9778-xslv8   1/1     Running   0          12s    10.244.0.37   microrred-control-plane   <none>           <none>
+Warning: v1 Endpoints is deprecated in v1.33+; use discovery.k8s.io/v1 EndpointSlice
+NAME      ENDPOINTS                           AGE
+grafana   10.244.0.32:3000,10.244.0.37:3000   22m
+deployment.apps/grafana scaled
+deployment "grafana" successfully rolled out
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+grafana   1/1     1            1           22m

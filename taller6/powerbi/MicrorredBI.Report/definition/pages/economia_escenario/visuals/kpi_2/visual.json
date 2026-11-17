@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "kpi_2",
+  "position": {
+    "x": 520,
+    "y": 150,
+    "z": 7,
+    "height": 100,
+    "width": 240,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Energia"
+                    }
+                  },
+                  "Property": "Costo evitado COP"
+                }
+              },
+              "queryRef": "Energia.Costo evitado COP",
+              "nativeQueryRef": "Costo evitado COP"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Costo evitado por la microrred'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

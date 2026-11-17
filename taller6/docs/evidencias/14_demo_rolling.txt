@@ -1,0 +1,12 @@
+
+========== 5. Bonificacion: actualizar la imagen del simulador (1.0.0 -> 1.0.1) y revertir ==========
+sha256:570d8f3d38e969bd63cd8796162fbc31b569485b73b23726e81be025e072b1f9
+imagen del CronJob antes : microrred-simulador:1.0.0
+cronjob.batch/simulador image updated
+imagen del CronJob ahora : microrred-simulador:1.0.1
+ultima pasada            : simulador-29914892-wxcn5   microrred-simulador:1.0.1   Succeeded
+lecturas en los ultimos 3 min: 6
+--- reversion (un CronJob no guarda historial de rollout: se vuelve a la imagen versionada en Git)
+cronjob.batch/simulador image updated
+imagen del CronJob final : microrred-simulador:1.0.0
+ultima pasada            : simulador-29914893-h9pnh   microrred-simulador:1.0.0   Succeeded

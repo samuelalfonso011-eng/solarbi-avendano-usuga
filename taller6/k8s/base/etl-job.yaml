@@ -31,7 +31,7 @@ spec:
       containers:
         - name: etl
           image: microrred-etl:1.0.0
-          imagePullPolicy: IfNotPresent     # la imagen se carga al nodo con "kind load docker-image"
+          imagePullPolicy: IfNotPresent     # la imagen se copia al containerd del nodo (scripts/up.sh)
           envFrom:
             - configMapRef: {name: microrred-config}
           env:
@@ -40,6 +40,7 @@ spec:
               valueFrom: {secretKeyRef: {name: microrred-credenciales, key: ETL_PASSWORD}}
           volumeMounts:
             - {name: bronze, mountPath: /datos/bronze, readOnly: true}
+            - {name: tmp, mountPath: /tmp}     # SQLite ordena en archivos temporales; la raiz es de solo lectura
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
@@ -47,6 +48,8 @@ spec:
             requests: {cpu: 250m, memory: 384Mi}
             limits: {cpu: "1", memory: 1536Mi}
       volumes:
+        - name: tmp
+          emptyDir: {sizeLimit: 1Gi}
         # Capa Bronze: carpeta del anfitrion montada en el nodo de kind (extraMounts), solo lectura.
         # hostPath es aceptable aqui: cluster local de un nodo y dato de entrada inmutable.
         - name: bronze

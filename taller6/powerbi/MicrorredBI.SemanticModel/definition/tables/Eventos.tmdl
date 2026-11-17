@@ -1,0 +1,90 @@
+table Eventos
+	lineageTag: 9c942c99-d54e-0f9c-deb0-3fcec3d549c2
+
+	measure Episodios = COUNTROWS(Eventos)
+		formatString: #,0
+		lineageTag: 9eeaf59b-9fb6-cfef-c88c-6fa73510defc
+
+	measure 'Horas en evento' = SUM(Eventos[duracion_min]) / 60
+		formatString: #,0.0
+		lineageTag: 9b42ab26-7d1c-3f65-8ce4-a8a340efd493
+
+	column evento_id
+		dataType: int64
+		isHidden
+		lineageTag: c0ccc30b-f760-3d2e-f3d9-1584a77a1155
+		summarizeBy: none
+		sourceColumn: evento_id
+
+	column fecha_key
+		dataType: int64
+		isHidden
+		lineageTag: b4f43a73-464f-2a69-440e-d6c4805cd7ad
+		summarizeBy: none
+		sourceColumn: fecha_key
+
+	column tiempo_key
+		dataType: int64
+		isHidden
+		lineageTag: 84e0154e-ad1b-f81b-4845-dfd83f0319cf
+		summarizeBy: none
+		sourceColumn: tiempo_key
+
+	column inversor_key
+		dataType: int64
+		isHidden
+		lineageTag: 3d7f8d38-aef9-534a-ad75-4ce3825459ca
+		summarizeBy: none
+		sourceColumn: inversor_key
+
+	column tipo_evento_key
+		dataType: int64
+		isHidden
+		lineageTag: 6fd165a1-cb15-a951-5357-c49962cea96a
+		summarizeBy: none
+		sourceColumn: tipo_evento_key
+
+	column 'Inicio UTC'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b41993eb-4f7a-42a6-a1b9-79e41fd60891
+		summarizeBy: none
+		sourceColumn: inicio_utc
+
+	column 'Fin UTC'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6ab662b7-6fe3-e966-5414-d0756b795cf9
+		summarizeBy: none
+		sourceColumn: fin_utc
+
+	column duracion_min
+		dataType: double
+		isHidden
+		lineageTag: ba2c0045-571d-e328-314a-2053f3cc4347
+		summarizeBy: none
+		sourceColumn: duracion_min
+
+	column n_lecturas
+		dataType: int64
+		isHidden
+		lineageTag: 480941f5-bcfe-33a7-b358-4a2ad890ebaf
+		summarizeBy: none
+		sourceColumn: n_lecturas
+
+	column valor_extremo
+		dataType: double
+		isHidden
+		lineageTag: c19d0d34-13eb-da86-110a-804f305c9b21
+		summarizeBy: none
+		sourceColumn: valor_extremo
+
+	partition Eventos = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database(Servidor, BaseDatos),
+				    Tabla = Origen{[Schema="gold", Item="vw_evento"]}[Data]
+				in
+				    Tabla
+

@@ -1,0 +1,12 @@
+
+========== 2. Se elimina el pod de Grafana: vuelve con su tablero, fuente y alertas ==========
+POD                        INICIO
+grafana-69d4db9778-m5wz4   2026-11-17T05:08:24Z
+pod "grafana-69d4db9778-m5wz4" deleted from microrred-bi namespace
+Waiting for deployment "grafana" rollout to finish: 0 of 1 updated replicas are available...
+deployment "grafana" successfully rolled out
+POD                        INICIO
+grafana-69d4db9778-5nq4s   2026-11-17T05:26:57Z
+Tableros : [('Microrred', 'Microrred hibrida - Operacion')]
+Fuentes  : [('PostgreSQL-Microrred', 'grafana-postgresql-datasource', True)]
+Alertas  : ['SOC de bateria bajo', 'Telemetria atrasada', 'Red electrica ausente', 'Importacion de red alta']

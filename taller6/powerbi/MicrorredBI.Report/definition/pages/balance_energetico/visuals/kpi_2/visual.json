@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "kpi_2",
+  "position": {
+    "x": 520,
+    "y": 150,
+    "z": 7,
+    "height": 100,
+    "width": 240,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Energia"
+                    }
+                  },
+                  "Property": "Energía importada de red kWh"
+                }
+              },
+              "queryRef": "Energia.Energía importada de red kWh",
+              "nativeQueryRef": "Energía importada de red kWh"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Importada de la red (kWh)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

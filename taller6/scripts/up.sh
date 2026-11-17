@@ -48,13 +48,20 @@ kubectl config use-context "kind-$CLUSTER" >/dev/null
 kubectl get nodes
 
 paso 4/8 "Imagenes: construir las propias y cargarlas al nodo"
-docker build -q -t microrred-etl:1.0.0 etl
-docker build -q -t microrred-simulador:1.0.0 simulador
+docker build -q --provenance=false -t microrred-etl:1.0.0 etl
+docker build -q --provenance=false -t microrred-simulador:1.0.0 simulador
 for imagen in "${IMAGENES_OFICIALES[@]}"; do
   docker image inspect "$imagen" >/dev/null 2>&1 || docker pull -q "$imagen"
 done
-# kind no usa el registro local de Docker: las imagenes se copian al containerd del nodo
-"$KIND" load docker-image "${IMAGENES_PROPIAS[@]}" "${IMAGENES_OFICIALES[@]}" --name "$CLUSTER"
+# kind no usa el registro local de Docker: las imagenes se copian al containerd del nodo.
+# Se importa solo la plataforma del nodo: "kind load docker-image" usa --all-platforms y
+# falla con el almacen de imagenes containerd de Docker Desktop (capas de otras
+# plataformas ausentes en imagenes multi-arquitectura).
+for imagen in "${IMAGENES_PROPIAS[@]}" "${IMAGENES_OFICIALES[@]}"; do
+  docker save "$imagen" | docker exec --privileged -i "$CLUSTER-control-plane"     ctr --namespace=k8s.io images import --digests --snapshotter=overlayfs - >/dev/null
+  echo "cargada en el nodo: $imagen"
+done
+docker exec "$CLUSTER-control-plane" crictl images | grep -E "microrred|postgres|grafana"
 
 paso 5/8 "Namespace y Secret con las credenciales (desde .env, no versionado)"
 bash scripts/generar_env.sh
@@ -71,9 +78,15 @@ paso 7/8 "Espera: PostgreSQL, Grafana y carga historica"
 kubectl -n "$NS" rollout status statefulset/postgres --timeout=300s
 kubectl -n "$NS" rollout status deployment/grafana --timeout=300s
 echo "ETL en curso (Job etl-carga-historica)..."
-if ! kubectl -n "$NS" wait --for=condition=complete job/etl-carga-historica --timeout=1500s; then
+estado_job=""
+for _ in $(seq 1 300); do   # hasta 25 min; termina en cuanto el Job queda Complete o Failed
+  estado_job="$(kubectl -n "$NS" get job etl-carga-historica     -o jsonpath='{range .status.conditions[?(@.status=="True")]}{.type}{" "}{end}')"
+  [[ "$estado_job" == *Complete* || "$estado_job" == *Failed* ]] && break
+  sleep 5
+done
+if [[ "$estado_job" != *Complete* ]]; then
   kubectl -n "$NS" logs job/etl-carga-historica --tail=40 || true
-  echo "El ETL no termino correctamente"; exit 1
+  echo "El ETL no termino correctamente (estado: ${estado_job:-sin terminar})"; exit 1
 fi
 kubectl -n "$NS" logs job/etl-carga-historica --tail=6
 

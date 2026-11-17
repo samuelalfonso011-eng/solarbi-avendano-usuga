@@ -34,7 +34,9 @@ imágenes, el mismo DDL (`sql/init/`) y el mismo aprovisionamiento de Grafana.
 
 **Cómo llegan las imágenes propias al clúster.** kind no ve las imágenes del Docker del anfitrión:
 el nodo tiene su propio *containerd*. `scripts/up.sh` construye las imágenes y las copia al nodo con
-`kind load docker-image`. Los manifiestos usan `imagePullPolicy: IfNotPresent`, de modo que el
+`docker save <imagen> | docker exec -i microrred-control-plane ctr -n k8s.io images import -`
+(equivale a `kind load docker-image`, que falló con el almacén de imágenes containerd de Docker
+Desktop al intentar importar todas las plataformas). Los manifiestos usan `imagePullPolicy: IfNotPresent`, de modo que el
 *kubelet* usa la copia local y no intenta descargarlas de un registro. No hace falta registro
 privado ni credenciales de *pull*.
 

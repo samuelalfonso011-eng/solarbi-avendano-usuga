@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "kpi_3",
+  "position": {
+    "x": 770,
+    "y": 150,
+    "z": 8,
+    "height": 100,
+    "width": 240,
+    "tabOrder": 8
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Energia"
+                    }
+                  },
+                  "Property": "Costo sin microrred COP"
+                }
+              },
+              "queryRef": "Energia.Costo sin microrred COP",
+              "nativeQueryRef": "Costo sin microrred COP"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Costo si todo viniera de la red'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

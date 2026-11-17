@@ -1,0 +1,60 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "kpi_4",
+  "position": {
+    "x": 1020,
+    "y": 150,
+    "z": 9,
+    "height": 100,
+    "width": 240,
+    "tabOrder": 9
+  },
+  "visual": {
+    "visualType": "card",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Energia"
+                    }
+                  },
+                  "Property": "Solar variación vs mes anterior %"
+                }
+              },
+              "queryRef": "Energia.Solar variación vs mes anterior %",
+              "nativeQueryRef": "Solar variación vs mes anterior %"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Solar vs. mes anterior'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

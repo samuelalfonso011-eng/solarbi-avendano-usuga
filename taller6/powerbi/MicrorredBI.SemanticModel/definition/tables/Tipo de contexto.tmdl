@@ -1,0 +1,43 @@
+table 'Tipo de contexto'
+	lineageTag: 96edeab5-d152-03b7-a0a2-d70ba277faf8
+
+	column tipo_contexto_key
+		dataType: int64
+		isHidden
+		lineageTag: a8a5160d-e4e3-63cc-938d-33a9ad71c6a6
+		summarizeBy: none
+		sourceColumn: tipo_contexto_key
+
+	column Fuente
+		dataType: string
+		lineageTag: be06237f-27fa-68e3-a021-49f2f740a031
+		summarizeBy: none
+		sourceColumn: fuente
+
+	column 'Tipo de contexto'
+		dataType: string
+		lineageTag: 160619c0-4b66-65bc-6082-36491c0f8356
+		summarizeBy: none
+		sourceColumn: tipo_contexto
+
+	column Dispositivo
+		dataType: string
+		lineageTag: 86938302-057b-6ac9-069a-32aeef394d3f
+		summarizeBy: none
+		sourceColumn: dispositivo
+
+	column 'Categoría de contexto'
+		dataType: string
+		lineageTag: 7d77d6cc-1840-98e3-882c-bb782ebf61b3
+		summarizeBy: none
+		sourceColumn: categoria
+
+	partition 'Tipo de contexto' = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database(Servidor, BaseDatos),
+				    Tabla = Origen{[Schema="gold", Item="dim_tipo_contexto"]}[Data]
+				in
+				    Tabla
+

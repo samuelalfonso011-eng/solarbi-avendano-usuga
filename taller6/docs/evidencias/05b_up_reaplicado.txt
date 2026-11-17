@@ -1,0 +1,90 @@
+
+[1;36m[1/8] Requisitos del anfitrion[0m
+docker 29.8.0 | kind v0.33.0 | kubectl v1.36.1
+
+[1;36m[2/8] Capa Bronze (descarga verificada, solo si falta)[0m
+4439408640 bytes data/bronze/opencem-v1.0.0.sqlite
+
+[1;36m[3/8] Cluster kind 'microrred'[0m
+ya existe
+NAME                      STATUS   ROLES           AGE   VERSION
+microrred-control-plane   Ready    control-plane   15m   v1.37.0
+
+[1;36m[4/8] Imagenes: construir las propias y cargarlas al nodo[0m
+sha256:7c18ccb8f6b5a5f9b86993b73297a38ab604838336d8572ccb73aa6dfce81cdd
+sha256:a03d49483f87095e081f8fcdcad3454838851b0c2187b570d4fe56bc4d765185
+cargada en el nodo: microrred-etl:1.0.0
+cargada en el nodo: microrred-simulador:1.0.0
+cargada en el nodo: postgres:16.4-alpine
+cargada en el nodo: grafana/grafana:11.4.0
+docker.io/grafana/grafana                       11.4.0               c0b69935a2469       133MB
+docker.io/library/microrred-etl                 1.0.0                4979cd29db791       50.4MB
+docker.io/library/microrred-simulador           1.0.0                cf63815c32a82       50.4MB
+docker.io/library/postgres                      16.4-alpine          89ec47deeedda       99.2MB
+
+[1;36m[5/8] Namespace y Secret con las credenciales (desde .env, no versionado)[0m
+.env ya existe: no se modifica
+namespace/microrred-bi configured
+secret/microrred-credenciales unchanged
+
+[1;36m[6/8] Manifiestos (kustomize: k8s/overlays/demo)[0m
+namespace/microrred-bi configured
+configmap/grafana-alertas-46952kggc2 unchanged
+configmap/grafana-datasources-782tdmt58h unchanged
+configmap/grafana-proveedor-tableros-dkf2mtthgh unchanged
+configmap/grafana-scripts-bk6tg669hk unchanged
+configmap/grafana-tableros-h6kcdbckkc unchanged
+configmap/microrred-config-ddd996m7hg unchanged
+configmap/postgres-initdb-9c4gt8t48t unchanged
+service/grafana unchanged
+service/postgres unchanged
+service/postgres-externo unchanged
+deployment.apps/grafana unchanged
+statefulset.apps/postgres configured
+cronjob.batch/simulador unchanged
+job.batch/etl-carga-historica created
+
+[1;36m[7/8] Espera: PostgreSQL, Grafana y carga historica[0m
+partitioned roll out complete: 1 new pods have been updated...
+deployment "grafana" successfully rolled out
+ETL en curso (Job etl-carga-historica)...
+Defaulted container "etl" out of: etl, esperar-postgres (init)
+2026-11-17 05:21:25,186 INFO [5/6] Carga transaccional Silver + Gold
+2026-11-17 05:21:58,644 INFO [6/6] Conciliacion y cierre
+2026-11-17 05:21:58,646 INFO   conciliacion carga  dias=498 contador=4430.5 kWh  integrado=4410.6 kWh  diferencia=-0.45 %
+2026-11-17 05:21:58,646 INFO   conciliacion red    dias=498 contador=2305.0 kWh  integrado=2970.5 kWh  diferencia=28.87 %
+2026-11-17 05:21:58,646 INFO   conciliacion solar  dias=498 contador=1791.1 kWh  integrado=1814.1 kWh  diferencia=1.29 %
+2026-11-17 05:21:58,647 INFO OK corrida=4 filas_fuente=2,989,759 filas_silver=178,968 filas_gold=178,968 huella=542622b6dbba4c989722d9e477f13576 duracion=188s
+
+[1;36m[8/8] Resumen[0m
+NAME                        READY   AGE
+statefulset.apps/postgres   1/1     13m
+
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/grafana   1/1     1            1           13m
+
+NAME                            STATUS     COMPLETIONS   DURATION   AGE
+job.batch/etl-carga-historica   Complete   1/1           3m13s      3m18s
+job.batch/simulador-29914880    Complete   1/1           6s         2m6s
+job.batch/simulador-29914881    Complete   1/1           6s         66s
+job.batch/simulador-29914882    Complete   1/1           5s         6s
+
+NAME                      SCHEDULE    TIMEZONE   SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+cronjob.batch/simulador   * * * * *   <none>     False     0        6s              13m
+
+NAME                                     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+persistentvolumeclaim/datos-postgres-0   Bound    pvc-88ac1a4c-aeac-41e4-815a-aadd2f0dcac9   2Gi        RWO            standard       <unset>                 13m
+
+NAME                       TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+service/grafana            NodePort    10.96.254.3    <none>        3000:30300/TCP   13m
+service/postgres           ClusterIP   None           <none>        5432/TCP         13m
+service/postgres-externo   NodePort    10.96.129.38   <none>        5432:30432/TCP   13m
+
+Solucion arriba en el namespace microrred-bi.
+  Grafana    : http://localhost:13000   (usuario: admin, clave: GF_SECURITY_ADMIN_PASSWORD en .env)
+  PostgreSQL : localhost:15432  base microrred  usuario bi_lectura (clave: BI_PASSWORD en .env)
+  Eliminar   : bash scripts/down.sh
+
+real	3m46.841s
+user	0m2.064s
+sys	0m2.938s

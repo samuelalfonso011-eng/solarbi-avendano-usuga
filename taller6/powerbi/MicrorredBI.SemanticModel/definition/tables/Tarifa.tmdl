@@ -1,0 +1,24 @@
+table Tarifa
+	lineageTag: 7ea0f80b-1fd3-d15d-507a-b0aaef7f94e5
+
+	measure 'Tarifa COP por kWh' = SELECTEDVALUE(Tarifa[Tarifa], 991.29)
+		formatString: $ #,0.00
+		lineageTag: fb81b75e-6436-ea02-da1c-2fd9c803e83a
+
+	column Tarifa
+		dataType: double
+		formatString: #,0
+		lineageTag: 1504422b-55dd-40a3-04c3-d23260e9dc77
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0,
+				  "kind": 2
+				}
+
+	partition Tarifa = calculated
+		mode: import
+		source = GENERATESERIES(600, 1500, 10)
+

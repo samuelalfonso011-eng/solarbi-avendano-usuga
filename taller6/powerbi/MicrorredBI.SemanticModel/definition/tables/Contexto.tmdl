@@ -1,0 +1,82 @@
+table Contexto
+	lineageTag: 98a581bd-ff14-f615-8650-77c2fe54bc26
+
+	measure 'Registros de contexto' = COUNTROWS(Contexto)
+		formatString: #,0
+		lineageTag: 64e14e87-7822-78a8-8446-cbedb67e084c
+
+	measure 'Horas de contexto' = SUM(Contexto[duracion_min]) / 60
+		formatString: #,0.0
+		lineageTag: 4ca1aa55-c28d-a089-0ab8-d777f768647c
+
+	column contexto_id
+		dataType: int64
+		isHidden
+		lineageTag: 9f54cc80-2768-3281-8f0d-92b15c586977
+		summarizeBy: none
+		sourceColumn: contexto_id
+
+	column fecha_key
+		dataType: int64
+		isHidden
+		lineageTag: 8c3ea237-e3f8-22e6-edb8-e7b587412735
+		summarizeBy: none
+		sourceColumn: fecha_key
+
+	column tiempo_key
+		dataType: int64
+		isHidden
+		lineageTag: 34768bdf-6ce5-784d-2d5b-4d6f241fd303
+		summarizeBy: none
+		sourceColumn: tiempo_key
+
+	column inversor_key
+		dataType: int64
+		isHidden
+		lineageTag: 9bb252a7-5769-35af-c830-1c7151fe5c89
+		summarizeBy: none
+		sourceColumn: inversor_key
+
+	column tipo_contexto_key
+		dataType: int64
+		isHidden
+		lineageTag: 805ee9cd-ae12-a4a0-1261-b1fb637e303e
+		summarizeBy: none
+		sourceColumn: tipo_contexto_key
+
+	column inicio_utc
+		dataType: dateTime
+		isHidden
+		lineageTag: 9773747c-a3a9-3639-a3ab-062bea078c59
+		summarizeBy: none
+		sourceColumn: inicio_utc
+
+	column fin_utc
+		dataType: dateTime
+		isHidden
+		lineageTag: f70b83a4-d291-e31b-8739-4dc1f560df04
+		summarizeBy: none
+		sourceColumn: fin_utc
+
+	column duracion_min
+		dataType: double
+		isHidden
+		lineageTag: a64d394e-9930-2fe5-0cc2-bb07baf754ff
+		summarizeBy: none
+		sourceColumn: duracion_min
+
+	column 'Esfuerzo estimado'
+		dataType: string
+		lineageTag: 41cff75e-ea7c-fa99-5e77-c55023d8e8ae
+		summarizeBy: none
+		sourceColumn: esfuerzo
+
+	partition Contexto = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database(Servidor, BaseDatos),
+				    Tabla = Origen{[Schema="gold", Item="vw_contexto"]}[Data]
+				in
+				    Tabla
+

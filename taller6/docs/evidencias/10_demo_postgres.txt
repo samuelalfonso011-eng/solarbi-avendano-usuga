@@ -1,0 +1,15 @@
+
+========== 1. Se elimina el pod de PostgreSQL: los datos siguen ahi ==========
+ANTES  : fact_energia_5min=178968 fact_evento=7870 fact_contexto=25178 huella=542622b6dbba4c989722d9e477f13576
+POD          UID                                    INICIO
+postgres-0   ad7f6636-f085-4275-9f50-6775a126941d   2026-11-17T05:08:28Z
+NAME               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+datos-postgres-0   Bound    pvc-88ac1a4c-aeac-41e4-815a-aadd2f0dcac9   2Gi        RWO            standard       <unset>                 18m
+pod "postgres-0" deleted from microrred-bi namespace
+Waiting for 1 pods to be ready...
+partitioned roll out complete: 1 new pods have been updated...
+POD          UID                                    INICIO
+postgres-0   3fef3b9c-9ee7-438e-97ca-222104465638   2026-11-17T05:26:50Z
+NAME               STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE
+datos-postgres-0   Bound    pvc-88ac1a4c-aeac-41e4-815a-aadd2f0dcac9   2Gi        RWO            standard       <unset>                 18m
+DESPUES: fact_energia_5min=178968 fact_evento=7870 fact_contexto=25178 huella=542622b6dbba4c989722d9e477f13576

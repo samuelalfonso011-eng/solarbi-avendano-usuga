@@ -1,0 +1,55 @@
+table 'Tipo de evento'
+	lineageTag: 8b6ff6f3-eb0c-9b2f-0c87-3e2833db0c19
+
+	column tipo_evento_key
+		dataType: int64
+		isHidden
+		lineageTag: e0a7d2d6-39d5-e06e-5ec9-09ed8d7419da
+		summarizeBy: none
+		sourceColumn: tipo_evento_key
+
+	column 'Código'
+		dataType: string
+		lineageTag: 0f254bee-242f-b839-a66b-83585282c14f
+		summarizeBy: none
+		sourceColumn: codigo
+
+	column Evento
+		dataType: string
+		lineageTag: 241dc5ac-8ec5-49ff-4db9-1cb52419d3c9
+		summarizeBy: none
+		sourceColumn: nombre
+
+	column 'Categoría'
+		dataType: string
+		lineageTag: f4e53714-da69-beee-7d39-47f36322dde0
+		summarizeBy: none
+		sourceColumn: categoria
+
+	column Severidad
+		dataType: string
+		lineageTag: f84b0706-d92e-7099-3733-ec7ddf54b2bd
+		summarizeBy: none
+		sourceColumn: severidad
+
+	column Origen
+		dataType: string
+		lineageTag: 5ba5957a-d5e7-4e2d-1308-54b8f39bf178
+		summarizeBy: none
+		sourceColumn: origen
+
+	column 'Es dato inválido'
+		dataType: boolean
+		lineageTag: ae270946-6c6c-8425-9da9-28c72dced109
+		summarizeBy: none
+		sourceColumn: es_dato_invalido
+
+	partition 'Tipo de evento' = m
+		mode: import
+		source =
+				let
+				    Origen = PostgreSQL.Database(Servidor, BaseDatos),
+				    Tabla = Origen{[Schema="gold", Item="dim_tipo_evento"]}[Data]
+				in
+				    Tabla
+

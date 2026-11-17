@@ -6,42 +6,53 @@ docker 29.8.0 | kind v0.33.0 | kubectl v1.36.1
 4439408640 bytes data/bronze/opencem-v1.0.0.sqlite
 
 [1;36m[3/8] Cluster kind 'microrred'[0m
-Creating cluster "microrred" ...
- • Ensuring node image (kindest/node:v1.37.0) 🖼️  ...
- ✓ Ensuring node image (kindest/node:v1.37.0) 🖼️
- • Preparing nodes 📦   ...
- ✓ Preparing nodes 📦 
- • Writing configuration 📜  ...
- ✓ Writing configuration 📜
- • Starting control-plane 🕹️  ...
- ✓ Starting control-plane 🕹️
- • Installing CNI 🔌  ...
- ✓ Installing CNI 🔌
- • Installing StorageClass 💾  ...
- ✓ Installing StorageClass 💾
- • Waiting ≤ 2m0s for control-plane = Ready ⏳  ...
- ✓ Waiting ≤ 2m0s for control-plane = Ready ⏳
- • Ready after 15s 💚
-Set kubectl context to "kind-microrred"
-You can now use your cluster with:
-
-kubectl cluster-info --context kind-microrred
-
-Have a nice day! 👋
-NAME                      STATUS   ROLES           AGE   VERSION
-microrred-control-plane   Ready    control-plane   24s   v1.37.0
+ya existe
+NAME                      STATUS   ROLES           AGE     VERSION
+microrred-control-plane   Ready    control-plane   5m22s   v1.37.0
 
 [1;36m[4/8] Imagenes: construir las propias y cargarlas al nodo[0m
-sha256:2fc8f056619c36ce4476197b0f6e443e76ed623f6d4be13c6ff2e68b77eabe6e
-sha256:7d694ae4a2553cc83abb70c1d94f04ecc25e613159f0c1b345e9790b192282e0
-Image: "microrred-etl:1.0.0" with ID "sha256:2fc8f056619c36ce4476197b0f6e443e76ed623f6d4be13c6ff2e68b77eabe6e" not yet present on node "microrred-control-plane", loading...
-Image: "microrred-simulador:1.0.0" with ID "sha256:7d694ae4a2553cc83abb70c1d94f04ecc25e613159f0c1b345e9790b192282e0" not yet present on node "microrred-control-plane", loading...
-Image: "postgres:16.4-alpine" with ID "sha256:5660c2cbfea50c7a9127d17dc4e48543eedd3d7a41a595a2dfa572471e37e64c" not yet present on node "microrred-control-plane", loading...
-Image: "grafana/grafana:11.4.0" with ID "sha256:d8ea37798ccc41061a62ab080f2676dda6bf7815558499f901bdb0f533a456fb" not yet present on node "microrred-control-plane", loading...
-ERROR: failed to load image: command "docker exec --privileged -i microrred-control-plane ctr --namespace=k8s.io images import --all-platforms --digests --snapshotter=overlayfs -" failed with error: exit status 1
+sha256:7c18ccb8f6b5a5f9b86993b73297a38ab604838336d8572ccb73aa6dfce81cdd
+sha256:a03d49483f87095e081f8fcdcad3454838851b0c2187b570d4fe56bc4d765185
+cargada en el nodo: microrred-etl:1.0.0
+cargada en el nodo: microrred-simulador:1.0.0
+cargada en el nodo: postgres:16.4-alpine
+cargada en el nodo: grafana/grafana:11.4.0
+docker.io/grafana/grafana                       11.4.0               c0b69935a2469       133MB
+docker.io/library/microrred-etl                 1.0.0                4979cd29db791       50.4MB
+docker.io/library/microrred-simulador           1.0.0                cf63815c32a82       50.4MB
+docker.io/library/postgres                      16.4-alpine          89ec47deeedda       99.2MB
 
-Command Output: ctr: content digest sha256:f9b6d6ec05b3f35ab00a340648992426946267dee141ec941cacc22b0163ed4e: not found
+[1;36m[5/8] Namespace y Secret con las credenciales (desde .env, no versionado)[0m
+.env ya existe: no se modifica
+namespace/microrred-bi created
+secret/microrred-credenciales created
 
-real	2m24.599s
-user	0m0.546s
-sys	0m0.866s
+[1;36m[6/8] Manifiestos (kustomize: k8s/overlays/demo)[0m
+namespace/microrred-bi configured
+configmap/grafana-alertas-46952kggc2 created
+configmap/grafana-datasources-782tdmt58h created
+configmap/grafana-proveedor-tableros-dkf2mtthgh created
+configmap/grafana-scripts-bk6tg669hk created
+configmap/grafana-tableros-h6kcdbckkc created
+configmap/microrred-config-ddd996m7hg created
+configmap/postgres-initdb-9c4gt8t48t created
+service/grafana created
+service/postgres created
+service/postgres-externo created
+deployment.apps/grafana created
+statefulset.apps/postgres created
+cronjob.batch/simulador created
+job.batch/etl-carga-historica created
+
+[1;36m[7/8] Espera: PostgreSQL, Grafana y carga historica[0m
+Waiting for 1 pods to be ready...
+partitioned roll out complete: 1 new pods have been updated...
+Waiting for deployment "grafana" rollout to finish: 0 of 1 updated replicas are available...
+deployment "grafana" successfully rolled out
+ETL en curso (Job etl-carga-historica)...
+job.batch/etl-carga-historica condition met
+scripts/up.sh: line 85: syntax error near unexpected token `)'
+
+real	14m11.689s
+user	0m1.054s
+sys	0m1.637s
