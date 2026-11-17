@@ -23,7 +23,7 @@ erDiagram
 **Por qué estrella y no copo de nieve (*snowflake*).**
 
 - Las dimensiones son pequeñas (813 fechas, 288 intervalos, 6 versiones de inversor, 6 tipos de
-  evento, ~70 tipos de contexto): normalizarlas no ahorra espacio y sí añade *joins*.
+  evento, 86 tipos de contexto): normalizarlas no ahorra espacio y sí añade *joins*.
 - Power BI rinde mejor y es más fácil de usar con dimensiones desnormalizadas: una relación
   uno-a-muchos por dimensión y jerarquías dentro de la misma tabla (año > trimestre > mes > día).
 - Las consultas de Grafana quedan con un solo *join* por dimensión.
@@ -112,7 +112,7 @@ pasar por los episodios.
 cambia el balance energético. Con tipo 1 (sobrescribir) toda la historia quedaría asociada a la
 configuración actual y no se podría comparar el antes y el después. Con tipo 2 cada hecho apunta a
 la versión vigente en su fecha. La consulta P9 lo aprovecha: tras el cambio del 7 de enero de 2026,
-la compra a la red del inversor 2 pasó de 12,90 a 8,48 kWh/día.
+la compra a la red del inversor 2 pasó de 12,90 a 8,48 kWh/día (los dos tramos cubren estaciones distintas, así que la comparación orienta pero no prueba causalidad).
 
 Los códigos (0, 2, 3) vienen de un mapa de registros propietario que los autores no publican: se
 guardan tal cual y no se les asigna un nombre que no podemos verificar. Las versiones se detectan

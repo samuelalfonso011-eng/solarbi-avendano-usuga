@@ -3,8 +3,8 @@
 # PLANTILLA: los marcadores de umbral (ALERTA_...) se sustituyen al arrancar el pod por
 # grafana/render_provisioning.sh con los valores del ConfigMap (Grafana no
 # interpola variables de entorno dentro de las reglas). Cambiar un umbral =
-# editar config/microrred.env, volver a aplicar y reiniciar el Deployment de
-# Grafana; no se reconstruye ninguna imagen ni se toca la interfaz.
+# editar config/microrred.env y ejecutar scripts/aplicar_config.sh (reinicia
+# Grafana solo); no se reconstruye ninguna imagen ni se toca la interfaz.
 #
 # Cada consulta devuelve el MARGEN respecto al umbral: la alerta se dispara
 # cuando el margen es negativo. Formato tabla: la columna de texto "inversor"

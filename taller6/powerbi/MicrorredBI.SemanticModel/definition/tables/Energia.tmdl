@@ -39,7 +39,7 @@ table Energia
 	measure 'Autosuficiencia %' =
 			VAR RedACarga = [Energía importada de red kWh] - [Red a batería kWh]
 			VAR Carga = [Energía a la carga kWh]
-			RETURN 1 - DIVIDE(MIN(RedACarga, Carga), Carga)
+			RETURN IF(NOT ISBLANK(Carga), 1 - DIVIDE(MIN(RedACarga, Carga), Carga))
 		formatString: 0.0%
 		displayFolder: Indicadores híbridos
 		lineageTag: f5c5240e-b4bb-53b2-613f-09b326b1f232
@@ -114,7 +114,7 @@ table Energia
 
 	measure 'Costo evitado COP' =
 			VAR NoComprado = [Energía a la carga kWh] - ([Energía importada de red kWh] - [Red a batería kWh])
-			RETURN MAX(NoComprado, 0) * [Tarifa COP por kWh]
+			RETURN IF(NOT ISBLANK([Energía a la carga kWh]), MAX(NoComprado, 0) * [Tarifa COP por kWh])
 		formatString: $ #,0
 		displayFolder: Económicos
 		lineageTag: da37efeb-423b-5709-4548-d169296be90e
@@ -151,7 +151,7 @@ table Energia
 			    "Batería (descarga)", [Batería descarga kWh],
 			    "Carga", [Energía a la carga kWh],
 			    "Batería (carga)", [Batería carga kWh],
-			    "Pérdidas", MAX([Pérdidas kWh], 0))
+			    "Pérdidas", IF(NOT ISBLANK([Pérdidas kWh]), MAX([Pérdidas kWh], 0)))
 		formatString: #,0.0
 		displayFolder: Energía
 		lineageTag: a6060e7d-89d2-b0a4-11fe-af0f9bed1fae
