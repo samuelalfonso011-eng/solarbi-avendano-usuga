@@ -1,7 +1,7 @@
 # Taller 6 · BI contenerizado y orquestado para una microrred híbrida
 
 **Inteligencia de Negocios · 2026-II · Institución Universitaria Pascual Bravo**
-Integrantes: Samuel Alfonso Avendaño · Juan Andrés Usuga Serna — Docente: Ramiro Grisales Montoya
+Integrantes: Samuel Alfonso Avendaño · Juan Andrés Usuga Serna · Mateo Usuga · Andrés Ocampo — Docente: Ramiro Grisales Montoya
 
 > *From inverter telemetry to actionable insights: a containerized, Kubernetes-orchestrated BI
 > pipeline for a hybrid microgrid.*

@@ -74,12 +74,12 @@ pendiente que se indica; **Pendiente** = requiere una acción de los integrantes
 | R1 | 5 / p5 | README: proyecto, arquitectura, reproducción, requisitos, cita | A | O | Repositorio | `README.md` | Revisión | Cumple |
 | R2 | 5 / p5 | Versionados: SQL, ETL, simulador, Dockerfile, compose, manifiestos, tablero, Power BI; formato justificado | T | O | Repositorio | Todo en `taller6/`; PBIP | `git ls-files` | Cumple |
 | R3 | 5 / p5 | Sin datos pesados ni contraseñas; plantilla de ejemplo | NF | O | Repositorio | `.gitignore`, `.env.example` | `git ls-files` | Cumple |
-| R4 | 5 / p5 | Historial incremental con aportes de ambos integrantes | A | O | Repositorio | Commits incrementales reales | `git log` | **Pendiente**: todos los commits de esta rama salen con un solo autor; el segundo integrante debe aportar los suyos |
+| R4 | 5 / p5 | Historial incremental con aportes visibles de todos los integrantes (4) | A | O | Repositorio | Commits incrementales reales | `git log` | **Pendiente**: los commits de esta rama salen casi todos con un solo autor; cada integrante restante debe aportar los suyos |
 | R5 | 5 / p5 | `.gitignore` adecuado | T | O | Repositorio | `.gitignore` | Revisión | Cumple |
 | N1 | 6 / p5 | Informe PDF con portada, enlace y secciones, capturas y evidencias | A | O | Informe | `docs/informe/` | PDF generado | Parcial: faltan las capturas de Power BI con datos y de DBeaver |
 | S1 | 7 / p5 | Flujo completo en vivo, desde cero, con un comando | S | O | Scripts | `docs/12_sustentacion.md` | Ensayo | Pendiente: ensayo de los integrantes |
 | S2 | 7 / p5 | Historia con datos y recomendaciones | S | O | Documentación | `docs/12_sustentacion.md` §1 | Revisión | Cumple |
-| S3 | 7 / p5 | Ambos integrantes dominan el proyecto | S | O | — | Guía de preguntas en vivo | — | Pendiente: estudio de los integrantes |
+| S3 | 7 / p5 | Los 4 integrantes dominan el proyecto | S | O | — | Guía de preguntas en vivo | — | Pendiente: estudio de los integrantes |
 | V1 | 9 / p6 | Verificar integridad y dejar evidencia | T | O | Bronze | `scripts/descargar_datos.py` | `01_descarga_sha256.txt` | Cumple |
 | V2 | 9 / p6 | Documentar herramienta y comando de descompresión | A | O | Bronze | README y §A.2 | Revisión | Cumple |
 | V3 | 9 / p6 | Inventario: tablas, columnas, filas, periodo | T | O | Bronze | `diagnostico_bronze.py` | JSON de evidencia | Cumple |

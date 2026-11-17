@@ -19,7 +19,7 @@ import markdown
 RAIZ = Path(__file__).resolve().parents[1]
 DOCS = RAIZ / "docs"
 SALIDA = DOCS / "informe"
-NOMBRE = "BI_Taller6_Avendano_Usuga"
+NOMBRE = "BI_Taller6_Avendano_Usuga_Usuga_Ocampo"
 EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 REPO = "https://github.com/samuelalfonso011-eng/solarbi-avendano-usuga"
 
@@ -94,7 +94,7 @@ def main() -> None:
 <p>INSTITUCIÓN UNIVERSITARIA PASCUAL BRAVO</p>
 <p>Departamento de Sistemas Digitales · Inteligencia de Negocios · Semestre 2026-II</p>
 <h1>Taller 6 · Solución de BI contenerizada y orquestada para el monitoreo energético de una microrred híbrida (solar + batería + red)</h1>
-<p><b>Integrantes:</b> Samuel Alfonso Avendaño · Juan Andrés Usuga Serna</p>
+<p><b>Integrantes:</b> Samuel Alfonso Avendaño · Juan Andrés Usuga Serna · Mateo Usuga · Andrés Ocampo</p>
 <p><b>Docente:</b> Ramiro Grisales Montoya</p>
 <p><b>Repositorio:</b> <a href="{REPO}">{REPO}</a> (carpeta <code>taller6/</code>)</p>
 <p>{date.today().strftime('%d/%m/%Y')}</p>
