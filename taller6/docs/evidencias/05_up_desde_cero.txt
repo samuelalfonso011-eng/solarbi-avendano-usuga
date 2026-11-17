@@ -1,0 +1,47 @@
+
+[1;36m[1/8] Requisitos del anfitrion[0m
+docker 29.8.0 | kind v0.33.0 | kubectl v1.36.1
+
+[1;36m[2/8] Capa Bronze (descarga verificada, solo si falta)[0m
+4439408640 bytes data/bronze/opencem-v1.0.0.sqlite
+
+[1;36m[3/8] Cluster kind 'microrred'[0m
+Creating cluster "microrred" ...
+ • Ensuring node image (kindest/node:v1.37.0) 🖼️  ...
+ ✓ Ensuring node image (kindest/node:v1.37.0) 🖼️
+ • Preparing nodes 📦   ...
+ ✓ Preparing nodes 📦 
+ • Writing configuration 📜  ...
+ ✓ Writing configuration 📜
+ • Starting control-plane 🕹️  ...
+ ✓ Starting control-plane 🕹️
+ • Installing CNI 🔌  ...
+ ✓ Installing CNI 🔌
+ • Installing StorageClass 💾  ...
+ ✓ Installing StorageClass 💾
+ • Waiting ≤ 2m0s for control-plane = Ready ⏳  ...
+ ✓ Waiting ≤ 2m0s for control-plane = Ready ⏳
+ • Ready after 15s 💚
+Set kubectl context to "kind-microrred"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-microrred
+
+Have a nice day! 👋
+NAME                      STATUS   ROLES           AGE   VERSION
+microrred-control-plane   Ready    control-plane   24s   v1.37.0
+
+[1;36m[4/8] Imagenes: construir las propias y cargarlas al nodo[0m
+sha256:2fc8f056619c36ce4476197b0f6e443e76ed623f6d4be13c6ff2e68b77eabe6e
+sha256:7d694ae4a2553cc83abb70c1d94f04ecc25e613159f0c1b345e9790b192282e0
+Image: "microrred-etl:1.0.0" with ID "sha256:2fc8f056619c36ce4476197b0f6e443e76ed623f6d4be13c6ff2e68b77eabe6e" not yet present on node "microrred-control-plane", loading...
+Image: "microrred-simulador:1.0.0" with ID "sha256:7d694ae4a2553cc83abb70c1d94f04ecc25e613159f0c1b345e9790b192282e0" not yet present on node "microrred-control-plane", loading...
+Image: "postgres:16.4-alpine" with ID "sha256:5660c2cbfea50c7a9127d17dc4e48543eedd3d7a41a595a2dfa572471e37e64c" not yet present on node "microrred-control-plane", loading...
+Image: "grafana/grafana:11.4.0" with ID "sha256:d8ea37798ccc41061a62ab080f2676dda6bf7815558499f901bdb0f533a456fb" not yet present on node "microrred-control-plane", loading...
+ERROR: failed to load image: command "docker exec --privileged -i microrred-control-plane ctr --namespace=k8s.io images import --all-platforms --digests --snapshotter=overlayfs -" failed with error: exit status 1
+
+Command Output: ctr: content digest sha256:f9b6d6ec05b3f35ab00a340648992426946267dee141ec941cacc22b0163ed4e: not found
+
+real	2m24.599s
+user	0m0.546s
+sys	0m0.866s

@@ -65,8 +65,12 @@ services:
       GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
       GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /var/lib/grafana/dashboards/microrred_operacion.json
       GRAFANA_DB_PASSWORD: ${GRAFANA_DB_PASSWORD}
+      GF_PATHS_PROVISIONING: /tmp/provisioning
+    # Renderiza los umbrales de las alertas (config/microrred.env) y arranca Grafana
+    entrypoint: ["sh", "-c", "sh /scripts/render_provisioning.sh /etc/grafana/provisioning-plantilla /tmp/provisioning && exec /run.sh"]
     volumes:
-      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/provisioning:/etc/grafana/provisioning-plantilla:ro
+      - ./grafana/render_provisioning.sh:/scripts/render_provisioning.sh:ro
       - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
     ports:
       - "127.0.0.1:${GRAFANA_PUERTO_LOCAL:-13000}:3000"

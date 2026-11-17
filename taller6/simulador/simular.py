@@ -112,7 +112,8 @@ def main() -> int:
     cfg = configuracion()
     with psycopg.connect("") as con:  # parametros por variables PG*
         if cfg["modo"] == "una_vez":
-            return 0 if pasada(con, cfg) else 1
+            pasada(con, cfg)  # sin historico aun (ETL pendiente): se registra "omitida" y no es error
+            return 0
         while True:  # modo continuo (docker-compose)
             pasada(con, cfg)
             sys.stdout.flush()

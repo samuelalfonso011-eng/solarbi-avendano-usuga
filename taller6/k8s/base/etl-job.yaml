@@ -1,0 +1,53 @@
+# ETL: Job (corre una vez, termina y deja evidencia)
+#
+# Por que Job y no Deployment: la carga historica tiene principio y fin. El Job
+# reintenta ante fallos (backoffLimit), queda en estado Complete y conserva el
+# pod terminado para leer sus logs (kubectl logs job/etl-carga-historica).
+# Ademas, el propio ETL registra cada corrida en audit.etl_ejecucion.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: etl-carga-historica
+  labels: {app: etl}
+spec:
+  backoffLimit: 2
+  activeDeadlineSeconds: 1800
+  template:
+    metadata:
+      labels: {app: etl}
+    spec:
+      restartPolicy: Never
+      initContainers:
+        # Espera a que PostgreSQL acepte conexiones (lo encuentra por nombre DNS)
+        - name: esperar-postgres
+          image: postgres:16.4-alpine
+          imagePullPolicy: IfNotPresent
+          command: ["sh", "-c", "until pg_isready -h \"$PGHOST\" -p \"$PGPORT\" -d \"$PGDATABASE\"; do sleep 2; done"]
+          envFrom:
+            - configMapRef: {name: microrred-config}
+          resources:
+            requests: {cpu: 10m, memory: 16Mi}
+            limits: {cpu: 100m, memory: 64Mi}
+      containers:
+        - name: etl
+          image: microrred-etl:1.0.0
+          imagePullPolicy: IfNotPresent     # la imagen se carga al nodo con "kind load docker-image"
+          envFrom:
+            - configMapRef: {name: microrred-config}
+          env:
+            - {name: PGUSER, value: etl_app}
+            - name: PGPASSWORD
+              valueFrom: {secretKeyRef: {name: microrred-credenciales, key: ETL_PASSWORD}}
+          volumeMounts:
+            - {name: bronze, mountPath: /datos/bronze, readOnly: true}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+          resources:
+            requests: {cpu: 250m, memory: 384Mi}
+            limits: {cpu: "1", memory: 1536Mi}
+      volumes:
+        # Capa Bronze: carpeta del anfitrion montada en el nodo de kind (extraMounts), solo lectura.
+        # hostPath es aceptable aqui: cluster local de un nodo y dato de entrada inmutable.
+        - name: bronze
+          hostPath: {path: /datos/bronze, type: Directory}

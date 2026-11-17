@@ -4,9 +4,11 @@
 -- =====================================================================
 SET ROLE etl_app;
 
--- Power BI / DBeaver: solo la capa Gold. Sin acceso a silver.contexto (JSON de actividad).
-GRANT USAGE ON SCHEMA gold TO bi_lectura;
-GRANT SELECT ON ALL TABLES IN SCHEMA gold TO bi_lectura;
+-- Power BI / DBeaver: la capa Gold y las tablas de auditoria y calidad.
+-- Sin acceso a silver.contexto (detalle de actividad en las estaciones).
+GRANT USAGE ON SCHEMA gold, audit, silver TO bi_lectura;
+GRANT SELECT ON ALL TABLES IN SCHEMA gold, audit TO bi_lectura;
+GRANT SELECT ON silver.calidad_regla TO bi_lectura;
 GRANT EXECUTE ON FUNCTION gold.tarifa_vigente(date) TO bi_lectura, grafana_ro;
 ALTER DEFAULT PRIVILEGES IN SCHEMA gold GRANT SELECT ON TABLES TO bi_lectura;
 

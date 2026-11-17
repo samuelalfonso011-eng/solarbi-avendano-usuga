@@ -1,0 +1,6 @@
+# Espacio de nombres propio: aisla todos los recursos del proyecto y permite
+# borrarlos de una sola vez (kubectl delete namespace microrred-bi).
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: microrred-bi

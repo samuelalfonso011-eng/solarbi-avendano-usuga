@@ -1,0 +1,51 @@
+# Base de Kustomize. Los ConfigMaps se generan a partir de archivos versionados que
+# viven fuera de esta carpeta (sql/, grafana/, config/); por eso se renderiza con
+#   kubectl kustomize --load-restrictor LoadRestrictionsNone k8s/overlays/<ambiente>
+# (lo hace scripts/up.sh). Ambientes: k8s/overlays/demo y k8s/overlays/dev.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: microrred-bi
+
+resources:
+  - namespace.yaml
+  - postgres.yaml
+  - grafana.yaml
+  - etl-job.yaml
+  - simulador-cronjob.yaml
+
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: microrred-bi
+
+# Los ConfigMaps llevan un sufijo con el hash de su contenido: si cambia un archivo,
+# cambia el nombre y las cargas de trabajo que lo usan se actualizan solas.
+configMapGenerator:
+  - name: microrred-config          # parametros no sensibles: umbrales, intervalos, nombres
+    envs:
+      - ../../config/microrred.env
+  - name: postgres-initdb           # DDL del modelo (se ejecuta solo en el primer arranque)
+    files:
+      - ../../sql/init/00_roles.sh
+      - ../../sql/init/01_bronze_silver.sql
+      - ../../sql/init/02_gold_dimensional.sql
+      - ../../sql/init/03_vistas.sql
+      - ../../sql/init/04_permisos.sql
+  - name: grafana-datasources
+    files:
+      - ../../grafana/provisioning/datasources/postgres.yaml
+  - name: grafana-proveedor-tableros
+    files:
+      - ../../grafana/provisioning/dashboards/tableros.yaml
+  - name: grafana-alertas
+    files:
+      - ../../grafana/provisioning/alerting/reglas.yaml
+  - name: grafana-tableros
+    files:
+      - ../../grafana/dashboards/microrred_operacion.json
+  - name: grafana-scripts
+    files:
+      - ../../grafana/render_provisioning.sh
+
+# El Secret "microrred-credenciales" NO esta aqui: lo crea scripts/up.sh a partir de
+# .env (no versionado). Ver docs/10_etica_seguridad.md.

@@ -1,0 +1,112 @@
+# Grafana: Deployment + Service NodePort
+#
+# Grafana no guarda estado propio: fuente de datos, tablero y alertas llegan desde
+# ConfigMaps (provisioning). Por eso es un Deployment con volumenes efimeros: si
+# se borra el pod, el nuevo vuelve identico sin configuracion manual.
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  labels: {app: grafana}
+spec:
+  type: NodePort            # NodePort 30300 -> localhost:13000 (mapeo de kind)
+  selector: {app: grafana}
+  ports:
+    - {name: http, port: 3000, targetPort: http, nodePort: 30300}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  labels: {app: grafana}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: grafana}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: {maxSurge: 1, maxUnavailable: 0}
+  template:
+    metadata:
+      labels: {app: grafana}
+    spec:
+      securityContext:
+        runAsUser: 472
+        runAsGroup: 472
+        fsGroup: 472
+      initContainers:
+        # Sustituye los umbrales del ConfigMap en la plantilla de alertas (mismo binario/imagen)
+        - name: render-provisioning
+          image: grafana/grafana:11.4.0
+          imagePullPolicy: IfNotPresent
+          command: ["sh", "/scripts/render_provisioning.sh", "/plantilla", "/provisioning"]
+          envFrom:
+            - configMapRef: {name: microrred-config}
+          volumeMounts:
+            - {name: scripts, mountPath: /scripts, readOnly: true}
+            - {name: plantilla-datasources, mountPath: /plantilla/datasources, readOnly: true}
+            - {name: plantilla-dashboards, mountPath: /plantilla/dashboards, readOnly: true}
+            - {name: plantilla-alerting, mountPath: /plantilla/alerting, readOnly: true}
+            - {name: provisioning, mountPath: /provisioning}
+          resources:
+            requests: {cpu: 20m, memory: 16Mi}
+            limits: {cpu: 100m, memory: 64Mi}
+      containers:
+        - name: grafana
+          image: grafana/grafana:11.4.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - {name: http, containerPort: 3000}
+          envFrom:
+            - configMapRef: {name: microrred-config}   # PGHOST, PGPORT, PGDATABASE
+          env:
+            - name: GF_PATHS_PROVISIONING
+              value: /provisioning
+            - name: GF_SECURITY_ADMIN_USER
+              valueFrom: {secretKeyRef: {name: microrred-credenciales, key: GF_SECURITY_ADMIN_USER}}
+            - name: GF_SECURITY_ADMIN_PASSWORD
+              valueFrom: {secretKeyRef: {name: microrred-credenciales, key: GF_SECURITY_ADMIN_PASSWORD}}
+            - name: GRAFANA_DB_PASSWORD
+              valueFrom: {secretKeyRef: {name: microrred-credenciales, key: GRAFANA_DB_PASSWORD}}
+            - {name: GF_USERS_ALLOW_SIGN_UP, value: "false"}
+            - {name: GF_AUTH_ANONYMOUS_ENABLED, value: "false"}
+            - {name: GF_ANALYTICS_REPORTING_ENABLED, value: "false"}
+            - {name: GF_ANALYTICS_CHECK_FOR_UPDATES, value: "false"}
+            - name: GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH
+              value: /var/lib/grafana/dashboards/microrred_operacion.json
+          volumeMounts:
+            - {name: provisioning, mountPath: /provisioning, readOnly: true}
+            - {name: dashboards, mountPath: /var/lib/grafana/dashboards, readOnly: true}
+            - {name: datos, mountPath: /var/lib/grafana}
+          # /api/health responde 200 cuando el servidor y su base interna estan listos
+          startupProbe:
+            httpGet: {path: /api/health, port: http}
+            periodSeconds: 5
+            failureThreshold: 24
+          readinessProbe:
+            httpGet: {path: /api/health, port: http}
+            periodSeconds: 10
+            timeoutSeconds: 3
+          livenessProbe:
+            httpGet: {path: /api/health, port: http}
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests: {cpu: 100m, memory: 128Mi}
+            limits: {cpu: 500m, memory: 384Mi}
+      volumes:
+        - name: scripts
+          configMap: {name: grafana-scripts}
+        - name: plantilla-datasources
+          configMap: {name: grafana-datasources}
+        - name: plantilla-dashboards
+          configMap: {name: grafana-proveedor-tableros}
+        - name: plantilla-alerting
+          configMap: {name: grafana-alertas}
+        - name: dashboards
+          configMap: {name: grafana-tableros}
+        - name: provisioning
+          emptyDir: {}
+        - name: datos
+          emptyDir: {}      # estado efimero a proposito: todo se reconstruye desde Git
