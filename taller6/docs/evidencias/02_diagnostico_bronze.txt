@@ -1,0 +1,17 @@
+[     0s] inventario
+  analog_measurements: 2,989,759 filas, 44 columnas
+  context: 25,178 filas, 5 columnas
+  fault_history: 2,129,517 filas, 66 columnas
+  settings: 2,284,775 filas, 176 columnas
+  specs: 1,333,174 filas, 16 columnas
+  sqlite_stat1: 10 filas, 3 columnas
+  sqlite_stat4: 240 filas, 6 columnas
+  statistics: 2,285,904 filas, 31 columnas
+  status: 2,240,052 filas, 20 columnas
+  totals: 2,279,918 filas, 21 columnas
+[    18s] cobertura
+[    26s] cadencia_analog_measurements
+[    28s] rangos_analog_measurements
+[    45s] nulidad_por_fila_analog_measurements
+[    91s] contexto
+Informe escrito en docs\evidencias\diagnostico_bronze.json

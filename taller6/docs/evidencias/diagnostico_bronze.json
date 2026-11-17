@@ -1,0 +1,4234 @@
+{
+ "archivo": "opencem-v1.0.0.sqlite",
+ "bytes": 4439408640,
+ "generado_utc": "2026-11-17T04:20:08+00:00",
+ "sqlite_version": "3.50.4",
+ "inventario": {
+  "analog_measurements": {
+   "filas": 2989759,
+   "n_columnas": 44,
+   "columnas": [
+    {
+     "nombre": "read_ts",
+     "tipo": "REAL",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "inverter",
+     "tipo": "INTEGER",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "battvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58141,
+     "pct_nulos": 1.9447
+    },
+    {
+     "nombre": "battcurr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58217,
+     "pct_nulos": 1.9472
+    },
+    {
+     "nombre": "battsoc",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57931,
+     "pct_nulos": 1.9376
+    },
+    {
+     "nombre": "battchgpower",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58171,
+     "pct_nulos": 1.9457
+    },
+    {
+     "nombre": "linechgcurr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58071,
+     "pct_nulos": 1.9423
+    },
+    {
+     "nombre": "pvchgcurr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58071,
+     "pct_nulos": 1.9423
+    },
+    {
+     "nombre": "battreserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3828,
+     "pct_nulos": 0.128
+    },
+    {
+     "nombre": "pv1volt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59379,
+     "pct_nulos": 1.9861
+    },
+    {
+     "nombre": "pv1curr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58001,
+     "pct_nulos": 1.94
+    },
+    {
+     "nombre": "pv1power",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58660,
+     "pct_nulos": 1.962
+    },
+    {
+     "nombre": "pvreserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3346,
+     "pct_nulos": 0.1119
+    },
+    {
+     "nombre": "outvolta",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59953,
+     "pct_nulos": 2.0053
+    },
+    {
+     "nombre": "outcurra",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58093,
+     "pct_nulos": 1.9431
+    },
+    {
+     "nombre": "outfreq",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58841,
+     "pct_nulos": 1.9681
+    },
+    {
+     "nombre": "invcurra",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57962,
+     "pct_nulos": 1.9387
+    },
+    {
+     "nombre": "outw_a",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58521,
+     "pct_nulos": 1.9574
+    },
+    {
+     "nombre": "outva_a",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58013,
+     "pct_nulos": 1.9404
+    },
+    {
+     "nombre": "loadpercenta",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58141,
+     "pct_nulos": 1.9447
+    },
+    {
+     "nombre": "normalloadw_a",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58041,
+     "pct_nulos": 1.9413
+    },
+    {
+     "nombre": "outsumw",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58153,
+     "pct_nulos": 1.9451
+    },
+    {
+     "nombre": "outsumva",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58036,
+     "pct_nulos": 1.9412
+    },
+    {
+     "nombre": "sumloadpercent",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58096,
+     "pct_nulos": 1.9432
+    },
+    {
+     "nombre": "generatedpowerp_a",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58080,
+     "pct_nulos": 1.9426
+    },
+    {
+     "nombre": "generatedpowers_a",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57962,
+     "pct_nulos": 1.9387
+    },
+    {
+     "nombre": "generatedpowerq_a",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58117,
+     "pct_nulos": 1.9439
+    },
+    {
+     "nombre": "linevolta",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58083,
+     "pct_nulos": 1.9427
+    },
+    {
+     "nombre": "linecurra",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58149,
+     "pct_nulos": 1.9449
+    },
+    {
+     "nombre": "linefreq",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57959,
+     "pct_nulos": 1.9386
+    },
+    {
+     "nombre": "linepowerva_a",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58060,
+     "pct_nulos": 1.942
+    },
+    {
+     "nombre": "linepowerw_a",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58062,
+     "pct_nulos": 1.942
+    },
+    {
+     "nombre": "busvoltp",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58084,
+     "pct_nulos": 1.9428
+    },
+    {
+     "nombre": "busvoltn",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58040,
+     "pct_nulos": 1.9413
+    },
+    {
+     "nombre": "temper1",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58299,
+     "pct_nulos": 1.95
+    },
+    {
+     "nombre": "temper2",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58396,
+     "pct_nulos": 1.9532
+    },
+    {
+     "nombre": "temper3",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57814,
+     "pct_nulos": 1.9337
+    },
+    {
+     "nombre": "temper4",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58036,
+     "pct_nulos": 1.9412
+    },
+    {
+     "nombre": "sir",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58111,
+     "pct_nulos": 1.9437
+    },
+    {
+     "nombre": "fanduty",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57909,
+     "pct_nulos": 1.9369
+    },
+    {
+     "nombre": "otherreserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 4043,
+     "pct_nulos": 0.1352
+    },
+    {
+     "nombre": "gridpowerw_a",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58968,
+     "pct_nulos": 1.9723
+    },
+    {
+     "nombre": "gridcurr_a",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58563,
+     "pct_nulos": 1.9588
+    },
+    {
+     "nombre": "grid_reserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 5957,
+     "pct_nulos": 0.1992
+    }
+   ],
+   "indices": [
+    {
+     "nombre": "analog_measurements_read_ts_inverter_uidx",
+     "unico": true
+    }
+   ]
+  },
+  "context": {
+   "filas": 25178,
+   "n_columnas": 5,
+   "columnas": [
+    {
+     "nombre": "id",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": true,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "recorded",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "start",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "end",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "value",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    }
+   ],
+   "indices": [
+    {
+     "nombre": "context_end_idx",
+     "unico": false
+    },
+    {
+     "nombre": "context_start_idx",
+     "unico": false
+    },
+    {
+     "nombre": "context_recorded_idx",
+     "unico": false
+    }
+   ]
+  },
+  "fault_history": {
+   "filas": 2129517,
+   "n_columnas": 66,
+   "columnas": [
+    {
+     "nombre": "read_ts",
+     "tipo": "REAL",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "inverter",
+     "tipo": "INTEGER",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "faulthistoryrecord00",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 5882,
+     "pct_nulos": 0.2762
+    },
+    {
+     "nombre": "faulthistoryrecord01",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 5073,
+     "pct_nulos": 0.2382
+    },
+    {
+     "nombre": "faulthistoryrecord02",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 5524,
+     "pct_nulos": 0.2594
+    },
+    {
+     "nombre": "faulthistoryrecord03",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035803,
+     "pct_nulos": 95.5993
+    },
+    {
+     "nombre": "faulthistoryrecord04",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035768,
+     "pct_nulos": 95.5976
+    },
+    {
+     "nombre": "faulthistoryrecord05",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035789,
+     "pct_nulos": 95.5986
+    },
+    {
+     "nombre": "faulthistoryrecord06",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035806,
+     "pct_nulos": 95.5994
+    },
+    {
+     "nombre": "faulthistoryrecord07",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035759,
+     "pct_nulos": 95.5972
+    },
+    {
+     "nombre": "faulthistoryrecord08",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035811,
+     "pct_nulos": 95.5997
+    },
+    {
+     "nombre": "faulthistoryrecord09",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035812,
+     "pct_nulos": 95.5997
+    },
+    {
+     "nombre": "faulthistoryrecord10",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035783,
+     "pct_nulos": 95.5983
+    },
+    {
+     "nombre": "faulthistoryrecord11",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035822,
+     "pct_nulos": 95.6002
+    },
+    {
+     "nombre": "faulthistoryrecord12",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035806,
+     "pct_nulos": 95.5994
+    },
+    {
+     "nombre": "faulthistoryrecord13",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035770,
+     "pct_nulos": 95.5977
+    },
+    {
+     "nombre": "faulthistoryrecord14",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035815,
+     "pct_nulos": 95.5998
+    },
+    {
+     "nombre": "faulthistoryrecord15",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035829,
+     "pct_nulos": 95.6005
+    },
+    {
+     "nombre": "faulthistoryrecord16",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035800,
+     "pct_nulos": 95.5991
+    },
+    {
+     "nombre": "faulthistoryrecord17",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035789,
+     "pct_nulos": 95.5986
+    },
+    {
+     "nombre": "faulthistoryrecord18",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035804,
+     "pct_nulos": 95.5993
+    },
+    {
+     "nombre": "faulthistoryrecord19",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035821,
+     "pct_nulos": 95.6001
+    },
+    {
+     "nombre": "faulthistoryrecord20",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035835,
+     "pct_nulos": 95.6008
+    },
+    {
+     "nombre": "faulthistoryrecord21",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035796,
+     "pct_nulos": 95.599
+    },
+    {
+     "nombre": "faulthistoryrecord22",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035792,
+     "pct_nulos": 95.5988
+    },
+    {
+     "nombre": "faulthistoryrecord23",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035801,
+     "pct_nulos": 95.5992
+    },
+    {
+     "nombre": "faulthistoryrecord24",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035745,
+     "pct_nulos": 95.5966
+    },
+    {
+     "nombre": "faulthistoryrecord25",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035828,
+     "pct_nulos": 95.6005
+    },
+    {
+     "nombre": "faulthistoryrecord26",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035833,
+     "pct_nulos": 95.6007
+    },
+    {
+     "nombre": "faulthistoryrecord27",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035804,
+     "pct_nulos": 95.5993
+    },
+    {
+     "nombre": "faulthistoryrecord28",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035751,
+     "pct_nulos": 95.5968
+    },
+    {
+     "nombre": "faulthistoryrecord29",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035807,
+     "pct_nulos": 95.5995
+    },
+    {
+     "nombre": "faulthistoryrecord30",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035831,
+     "pct_nulos": 95.6006
+    },
+    {
+     "nombre": "faulthistoryrecord31",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2035780,
+     "pct_nulos": 95.5982
+    },
+    {
+     "nombre": "faulthistoryrecord00_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 84395,
+     "pct_nulos": 3.9631
+    },
+    {
+     "nombre": "faulthistoryrecord01_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 83489,
+     "pct_nulos": 3.9206
+    },
+    {
+     "nombre": "faulthistoryrecord02_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 83827,
+     "pct_nulos": 3.9364
+    },
+    {
+     "nombre": "faulthistoryrecord03_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057367,
+     "pct_nulos": 96.6119
+    },
+    {
+     "nombre": "faulthistoryrecord04_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057377,
+     "pct_nulos": 96.6124
+    },
+    {
+     "nombre": "faulthistoryrecord05_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057563,
+     "pct_nulos": 96.6211
+    },
+    {
+     "nombre": "faulthistoryrecord06_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057574,
+     "pct_nulos": 96.6216
+    },
+    {
+     "nombre": "faulthistoryrecord07_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057538,
+     "pct_nulos": 96.6199
+    },
+    {
+     "nombre": "faulthistoryrecord08_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2058008,
+     "pct_nulos": 96.642
+    },
+    {
+     "nombre": "faulthistoryrecord09_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057977,
+     "pct_nulos": 96.6406
+    },
+    {
+     "nombre": "faulthistoryrecord10_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057943,
+     "pct_nulos": 96.639
+    },
+    {
+     "nombre": "faulthistoryrecord11_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057959,
+     "pct_nulos": 96.6397
+    },
+    {
+     "nombre": "faulthistoryrecord12_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057960,
+     "pct_nulos": 96.6398
+    },
+    {
+     "nombre": "faulthistoryrecord13_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057935,
+     "pct_nulos": 96.6386
+    },
+    {
+     "nombre": "faulthistoryrecord14_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057950,
+     "pct_nulos": 96.6393
+    },
+    {
+     "nombre": "faulthistoryrecord15_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2058183,
+     "pct_nulos": 96.6502
+    },
+    {
+     "nombre": "faulthistoryrecord16_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2058135,
+     "pct_nulos": 96.648
+    },
+    {
+     "nombre": "faulthistoryrecord17_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2058148,
+     "pct_nulos": 96.6486
+    },
+    {
+     "nombre": "faulthistoryrecord18_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2058012,
+     "pct_nulos": 96.6422
+    },
+    {
+     "nombre": "faulthistoryrecord19_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2058051,
+     "pct_nulos": 96.644
+    },
+    {
+     "nombre": "faulthistoryrecord20_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2058064,
+     "pct_nulos": 96.6446
+    },
+    {
+     "nombre": "faulthistoryrecord21_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2058049,
+     "pct_nulos": 96.6439
+    },
+    {
+     "nombre": "faulthistoryrecord22_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057619,
+     "pct_nulos": 96.6237
+    },
+    {
+     "nombre": "faulthistoryrecord23_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057623,
+     "pct_nulos": 96.6239
+    },
+    {
+     "nombre": "faulthistoryrecord24_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057589,
+     "pct_nulos": 96.6223
+    },
+    {
+     "nombre": "faulthistoryrecord25_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057658,
+     "pct_nulos": 96.6256
+    },
+    {
+     "nombre": "faulthistoryrecord26_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057674,
+     "pct_nulos": 96.6263
+    },
+    {
+     "nombre": "faulthistoryrecord27_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057668,
+     "pct_nulos": 96.626
+    },
+    {
+     "nombre": "faulthistoryrecord28_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2062295,
+     "pct_nulos": 96.8433
+    },
+    {
+     "nombre": "faulthistoryrecord29_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2059580,
+     "pct_nulos": 96.7158
+    },
+    {
+     "nombre": "faulthistoryrecord30_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057681,
+     "pct_nulos": 96.6267
+    },
+    {
+     "nombre": "faulthistoryrecord31_time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2057653,
+     "pct_nulos": 96.6253
+    }
+   ],
+   "indices": [
+    {
+     "nombre": "fault_history_read_ts_inverter_uidx",
+     "unico": true
+    }
+   ]
+  },
+  "settings": {
+   "filas": 2284775,
+   "n_columnas": 176,
+   "columnas": [
+    {
+     "nombre": "read_ts",
+     "tipo": "REAL",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "inverter",
+     "tipo": "INTEGER",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "outpriority",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58664,
+     "pct_nulos": 2.5676
+    },
+    {
+     "nombre": "outvoltset",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58317,
+     "pct_nulos": 2.5524
+    },
+    {
+     "nombre": "outfreqset",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58409,
+     "pct_nulos": 2.5564
+    },
+    {
+     "nombre": "linerangeset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58785,
+     "pct_nulos": 2.5729
+    },
+    {
+     "nombre": "paramodeset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58483,
+     "pct_nulos": 2.5597
+    },
+    {
+     "nombre": "ecoen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58602,
+     "pct_nulos": 2.5649
+    },
+    {
+     "nombre": "chgpriority",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58525,
+     "pct_nulos": 2.5615
+    },
+    {
+     "nombre": "maxchgcurrset",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58290,
+     "pct_nulos": 2.5512
+    },
+    {
+     "nombre": "chgcurrbypvset",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58585,
+     "pct_nulos": 2.5641
+    },
+    {
+     "nombre": "chgcurrbylineset",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58394,
+     "pct_nulos": 2.5558
+    },
+    {
+     "nombre": "commidset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58399,
+     "pct_nulos": 2.556
+    },
+    {
+     "nombre": "muteen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58485,
+     "pct_nulos": 2.5598
+    },
+    {
+     "nombre": "ongirdset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58617,
+     "pct_nulos": 2.5655
+    },
+    {
+     "nombre": "chgfullcurrset",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58342,
+     "pct_nulos": 2.5535
+    },
+    {
+     "nombre": "ng_funcen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58400,
+     "pct_nulos": 2.5561
+    },
+    {
+     "nombre": "leakagechecken",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2190730,
+     "pct_nulos": 95.8838
+    },
+    {
+     "nombre": "userpassword",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2190736,
+     "pct_nulos": 95.8841
+    },
+    {
+     "nombre": "passwordset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2190741,
+     "pct_nulos": 95.8843
+    },
+    {
+     "nombre": "ctrlflag1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59204,
+     "pct_nulos": 2.5912
+    },
+    {
+     "nombre": "battactiveset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58859,
+     "pct_nulos": 2.5761
+    },
+    {
+     "nombre": "ongridactivepowerset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58804,
+     "pct_nulos": 2.5737
+    },
+    {
+     "nombre": "ongridreactivepowerset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58397,
+     "pct_nulos": 2.5559
+    },
+    {
+     "nombre": "hybirdpriorityen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58646,
+     "pct_nulos": 2.5668
+    },
+    {
+     "nombre": "ongridpfset",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58569,
+     "pct_nulos": 2.5634
+    },
+    {
+     "nombre": "gridstandardset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58272,
+     "pct_nulos": 2.5504
+    },
+    {
+     "nombre": "isodetecten",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58601,
+     "pct_nulos": 2.5648
+    },
+    {
+     "nombre": "lowisovalue",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58772,
+     "pct_nulos": 2.5723
+    },
+    {
+     "nombre": "maxlinepower",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58438,
+     "pct_nulos": 2.5577
+    },
+    {
+     "nombre": "extctgethosten",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58452,
+     "pct_nulos": 2.5583
+    },
+    {
+     "nombre": "outphasediffset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58303,
+     "pct_nulos": 2.5518
+    },
+    {
+     "nombre": "powerturboen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58342,
+     "pct_nulos": 2.5535
+    },
+    {
+     "nombre": "acoverlaodrestaren",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58538,
+     "pct_nulos": 2.5621
+    },
+    {
+     "nombre": "gridconnectvoltmax",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58427,
+     "pct_nulos": 2.5572
+    },
+    {
+     "nombre": "gridconnectvoltmin",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58684,
+     "pct_nulos": 2.5685
+    },
+    {
+     "nombre": "gridconnectfreqmax",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58869,
+     "pct_nulos": 2.5766
+    },
+    {
+     "nombre": "gridconnectfreqmin",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58363,
+     "pct_nulos": 2.5544
+    },
+    {
+     "nombre": "gridreconnectvoltmax",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58328,
+     "pct_nulos": 2.5529
+    },
+    {
+     "nombre": "gridreconnectvoltmin",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58414,
+     "pct_nulos": 2.5567
+    },
+    {
+     "nombre": "gridreconnectfreqmax",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58425,
+     "pct_nulos": 2.5571
+    },
+    {
+     "nombre": "gridreconnectfreqmin",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58380,
+     "pct_nulos": 2.5552
+    },
+    {
+     "nombre": "gridovlevel1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58525,
+     "pct_nulos": 2.5615
+    },
+    {
+     "nombre": "gridovdelaytime1",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58497,
+     "pct_nulos": 2.5603
+    },
+    {
+     "nombre": "gridovlevel2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58097,
+     "pct_nulos": 2.5428
+    },
+    {
+     "nombre": "gridovdelaytime2",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58256,
+     "pct_nulos": 2.5497
+    },
+    {
+     "nombre": "griduvlevel1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58453,
+     "pct_nulos": 2.5584
+    },
+    {
+     "nombre": "griduvdelaytime1",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58448,
+     "pct_nulos": 2.5582
+    },
+    {
+     "nombre": "griduvlevel2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58740,
+     "pct_nulos": 2.5709
+    },
+    {
+     "nombre": "griduvdelaytime2",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58111,
+     "pct_nulos": 2.5434
+    },
+    {
+     "nombre": "ov10minprotectvalue",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58455,
+     "pct_nulos": 2.5585
+    },
+    {
+     "nombre": "gridoflevel1",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58499,
+     "pct_nulos": 2.5604
+    },
+    {
+     "nombre": "gridofdelaytime1",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58695,
+     "pct_nulos": 2.569
+    },
+    {
+     "nombre": "gridoflevel2",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58562,
+     "pct_nulos": 2.5631
+    },
+    {
+     "nombre": "gridofdelaytime2",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58372,
+     "pct_nulos": 2.5548
+    },
+    {
+     "nombre": "griduflevel1",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58575,
+     "pct_nulos": 2.5637
+    },
+    {
+     "nombre": "gridufdelaytime1",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58258,
+     "pct_nulos": 2.5498
+    },
+    {
+     "nombre": "griduflevel2",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58691,
+     "pct_nulos": 2.5688
+    },
+    {
+     "nombre": "gridufdelaytime2",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58278,
+     "pct_nulos": 2.5507
+    },
+    {
+     "nombre": "startongriddelay",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58803,
+     "pct_nulos": 2.5737
+    },
+    {
+     "nombre": "loadingslope",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58255,
+     "pct_nulos": 2.5497
+    },
+    {
+     "nombre": "ongridreconnectdelay",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58626,
+     "pct_nulos": 2.5659
+    },
+    {
+     "nombre": "reloadingslope",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58598,
+     "pct_nulos": 2.5647
+    },
+    {
+     "nombre": "powerdynamicrate",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58724,
+     "pct_nulos": 2.5702
+    },
+    {
+     "nombre": "islanden",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58767,
+     "pct_nulos": 2.5721
+    },
+    {
+     "nombre": "hvrten",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58372,
+     "pct_nulos": 2.5548
+    },
+    {
+     "nombre": "lvrten",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58365,
+     "pct_nulos": 2.5545
+    },
+    {
+     "nombre": "constreactpoweren",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58659,
+     "pct_nulos": 2.5674
+    },
+    {
+     "nombre": "constpfen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58746,
+     "pct_nulos": 2.5712
+    },
+    {
+     "nombre": "f_pcurveen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58391,
+     "pct_nulos": 2.5557
+    },
+    {
+     "nombre": "p_qcurveen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58259,
+     "pct_nulos": 2.5499
+    },
+    {
+     "nombre": "u_pcurveen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58366,
+     "pct_nulos": 2.5546
+    },
+    {
+     "nombre": "u_qcurveen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58691,
+     "pct_nulos": 2.5688
+    },
+    {
+     "nombre": "drmen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58629,
+     "pct_nulos": 2.5661
+    },
+    {
+     "nombre": "remoteturnoffen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58921,
+     "pct_nulos": 2.5789
+    },
+    {
+     "nombre": "permitservice",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58324,
+     "pct_nulos": 2.5527
+    },
+    {
+     "nombre": "reactpowerdynamicrate",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58446,
+     "pct_nulos": 2.5581
+    },
+    {
+     "nombre": "reserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 6297,
+     "pct_nulos": 0.2756
+    },
+    {
+     "nombre": "maxongridactivepower",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58627,
+     "pct_nulos": 2.566
+    },
+    {
+     "nombre": "maxlinecurr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58781,
+     "pct_nulos": 2.5727
+    },
+    {
+     "nombre": "smartmeterpower",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58819,
+     "pct_nulos": 2.5744
+    },
+    {
+     "nombre": "battype",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2190892,
+     "pct_nulos": 95.8909
+    },
+    {
+     "nombre": "cvvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58504,
+     "pct_nulos": 2.5606
+    },
+    {
+     "nombre": "floatvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58709,
+     "pct_nulos": 2.5696
+    },
+    {
+     "nombre": "battovervolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58780,
+     "pct_nulos": 2.5727
+    },
+    {
+     "nombre": "cvchgtimeset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58798,
+     "pct_nulos": 2.5735
+    },
+    {
+     "nombre": "cvchgbackvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58780,
+     "pct_nulos": 2.5727
+    },
+    {
+     "nombre": "inv2linevolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58791,
+     "pct_nulos": 2.5732
+    },
+    {
+     "nombre": "lineback2invvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58686,
+     "pct_nulos": 2.5686
+    },
+    {
+     "nombre": "battlowvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58579,
+     "pct_nulos": 2.5639
+    },
+    {
+     "nombre": "battdelayoffvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58418,
+     "pct_nulos": 2.5568
+    },
+    {
+     "nombre": "batteodvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58693,
+     "pct_nulos": 2.5689
+    },
+    {
+     "nombre": "battdelayofftime",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58706,
+     "pct_nulos": 2.5694
+    },
+    {
+     "nombre": "batteodbackvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58441,
+     "pct_nulos": 2.5578
+    },
+    {
+     "nombre": "bmsset",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58566,
+     "pct_nulos": 2.5633
+    },
+    {
+     "nombre": "bmsprotocal",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58347,
+     "pct_nulos": 2.5537
+    },
+    {
+     "nombre": "batsoclowalarm",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58327,
+     "pct_nulos": 2.5529
+    },
+    {
+     "nombre": "batstopsoc",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58593,
+     "pct_nulos": 2.5645
+    },
+    {
+     "nombre": "battfullsoc",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58855,
+     "pct_nulos": 2.576
+    },
+    {
+     "nombre": "inv2linesoc",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58784,
+     "pct_nulos": 2.5729
+    },
+    {
+     "nombre": "lineback2invsoc",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58756,
+     "pct_nulos": 2.5716
+    },
+    {
+     "nombre": "ontimechargeen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58721,
+     "pct_nulos": 2.5701
+    },
+    {
+     "nombre": "chargestarttime1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58575,
+     "pct_nulos": 2.5637
+    },
+    {
+     "nombre": "chargeendtime1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59226,
+     "pct_nulos": 2.5922
+    },
+    {
+     "nombre": "chargestarttime2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58508,
+     "pct_nulos": 2.5608
+    },
+    {
+     "nombre": "chargeendtime2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58434,
+     "pct_nulos": 2.5575
+    },
+    {
+     "nombre": "chargestarttime3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58645,
+     "pct_nulos": 2.5668
+    },
+    {
+     "nombre": "chargeendtime3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58787,
+     "pct_nulos": 2.573
+    },
+    {
+     "nombre": "ontimedischgen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58702,
+     "pct_nulos": 2.5693
+    },
+    {
+     "nombre": "dischgstarttime1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58439,
+     "pct_nulos": 2.5578
+    },
+    {
+     "nombre": "dischgendtime1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58584,
+     "pct_nulos": 2.5641
+    },
+    {
+     "nombre": "dischgstarttime2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58645,
+     "pct_nulos": 2.5668
+    },
+    {
+     "nombre": "dischgendtime2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58849,
+     "pct_nulos": 2.5757
+    },
+    {
+     "nombre": "dischgstarttime3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58813,
+     "pct_nulos": 2.5741
+    },
+    {
+     "nombre": "dischgendtime3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59053,
+     "pct_nulos": 2.5846
+    },
+    {
+     "nombre": "battpacknotunion",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58789,
+     "pct_nulos": 2.5731
+    },
+    {
+     "nombre": "forcechgstopsoc",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58420,
+     "pct_nulos": 2.5569
+    },
+    {
+     "nombre": "battpackrateah",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58613,
+     "pct_nulos": 2.5654
+    },
+    {
+     "nombre": "battsetreserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 4819,
+     "pct_nulos": 0.2109
+    },
+    {
+     "nombre": "fp_of_start",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59478,
+     "pct_nulos": 2.6032
+    },
+    {
+     "nombre": "fp_uf_start",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59187,
+     "pct_nulos": 2.5905
+    },
+    {
+     "nombre": "fp_of_end",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59305,
+     "pct_nulos": 2.5957
+    },
+    {
+     "nombre": "fp_uf_end",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59117,
+     "pct_nulos": 2.5874
+    },
+    {
+     "nombre": "fp_of_dropslope",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58305,
+     "pct_nulos": 2.5519
+    },
+    {
+     "nombre": "fp_uf_lodingslope",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58711,
+     "pct_nulos": 2.5697
+    },
+    {
+     "nombre": "fp_actpowerresptr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58861,
+     "pct_nulos": 2.5762
+    },
+    {
+     "nombre": "pq_p1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58444,
+     "pct_nulos": 2.558
+    },
+    {
+     "nombre": "pq_q1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59124,
+     "pct_nulos": 2.5877
+    },
+    {
+     "nombre": "pq_p2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58883,
+     "pct_nulos": 2.5772
+    },
+    {
+     "nombre": "pq_q2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58611,
+     "pct_nulos": 2.5653
+    },
+    {
+     "nombre": "pq_p3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58753,
+     "pct_nulos": 2.5715
+    },
+    {
+     "nombre": "pq_q3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58884,
+     "pct_nulos": 2.5772
+    },
+    {
+     "nombre": "pq_p1n",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58569,
+     "pct_nulos": 2.5634
+    },
+    {
+     "nombre": "pq_q1n",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58423,
+     "pct_nulos": 2.5571
+    },
+    {
+     "nombre": "pq_p2n",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58650,
+     "pct_nulos": 2.567
+    },
+    {
+     "nombre": "pq_q2n",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58833,
+     "pct_nulos": 2.575
+    },
+    {
+     "nombre": "pq_p3n",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58560,
+     "pct_nulos": 2.5631
+    },
+    {
+     "nombre": "pq_q3n",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58631,
+     "pct_nulos": 2.5662
+    },
+    {
+     "nombre": "pq_enablevolt",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58754,
+     "pct_nulos": 2.5715
+    },
+    {
+     "nombre": "pq_disablevolt",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58764,
+     "pct_nulos": 2.572
+    },
+    {
+     "nombre": "up_v1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59022,
+     "pct_nulos": 2.5833
+    },
+    {
+     "nombre": "up_p1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58745,
+     "pct_nulos": 2.5712
+    },
+    {
+     "nombre": "up_v2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58711,
+     "pct_nulos": 2.5697
+    },
+    {
+     "nombre": "up_p2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58798,
+     "pct_nulos": 2.5735
+    },
+    {
+     "nombre": "up_actpowerresptr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58798,
+     "pct_nulos": 2.5735
+    },
+    {
+     "nombre": "up_v3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58863,
+     "pct_nulos": 2.5763
+    },
+    {
+     "nombre": "up_p3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59121,
+     "pct_nulos": 2.5876
+    },
+    {
+     "nombre": "up_v4",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58961,
+     "pct_nulos": 2.5806
+    },
+    {
+     "nombre": "up_p4",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58898,
+     "pct_nulos": 2.5778
+    },
+    {
+     "nombre": "uq_vref",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58932,
+     "pct_nulos": 2.5793
+    },
+    {
+     "nombre": "uq_v1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58841,
+     "pct_nulos": 2.5754
+    },
+    {
+     "nombre": "uq_q1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58884,
+     "pct_nulos": 2.5772
+    },
+    {
+     "nombre": "uq_v2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58662,
+     "pct_nulos": 2.5675
+    },
+    {
+     "nombre": "uq_q2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59419,
+     "pct_nulos": 2.6006
+    },
+    {
+     "nombre": "uq_v3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58955,
+     "pct_nulos": 2.5803
+    },
+    {
+     "nombre": "uq_q3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58677,
+     "pct_nulos": 2.5682
+    },
+    {
+     "nombre": "uq_v4",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58690,
+     "pct_nulos": 2.5687
+    },
+    {
+     "nombre": "uq_q4",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58776,
+     "pct_nulos": 2.5725
+    },
+    {
+     "nombre": "uq_reactpowerresptr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58744,
+     "pct_nulos": 2.5711
+    },
+    {
+     "nombre": "uq_vrefautoen",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58858,
+     "pct_nulos": 2.5761
+    },
+    {
+     "nombre": "uq_vrefresptr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58760,
+     "pct_nulos": 2.5718
+    },
+    {
+     "nombre": "uq_enablepower",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58948,
+     "pct_nulos": 2.58
+    },
+    {
+     "nombre": "uq_disablepower",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58785,
+     "pct_nulos": 2.5729
+    },
+    {
+     "nombre": "hvrt_level1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58958,
+     "pct_nulos": 2.5805
+    },
+    {
+     "nombre": "hvrt_level1time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58539,
+     "pct_nulos": 2.5621
+    },
+    {
+     "nombre": "hvrt_level2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58875,
+     "pct_nulos": 2.5768
+    },
+    {
+     "nombre": "hvrt_level2time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58850,
+     "pct_nulos": 2.5757
+    },
+    {
+     "nombre": "hvrt_level3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58677,
+     "pct_nulos": 2.5682
+    },
+    {
+     "nombre": "hvrt_level3time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58707,
+     "pct_nulos": 2.5695
+    },
+    {
+     "nombre": "lvrt_level1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59102,
+     "pct_nulos": 2.5868
+    },
+    {
+     "nombre": "lvrt_level1time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58990,
+     "pct_nulos": 2.5819
+    },
+    {
+     "nombre": "lvrt_level2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59223,
+     "pct_nulos": 2.5921
+    },
+    {
+     "nombre": "lvrt_level2time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58647,
+     "pct_nulos": 2.5669
+    },
+    {
+     "nombre": "lvrt_level3",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58931,
+     "pct_nulos": 2.5793
+    },
+    {
+     "nombre": "lvrt_level3time",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58889,
+     "pct_nulos": 2.5775
+    },
+    {
+     "nombre": "presenttime",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 80739,
+     "pct_nulos": 3.5338
+    }
+   ],
+   "indices": [
+    {
+     "nombre": "settings_read_ts_inverter_uidx",
+     "unico": true
+    }
+   ]
+  },
+  "specs": {
+   "filas": 1333174,
+   "n_columnas": 16,
+   "columnas": [
+    {
+     "nombre": "read_ts",
+     "tipo": "REAL",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "inverter",
+     "tipo": "INTEGER",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "machcode",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1239106,
+     "pct_nulos": 92.9441
+    },
+    {
+     "nombre": "producttype",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1239104,
+     "pct_nulos": 92.9439
+    },
+    {
+     "nombre": "manufacturename",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1239475,
+     "pct_nulos": 92.9717
+    },
+    {
+     "nombre": "sourcesn",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1240533,
+     "pct_nulos": 93.0511
+    },
+    {
+     "nombre": "hwver_m1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1239048,
+     "pct_nulos": 92.9397
+    },
+    {
+     "nombre": "hwver_m2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1239546,
+     "pct_nulos": 92.9771
+    },
+    {
+     "nombre": "hwver_s1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1239144,
+     "pct_nulos": 92.9469
+    },
+    {
+     "nombre": "hwver_s2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1239379,
+     "pct_nulos": 92.9645
+    },
+    {
+     "nombre": "protocolver",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1239118,
+     "pct_nulos": 92.945
+    },
+    {
+     "nombre": "bmsver",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1239206,
+     "pct_nulos": 92.9516
+    },
+    {
+     "nombre": "libver",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1239199,
+     "pct_nulos": 92.951
+    },
+    {
+     "nombre": "cpubuidtime",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 6730,
+     "pct_nulos": 0.5048
+    },
+    {
+     "nombre": "customsn",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 6412,
+     "pct_nulos": 0.481
+    },
+    {
+     "nombre": "prdreserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1331836,
+     "pct_nulos": 99.8996
+    }
+   ],
+   "indices": [
+    {
+     "nombre": "specs_read_ts_inverter_uidx",
+     "unico": true
+    }
+   ]
+  },
+  "sqlite_stat1": {
+   "filas": 10,
+   "n_columnas": 3,
+   "columnas": [
+    {
+     "nombre": "tbl",
+     "tipo": "",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "idx",
+     "tipo": "",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "stat",
+     "tipo": "",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    }
+   ],
+   "indices": []
+  },
+  "sqlite_stat4": {
+   "filas": 240,
+   "n_columnas": 6,
+   "columnas": [
+    {
+     "nombre": "tbl",
+     "tipo": "",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "idx",
+     "tipo": "",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "neq",
+     "tipo": "",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "nlt",
+     "tipo": "",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "ndlt",
+     "tipo": "",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "sample",
+     "tipo": "",
+     "not_null": false,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    }
+   ],
+   "indices": []
+  },
+  "statistics": {
+   "filas": 2285904,
+   "n_columnas": 31,
+   "columnas": [
+    {
+     "nombre": "read_ts",
+     "tipo": "REAL",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "inverter",
+     "tipo": "INTEGER",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "batchgenergylast7day",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 4582,
+     "pct_nulos": 0.2004
+    },
+    {
+     "nombre": "batdischgenergylast7day",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3991,
+     "pct_nulos": 0.1746
+    },
+    {
+     "nombre": "linechgenergylast7day",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3961,
+     "pct_nulos": 0.1733
+    },
+    {
+     "nombre": "loadconsumlast7day",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3823,
+     "pct_nulos": 0.1672
+    },
+    {
+     "nombre": "loadconsumfromlinelast7day",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 4000,
+     "pct_nulos": 0.175
+    },
+    {
+     "nombre": "energyreserved0",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2938,
+     "pct_nulos": 0.1285
+    },
+    {
+     "nombre": "generatedacpowertoday",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58433,
+     "pct_nulos": 2.5562
+    },
+    {
+     "nombre": "batchgenergytoday",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58419,
+     "pct_nulos": 2.5556
+    },
+    {
+     "nombre": "batdischgenergytoday",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58166,
+     "pct_nulos": 2.5446
+    },
+    {
+     "nombre": "pvgeneratenergytoday",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58392,
+     "pct_nulos": 2.5544
+    },
+    {
+     "nombre": "usedenergytoday",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58226,
+     "pct_nulos": 2.5472
+    },
+    {
+     "nombre": "workdaystotal",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58525,
+     "pct_nulos": 2.5603
+    },
+    {
+     "nombre": "batchgenergytotal",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2594,
+     "pct_nulos": 0.1135
+    },
+    {
+     "nombre": "batdischgenergytotal",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3121,
+     "pct_nulos": 0.1365
+    },
+    {
+     "nombre": "pvgeneratenergytotal",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2554,
+     "pct_nulos": 0.1117
+    },
+    {
+     "nombre": "usedenergytotal",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3351,
+     "pct_nulos": 0.1466
+    },
+    {
+     "nombre": "linechgenergytday",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58395,
+     "pct_nulos": 2.5546
+    },
+    {
+     "nombre": "loadconsumlinetday",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58311,
+     "pct_nulos": 2.5509
+    },
+    {
+     "nombre": "invworktimetoday",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58289,
+     "pct_nulos": 2.5499
+    },
+    {
+     "nombre": "lineworktimetoday",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58503,
+     "pct_nulos": 2.5593
+    },
+    {
+     "nombre": "linechgenergytotal",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3953,
+     "pct_nulos": 0.1729
+    },
+    {
+     "nombre": "loadconsumlinetotal",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2741,
+     "pct_nulos": 0.1199
+    },
+    {
+     "nombre": "invworktimetotal",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59061,
+     "pct_nulos": 2.5837
+    },
+    {
+     "nombre": "lineworktimetotal",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58937,
+     "pct_nulos": 2.5783
+    },
+    {
+     "nombre": "generatedacpowertotal",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3001,
+     "pct_nulos": 0.1313
+    },
+    {
+     "nombre": "energyreserved2",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 59473,
+     "pct_nulos": 2.6017
+    },
+    {
+     "nombre": "energyreserved1",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 4366,
+     "pct_nulos": 0.191
+    },
+    {
+     "nombre": "powerontime",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1245785,
+     "pct_nulos": 54.4986
+    },
+    {
+     "nombre": "stactimeback",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 82025,
+     "pct_nulos": 3.5883
+    }
+   ],
+   "indices": [
+    {
+     "nombre": "statistics_read_ts_inverter_uidx",
+     "unico": true
+    }
+   ]
+  },
+  "status": {
+   "filas": 2240052,
+   "n_columnas": 20,
+   "columnas": [
+    {
+     "nombre": "read_ts",
+     "tipo": "REAL",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "inverter",
+     "tipo": "INTEGER",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "startupstatus",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57555,
+     "pct_nulos": 2.5694
+    },
+    {
+     "nombre": "outstatus",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58196,
+     "pct_nulos": 2.598
+    },
+    {
+     "nombre": "chgstatus",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57480,
+     "pct_nulos": 2.566
+    },
+    {
+     "nombre": "paramode",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57602,
+     "pct_nulos": 2.5715
+    },
+    {
+     "nombre": "ecomode",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57588,
+     "pct_nulos": 2.5708
+    },
+    {
+     "nombre": "battselfcheck",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57309,
+     "pct_nulos": 2.5584
+    },
+    {
+     "nombre": "drycontact1",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57289,
+     "pct_nulos": 2.5575
+    },
+    {
+     "nombre": "drycontact2",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57420,
+     "pct_nulos": 2.5633
+    },
+    {
+     "nombre": "passwordstatus",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57281,
+     "pct_nulos": 2.5571
+    },
+    {
+     "nombre": "sysstateflag",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3083,
+     "pct_nulos": 0.1376
+    },
+    {
+     "nombre": "sysalarmflag",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3064,
+     "pct_nulos": 0.1368
+    },
+    {
+     "nombre": "deroperationstate",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57931,
+     "pct_nulos": 2.5861
+    },
+    {
+     "nombre": "derconnectstate",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58112,
+     "pct_nulos": 2.5942
+    },
+    {
+     "nombre": "deralarmstatus",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57736,
+     "pct_nulos": 2.5774
+    },
+    {
+     "nombre": "derinverterstate",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2239162,
+     "pct_nulos": 99.9603
+    },
+    {
+     "nombre": "derbattstate",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57469,
+     "pct_nulos": 2.5655
+    },
+    {
+     "nombre": "remotectrlstatus",
+     "tipo": "INTEGER",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57506,
+     "pct_nulos": 2.5672
+    },
+    {
+     "nombre": "statusreserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3430,
+     "pct_nulos": 0.1531
+    }
+   ],
+   "indices": [
+    {
+     "nombre": "status_read_ts_inverter_uidx",
+     "unico": true
+    }
+   ]
+  },
+  "totals": {
+   "filas": 2279918,
+   "n_columnas": 21,
+   "columnas": [
+    {
+     "nombre": "read_ts",
+     "tipo": "REAL",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "inverter",
+     "tipo": "INTEGER",
+     "not_null": true,
+     "pk": false,
+     "nulos": 0,
+     "pct_nulos": 0.0
+    },
+    {
+     "nombre": "alarmdetail",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 1481536,
+     "pct_nulos": 64.982
+    },
+    {
+     "nombre": "bmsreqchgvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2273864,
+     "pct_nulos": 99.7345
+    },
+    {
+     "nombre": "bmsreqeodvolt",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57336,
+     "pct_nulos": 2.5148
+    },
+    {
+     "nombre": "bmsreqchgcurr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57953,
+     "pct_nulos": 2.5419
+    },
+    {
+     "nombre": "bmsreqdischgcurr",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57824,
+     "pct_nulos": 2.5362
+    },
+    {
+     "nombre": "bmsreserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2474,
+     "pct_nulos": 0.1085
+    },
+    {
+     "nombre": "battsumpower",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58418,
+     "pct_nulos": 2.5623
+    },
+    {
+     "nombre": "sys_battreserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 3576,
+     "pct_nulos": 0.1568
+    },
+    {
+     "nombre": "extpvsumoutw_a",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58119,
+     "pct_nulos": 2.5492
+    },
+    {
+     "nombre": "sys_pvreserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 4489,
+     "pct_nulos": 0.1969
+    },
+    {
+     "nombre": "backupsumoutw_a",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57870,
+     "pct_nulos": 2.5382
+    },
+    {
+     "nombre": "backupsumoutva_a",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57404,
+     "pct_nulos": 2.5178
+    },
+    {
+     "nombre": "normalsumloadw_a",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57664,
+     "pct_nulos": 2.5292
+    },
+    {
+     "nombre": "normalsumloadva_a",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57718,
+     "pct_nulos": 2.5316
+    },
+    {
+     "nombre": "generatedsumpowerp_a",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57765,
+     "pct_nulos": 2.5336
+    },
+    {
+     "nombre": "generatedsumpowers_a",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 57476,
+     "pct_nulos": 2.521
+    },
+    {
+     "nombre": "sys_outreserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 2858,
+     "pct_nulos": 0.1254
+    },
+    {
+     "nombre": "linesumpowerw_a",
+     "tipo": "REAL",
+     "not_null": false,
+     "pk": false,
+     "nulos": 58367,
+     "pct_nulos": 2.56
+    },
+    {
+     "nombre": "sys_linereserve",
+     "tipo": "TEXT",
+     "not_null": false,
+     "pk": false,
+     "nulos": 4182,
+     "pct_nulos": 0.1834
+    }
+   ],
+   "indices": [
+    {
+     "nombre": "totals_read_ts_inverter_uidx",
+     "unico": true
+    }
+   ]
+  }
+ },
+ "cobertura": {
+  "analog_measurements": {
+   "llave_natural": "(read_ts, inverter)",
+   "llaves_duplicadas": 0,
+   "por_inversor": [
+    {
+     "inverter": 1,
+     "filas": 1610276,
+     "min_utc": "2025-07-12T13:31:35+00:00",
+     "max_utc": "2026-07-13T05:13:53+00:00",
+     "dias_utc_con_datos": 335,
+     "dias_calendario": 366
+    },
+    {
+     "inverter": 2,
+     "filas": 1379483,
+     "min_utc": "2025-07-14T05:53:32+00:00",
+     "max_utc": "2026-06-22T05:35:24+00:00",
+     "dias_utc_con_datos": 305,
+     "dias_calendario": 343
+    }
+   ]
+  },
+  "context": {
+   "filas": 25178,
+   "min_start_utc": "2024-04-30T16:00:00+00:00",
+   "max_end_utc": "2026-07-22T15:59:59+00:00",
+   "min_recorded_utc": "2024-07-27T10:00:00+00:00",
+   "max_recorded_utc": "2026-07-14T10:59:48+00:00",
+   "end_menor_que_start": 0,
+   "recorded_posterior_a_start": 4658
+  },
+  "fault_history": {
+   "llave_natural": "(read_ts, inverter)",
+   "llaves_duplicadas": 0,
+   "por_inversor": [
+    {
+     "inverter": 1,
+     "filas": 1175134,
+     "min_utc": "2025-07-12T13:31:35+00:00",
+     "max_utc": "2026-07-13T05:13:53+00:00",
+     "dias_utc_con_datos": 273,
+     "dias_calendario": 366
+    },
+    {
+     "inverter": 2,
+     "filas": 954383,
+     "min_utc": "2025-07-14T05:53:32+00:00",
+     "max_utc": "2026-06-22T05:35:24+00:00",
+     "dias_utc_con_datos": 243,
+     "dias_calendario": 343
+    }
+   ]
+  },
+  "settings": {
+   "llave_natural": "(read_ts, inverter)",
+   "llaves_duplicadas": 0,
+   "por_inversor": [
+    {
+     "inverter": 1,
+     "filas": 1280052,
+     "min_utc": "2025-07-12T13:31:35+00:00",
+     "max_utc": "2026-07-13T05:13:53+00:00",
+     "dias_utc_con_datos": 289,
+     "dias_calendario": 366
+    },
+    {
+     "inverter": 2,
+     "filas": 1004723,
+     "min_utc": "2025-07-14T05:53:32+00:00",
+     "max_utc": "2026-06-22T05:35:24+00:00",
+     "dias_utc_con_datos": 251,
+     "dias_calendario": 343
+    }
+   ]
+  },
+  "specs": {
+   "llave_natural": "(read_ts, inverter)",
+   "llaves_duplicadas": 0,
+   "por_inversor": [
+    {
+     "inverter": 1,
+     "filas": 678646,
+     "min_utc": "2025-07-12T13:31:35+00:00",
+     "max_utc": "2026-02-02T18:39:15+00:00",
+     "dias_utc_con_datos": 172,
+     "dias_calendario": 206
+    },
+    {
+     "inverter": 2,
+     "filas": 654528,
+     "min_utc": "2025-07-14T05:53:32+00:00",
+     "max_utc": "2026-02-02T18:40:30+00:00",
+     "dias_utc_con_datos": 165,
+     "dias_calendario": 204
+    }
+   ]
+  },
+  "statistics": {
+   "llave_natural": "(read_ts, inverter)",
+   "llaves_duplicadas": 0,
+   "por_inversor": [
+    {
+     "inverter": 1,
+     "filas": 1279772,
+     "min_utc": "2025-07-12T13:31:35+00:00",
+     "max_utc": "2026-07-13T05:13:53+00:00",
+     "dias_utc_con_datos": 289,
+     "dias_calendario": 366
+    },
+    {
+     "inverter": 2,
+     "filas": 1006132,
+     "min_utc": "2025-07-14T05:53:32+00:00",
+     "max_utc": "2026-06-22T05:35:24+00:00",
+     "dias_utc_con_datos": 251,
+     "dias_calendario": 343
+    }
+   ]
+  },
+  "status": {
+   "llave_natural": "(read_ts, inverter)",
+   "llaves_duplicadas": 0,
+   "por_inversor": [
+    {
+     "inverter": 1,
+     "filas": 1233147,
+     "min_utc": "2025-07-12T13:31:35+00:00",
+     "max_utc": "2026-07-13T05:13:53+00:00",
+     "dias_utc_con_datos": 282,
+     "dias_calendario": 366
+    },
+    {
+     "inverter": 2,
+     "filas": 1006905,
+     "min_utc": "2025-07-14T05:53:32+00:00",
+     "max_utc": "2026-06-22T05:35:24+00:00",
+     "dias_utc_con_datos": 251,
+     "dias_calendario": 343
+    }
+   ]
+  },
+  "totals": {
+   "llave_natural": "(read_ts, inverter)",
+   "llaves_duplicadas": 0,
+   "por_inversor": [
+    {
+     "inverter": 1,
+     "filas": 1262985,
+     "min_utc": "2025-07-12T13:31:35+00:00",
+     "max_utc": "2026-07-13T05:13:53+00:00",
+     "dias_utc_con_datos": 286,
+     "dias_calendario": 366
+    },
+    {
+     "inverter": 2,
+     "filas": 1016933,
+     "min_utc": "2025-07-14T05:53:32+00:00",
+     "max_utc": "2026-06-22T05:35:24+00:00",
+     "dias_utc_con_datos": 252,
+     "dias_calendario": 343
+    }
+   ]
+  }
+ },
+ "cadencia_analog_measurements": {
+  "1": {
+   "intervalos": 1610275,
+   "mediana_s_aprox": 12.565,
+   "p95_s_aprox": 59.662,
+   "p99_s_aprox": 111.1,
+   "distribucion": {
+    "1-10 min": 47842,
+    "10-60 min": 101,
+    "1-24 h": 13,
+    "> 1 dia": 3,
+    "0-30 s": 1507264,
+    "30-60 s": 55052
+   },
+   "huecos_mayores_1h": [
+    {
+     "desde_utc": "2025-08-03T04:58:15+00:00",
+     "hasta_utc": "2025-08-29T08:29:25+00:00",
+     "horas": 627.52
+    },
+    {
+     "desde_utc": "2025-11-15T19:48:37+00:00",
+     "hasta_utc": "2025-11-21T07:28:18+00:00",
+     "horas": 131.66
+    },
+    {
+     "desde_utc": "2025-09-22T08:45:23+00:00",
+     "hasta_utc": "2025-09-25T09:22:00+00:00",
+     "horas": 72.61
+    },
+    {
+     "desde_utc": "2025-07-27T08:25:21+00:00",
+     "hasta_utc": "2025-07-28T05:37:36+00:00",
+     "horas": 21.2
+    },
+    {
+     "desde_utc": "2026-06-16T11:29:17+00:00",
+     "hasta_utc": "2026-06-17T00:56:04+00:00",
+     "horas": 13.45
+    },
+    {
+     "desde_utc": "2026-06-14T13:00:15+00:00",
+     "hasta_utc": "2026-06-15T01:34:47+00:00",
+     "horas": 12.58
+    },
+    {
+     "desde_utc": "2026-06-18T13:39:24+00:00",
+     "hasta_utc": "2026-06-19T00:25:43+00:00",
+     "horas": 10.77
+    },
+    {
+     "desde_utc": "2025-07-13T17:18:57+00:00",
+     "hasta_utc": "2025-07-14T04:02:28+00:00",
+     "horas": 10.73
+    },
+    {
+     "desde_utc": "2026-06-15T21:58:33+00:00",
+     "hasta_utc": "2026-06-16T08:11:10+00:00",
+     "horas": 10.21
+    },
+    {
+     "desde_utc": "2026-05-05T17:54:05+00:00",
+     "hasta_utc": "2026-05-06T01:25:43+00:00",
+     "horas": 7.53
+    },
+    {
+     "desde_utc": "2026-05-09T19:22:06+00:00",
+     "hasta_utc": "2026-05-10T01:06:15+00:00",
+     "horas": 5.74
+    },
+    {
+     "desde_utc": "2026-05-16T19:12:13+00:00",
+     "hasta_utc": "2026-05-17T00:21:06+00:00",
+     "horas": 5.15
+    },
+    {
+     "desde_utc": "2025-07-18T02:46:40+00:00",
+     "hasta_utc": "2025-07-18T06:56:31+00:00",
+     "horas": 4.16
+    },
+    {
+     "desde_utc": "2026-06-07T20:06:12+00:00",
+     "hasta_utc": "2026-06-07T22:24:57+00:00",
+     "horas": 2.31
+    },
+    {
+     "desde_utc": "2025-07-30T19:02:52+00:00",
+     "hasta_utc": "2025-07-30T20:28:41+00:00",
+     "horas": 1.43
+    },
+    {
+     "desde_utc": "2026-06-13T22:59:30+00:00",
+     "hasta_utc": "2026-06-14T00:24:55+00:00",
+     "horas": 1.42
+    }
+   ],
+   "horas_perdidas_en_huecos_mayores_1h": 938.5
+  },
+  "2": {
+   "intervalos": 1379482,
+   "mediana_s_aprox": 12.581,
+   "p95_s_aprox": 59.724,
+   "p99_s_aprox": 111.183,
+   "distribucion": {
+    "1-10 min": 47520,
+    "1-24 h": 12,
+    "10-60 min": 25,
+    "> 1 dia": 3,
+    "0-30 s": 1276870,
+    "30-60 s": 55052
+   },
+   "huecos_mayores_1h": [
+    {
+     "desde_utc": "2025-08-03T04:58:15+00:00",
+     "hasta_utc": "2025-08-29T08:29:25+00:00",
+     "horas": 627.52
+    },
+    {
+     "desde_utc": "2025-11-08T22:56:07+00:00",
+     "hasta_utc": "2025-11-21T07:28:18+00:00",
+     "horas": 296.54
+    },
+    {
+     "desde_utc": "2025-09-22T08:45:23+00:00",
+     "hasta_utc": "2025-09-25T09:22:00+00:00",
+     "horas": 72.61
+    },
+    {
+     "desde_utc": "2025-07-27T08:25:21+00:00",
+     "hasta_utc": "2025-07-28T05:37:36+00:00",
+     "horas": 21.2
+    },
+    {
+     "desde_utc": "2026-06-16T11:29:17+00:00",
+     "hasta_utc": "2026-06-17T00:56:04+00:00",
+     "horas": 13.45
+    },
+    {
+     "desde_utc": "2026-06-14T13:00:15+00:00",
+     "hasta_utc": "2026-06-15T01:34:47+00:00",
+     "horas": 12.58
+    },
+    {
+     "desde_utc": "2026-06-18T13:39:24+00:00",
+     "hasta_utc": "2026-06-19T00:25:43+00:00",
+     "horas": 10.77
+    },
+    {
+     "desde_utc": "2026-06-15T21:58:33+00:00",
+     "hasta_utc": "2026-06-16T08:11:10+00:00",
+     "horas": 10.21
+    },
+    {
+     "desde_utc": "2026-05-05T17:54:05+00:00",
+     "hasta_utc": "2026-05-06T01:25:43+00:00",
+     "horas": 7.53
+    },
+    {
+     "desde_utc": "2026-05-09T19:22:06+00:00",
+     "hasta_utc": "2026-05-10T01:06:15+00:00",
+     "horas": 5.74
+    },
+    {
+     "desde_utc": "2026-05-16T19:12:13+00:00",
+     "hasta_utc": "2026-05-17T00:21:06+00:00",
+     "horas": 5.15
+    },
+    {
+     "desde_utc": "2025-07-18T02:47:01+00:00",
+     "hasta_utc": "2025-07-18T06:56:45+00:00",
+     "horas": 4.16
+    },
+    {
+     "desde_utc": "2026-06-07T20:06:12+00:00",
+     "hasta_utc": "2026-06-07T22:24:57+00:00",
+     "horas": 2.31
+    },
+    {
+     "desde_utc": "2025-07-30T19:02:52+00:00",
+     "hasta_utc": "2025-07-30T20:28:41+00:00",
+     "horas": 1.43
+    },
+    {
+     "desde_utc": "2026-06-13T22:59:30+00:00",
+     "hasta_utc": "2026-06-14T00:24:55+00:00",
+     "horas": 1.42
+    }
+   ],
+   "horas_perdidas_en_huecos_mayores_1h": 1092.6
+  }
+ },
+ "rangos_analog_measurements": {
+  "1": {
+   "battvolt": {
+    "min": 29.0,
+    "max": 57.5,
+    "promedio": 54.053,
+    "negativos": 0,
+    "ceros": 0
+   },
+   "battcurr": {
+    "min": -66.3,
+    "max": 50.7,
+    "promedio": 0.518,
+    "negativos": 140097,
+    "ceros": 1511
+   },
+   "battsoc": {
+    "min": 6,
+    "max": 100,
+    "promedio": 92.2,
+    "negativos": 0,
+    "ceros": 0
+   },
+   "battchgpower": {
+    "min": 0,
+    "max": 3326,
+    "promedio": 50.25,
+    "negativos": 0,
+    "ceros": 1469261
+   },
+   "linechgcurr": {
+    "min": 0.0,
+    "max": 18.7,
+    "promedio": 0.289,
+    "negativos": 0,
+    "ceros": 1574701
+   },
+   "pvchgcurr": {
+    "min": 0.0,
+    "max": 61.8,
+    "promedio": 0.639,
+    "negativos": 0,
+    "ceros": 1503680
+   },
+   "pv1volt": {
+    "min": 0.0,
+    "max": 487.5,
+    "promedio": 163.712,
+    "negativos": 0,
+    "ceros": 917636
+   },
+   "pv1curr": {
+    "min": 0.0,
+    "max": 10.3,
+    "promedio": 0.307,
+    "negativos": 0,
+    "ceros": 962367
+   },
+   "pv1power": {
+    "min": 0,
+    "max": 3902,
+    "promedio": 121.048,
+    "negativos": 0,
+    "ceros": 962101
+   },
+   "outvolta": {
+    "min": 0.0,
+    "max": 241.2,
+    "promedio": 227.42,
+    "negativos": 0,
+    "ceros": 34296
+   },
+   "outcurra": {
+    "min": 0.0,
+    "max": 7.6,
+    "promedio": 1.449,
+    "negativos": 0,
+    "ceros": 41600
+   },
+   "outfreq": {
+    "min": 0.0,
+    "max": 50.07,
+    "promedio": 48.917,
+    "negativos": 0,
+    "ceros": 34428
+   },
+   "invcurra": {
+    "min": 0.0,
+    "max": 7.2,
+    "promedio": 1.578,
+    "negativos": 0,
+    "ceros": 34305
+   },
+   "outw_a": {
+    "min": 0,
+    "max": 1715,
+    "promedio": 274.198,
+    "negativos": 0,
+    "ceros": 41165
+   },
+   "outva_a": {
+    "min": 0,
+    "max": 1774,
+    "promedio": 345.389,
+    "negativos": 0,
+    "ceros": 34428
+   },
+   "loadpercenta": {
+    "min": 0,
+    "max": 31,
+    "promedio": 5.067,
+    "negativos": 0,
+    "ceros": 49764
+   },
+   "normalloadw_a": {
+    "min": 0,
+    "max": 0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1609377
+   },
+   "outsumw": {
+    "min": 0,
+    "max": 1721,
+    "promedio": 274.241,
+    "negativos": 0,
+    "ceros": 41170
+   },
+   "outsumva": {
+    "min": 0,
+    "max": 1808,
+    "promedio": 345.426,
+    "negativos": 0,
+    "ceros": 34431
+   },
+   "sumloadpercent": {
+    "min": 0,
+    "max": 31,
+    "promedio": 5.067,
+    "negativos": 0,
+    "ceros": 49764
+   },
+   "generatedpowerp_a": {
+    "min": -1264,
+    "max": 0,
+    "promedio": -87.136,
+    "negativos": 744251,
+    "ceros": 865105
+   },
+   "generatedpowers_a": {
+    "min": 0,
+    "max": 0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1609425
+   },
+   "generatedpowerq_a": {
+    "min": 0,
+    "max": 0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1609382
+   },
+   "linevolta": {
+    "min": 0.0,
+    "max": 242.8,
+    "promedio": 193.48,
+    "negativos": 0,
+    "ceros": 284039
+   },
+   "linecurra": {
+    "min": -4.4,
+    "max": 10.8,
+    "promedio": 1.078,
+    "negativos": 1,
+    "ceros": 865110
+   },
+   "linefreq": {
+    "min": 0.0,
+    "max": 50.07,
+    "promedio": 41.165,
+    "negativos": 0,
+    "ceros": 284038
+   },
+   "linepowerva_a": {
+    "min": -1044,
+    "max": 2485,
+    "promedio": 253.116,
+    "negativos": 8,
+    "ceros": 865120
+   },
+   "linepowerw_a": {
+    "min": -146,
+    "max": 2435,
+    "promedio": 228.367,
+    "negativos": 9,
+    "ceros": 865121
+   },
+   "busvoltp": {
+    "min": 0.0,
+    "max": 508.7,
+    "promedio": 443.644,
+    "negativos": 0,
+    "ceros": 1
+   },
+   "busvoltn": {
+    "min": 0.0,
+    "max": 0.0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1609401
+   },
+   "temper1": {
+    "min": -20.3,
+    "max": 49.3,
+    "promedio": 31.699,
+    "negativos": 25,
+    "ceros": 0
+   },
+   "temper2": {
+    "min": 20.3,
+    "max": 56.5,
+    "promedio": 42.223,
+    "negativos": 0,
+    "ceros": 0
+   },
+   "temper3": {
+    "min": 23.1,
+    "max": 61.2,
+    "promedio": 48.498,
+    "negativos": 0,
+    "ceros": 0
+   },
+   "temper4": {
+    "min": 120.0,
+    "max": 120.0,
+    "promedio": 120.0,
+    "negativos": 0,
+    "ceros": 0
+   },
+   "sir": {
+    "min": 0,
+    "max": 0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1609548
+   },
+   "fanduty": {
+    "min": 0,
+    "max": 0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1609333
+   },
+   "gridpowerw_a": {
+    "min": -8,
+    "max": 107,
+    "promedio": 62.343,
+    "negativos": 12,
+    "ceros": 284063
+   },
+   "gridcurr_a": {
+    "min": 0.0,
+    "max": 1.5,
+    "promedio": 0.418,
+    "negativos": 0,
+    "ceros": 284007
+   }
+  },
+  "2": {
+   "battvolt": {
+    "min": 0.0,
+    "max": 57.6,
+    "promedio": 53.574,
+    "negativos": 0,
+    "ceros": 3
+   },
+   "battcurr": {
+    "min": -62.8,
+    "max": 54.0,
+    "promedio": 0.313,
+    "negativos": 215173,
+    "ceros": 968
+   },
+   "battsoc": {
+    "min": 10,
+    "max": 100,
+    "promedio": 80.348,
+    "negativos": 0,
+    "ceros": 0
+   },
+   "battchgpower": {
+    "min": 0,
+    "max": 3475,
+    "promedio": 111.635,
+    "negativos": 0,
+    "ceros": 1107043
+   },
+   "linechgcurr": {
+    "min": 0.0,
+    "max": 18.4,
+    "promedio": 0.689,
+    "negativos": 0,
+    "ceros": 1220168
+   },
+   "pvchgcurr": {
+    "min": 0.0,
+    "max": 64.1,
+    "promedio": 1.387,
+    "negativos": 0,
+    "ceros": 1167595
+   },
+   "pv1volt": {
+    "min": 0.0,
+    "max": 492.6,
+    "promedio": 152.428,
+    "negativos": 0,
+    "ceros": 747639
+   },
+   "pv1curr": {
+    "min": 0.0,
+    "max": 10.6,
+    "promedio": 0.596,
+    "negativos": 0,
+    "ceros": 986447
+   },
+   "pv1power": {
+    "min": 0,
+    "max": 3933,
+    "promedio": 196.606,
+    "negativos": 0,
+    "ceros": 986298
+   },
+   "outvolta": {
+    "min": 0.0,
+    "max": 242.3,
+    "promedio": 213.516,
+    "negativos": 0,
+    "ceros": 113835
+   },
+   "outcurra": {
+    "min": 0.0,
+    "max": 19.7,
+    "promedio": 2.739,
+    "negativos": 0,
+    "ceros": 333886
+   },
+   "outfreq": {
+    "min": 0.0,
+    "max": 50.07,
+    "promedio": 45.631,
+    "negativos": 0,
+    "ceros": 115196
+   },
+   "invcurra": {
+    "min": 0.0,
+    "max": 16.6,
+    "promedio": 1.761,
+    "negativos": 0,
+    "ceros": 113876
+   },
+   "outw_a": {
+    "min": 0,
+    "max": 5539,
+    "promedio": 581.329,
+    "negativos": 0,
+    "ceros": 308950
+   },
+   "outva_a": {
+    "min": 0,
+    "max": 5604,
+    "promedio": 647.113,
+    "negativos": 0,
+    "ceros": 124453
+   },
+   "loadpercenta": {
+    "min": 0,
+    "max": 102,
+    "promedio": 11.108,
+    "negativos": 0,
+    "ceros": 734177
+   },
+   "normalloadw_a": {
+    "min": 0,
+    "max": 0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1322341
+   },
+   "outsumw": {
+    "min": 0,
+    "max": 5502,
+    "promedio": 581.355,
+    "negativos": 0,
+    "ceros": 308822
+   },
+   "outsumva": {
+    "min": 0,
+    "max": 5664,
+    "promedio": 647.087,
+    "negativos": 0,
+    "ceros": 124490
+   },
+   "sumloadpercent": {
+    "min": 0,
+    "max": 100,
+    "promedio": 11.109,
+    "negativos": 0,
+    "ceros": 734187
+   },
+   "generatedpowerp_a": {
+    "min": -1519,
+    "max": 29,
+    "promedio": -98.6,
+    "negativos": 730293,
+    "ceros": 592020
+   },
+   "generatedpowers_a": {
+    "min": 0,
+    "max": 0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1322372
+   },
+   "generatedpowerq_a": {
+    "min": 0,
+    "max": 0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1322260
+   },
+   "linevolta": {
+    "min": 0.0,
+    "max": 306.2,
+    "promedio": 225.364,
+    "negativos": 0,
+    "ceros": 58554
+   },
+   "linecurra": {
+    "min": 0.0,
+    "max": 27.7,
+    "promedio": 2.205,
+    "negativos": 0,
+    "ceros": 592024
+   },
+   "linefreq": {
+    "min": 0.0,
+    "max": 50.07,
+    "promedio": 47.773,
+    "negativos": 0,
+    "ceros": 58554
+   },
+   "linepowerva_a": {
+    "min": 0,
+    "max": 5014,
+    "promedio": 517.802,
+    "negativos": 0,
+    "ceros": 592004
+   },
+   "linepowerw_a": {
+    "min": 0,
+    "max": 6180,
+    "promedio": 465.423,
+    "negativos": 0,
+    "ceros": 592054
+   },
+   "busvoltp": {
+    "min": 0.0,
+    "max": 494.6,
+    "promedio": 423.49,
+    "negativos": 0,
+    "ceros": 2
+   },
+   "busvoltn": {
+    "min": 0.0,
+    "max": 0.0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1322318
+   },
+   "temper1": {
+    "min": -20.3,
+    "max": 49.3,
+    "promedio": 30.049,
+    "negativos": 75,
+    "ceros": 0
+   },
+   "temper2": {
+    "min": 17.2,
+    "max": 54.0,
+    "promedio": 36.729,
+    "negativos": 0,
+    "ceros": 0
+   },
+   "temper3": {
+    "min": 19.3,
+    "max": 60.6,
+    "promedio": 46.652,
+    "negativos": 0,
+    "ceros": 0
+   },
+   "temper4": {
+    "min": 120.0,
+    "max": 120.0,
+    "promedio": 120.0,
+    "negativos": 0,
+    "ceros": 0
+   },
+   "sir": {
+    "min": 0,
+    "max": 0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1322100
+   },
+   "fanduty": {
+    "min": 0,
+    "max": 0,
+    "promedio": 0.0,
+    "negativos": 0,
+    "ceros": 1322517
+   },
+   "gridpowerw_a": {
+    "min": -822,
+    "max": 196,
+    "promedio": 59.124,
+    "negativos": 235,
+    "ceros": 58752
+   },
+   "gridcurr_a": {
+    "min": 0.0,
+    "max": 25.8,
+    "promedio": 0.751,
+    "negativos": 0,
+    "ceros": 58566
+   }
+  }
+ },
+ "nulidad_por_fila_analog_measurements": {
+  "1": {
+   "filas": 1610276,
+   "todas_las_columnas_nulas": 1,
+   "al_menos_una_nula": 37542
+  },
+  "2": {
+   "filas": 1379483,
+   "todas_las_columnas_nulas": 1,
+   "al_menos_una_nula": 118900
+  }
+ },
+ "contexto": {
+  "json_invalidos": 0,
+  "llaves_de_primer_nivel": {
+   "source": 25178,
+   "inverter": 25136,
+   "device": 25125,
+   "context_type": 25117,
+   "textual_description": 14990,
+   "task_type": 14929,
+   "llm_estimated_task_effort": 14929,
+   "command": 11974,
+   "library": 11974,
+   "directory": 11974,
+   "task_files": 11974,
+   "cpu_cores_active": 11974,
+   "summary": 10188,
+   "windows_event": 6271,
+   "source_version": 3713,
+   "model": 2955,
+   "optim": 2955,
+   "epochs": 2955,
+   "dataset": 2955,
+   "batch_size": 2955,
+   "model_params": 2955,
+   "source_table": 2367,
+   "metrics": 2224,
+   "sample_count": 2224,
+   "active_minutes": 2224,
+   "threshold_description": 2224,
+   "local_date": 1328,
+   "latitude": 996,
+   "longitude": 996,
+   "method": 995,
+   "zenith_degrees": 995,
+   "sunrise_local": 664,
+   "sunset_local": 663,
+   "timezone": 334,
+   "weekday": 333,
+   "day_type": 333,
+   "weekday_name": 333,
+   "civil_dawn_local": 332,
+   "civil_dusk_local": 331,
+   "project": 209,
+   "metadata": 209,
+   "command_families": 208,
+   "example_commands_redacted": 208,
+   "gap_seconds": 141,
+   "next_sample_local": 141,
+   "threshold_seconds": 141,
+   "previous_sample_local": 141,
+   "privacy_note": 62,
+   "row_count": 14,
+   "table_name": 12,
+   "last_read_local": 12,
+   "first_read_local": 12,
+   "original_source": 5,
+   "field_group": 2,
+   "sentinel_value": 2,
+   "sentinel_like_count": 2,
+   "sentinel_like_fraction": 2,
+   "activity_types": 1,
+   "command_hints_redacted": 1,
+   "coordinate_source": 1
+  },
+  "registros_por_tipo": {
+   "<sin type>": 25178
+  },
+  "registros_por_fuente_y_tipo": {
+   "workstation2_log | <sin type>": 8902,
+   "windows_event_log | <sin type>": 6271,
+   "workstation1_log | <sin type>": 6028,
+   "derived_context_pipeline | <sin type>": 3708,
+   "wsl_bash_history | <sin type>": 204,
+   "manual entry | <sin type>": 60,
+   "manual_workload_entry | <sin type>": 5
+  },
+  "duracion_horas_por_tipo": {
+   "<sin type>": {
+    "n": 25178,
+    "promedio": 5.85,
+    "min": 0.0,
+    "max": 7960.778
+   }
+  },
+  "ejemplo_por_tipo": {
+   "<sin type>": {
+    "id": 1,
+    "recorded_utc": "2025-06-03T13:20:10+00:00",
+    "start_utc": "2024-04-30T16:00:00+00:00",
+    "end_utc": "2024-05-05T16:00:00+00:00",
+    "value": {
+     "source": "manual entry",
+     "textual_description": "Public Holiday (Labour Day)"
+    }
+   }
+  }
+ },
+ "segundos": 91.8
+}

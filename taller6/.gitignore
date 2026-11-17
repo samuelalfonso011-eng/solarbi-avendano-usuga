@@ -1,0 +1,30 @@
+# --- Datos: la capa Bronze (4,4 GB) no se versiona; ver README para descargarla ---
+data/
+*.sqlite
+*.sqlite.zst
+*.zst
+
+# --- Credenciales: solo se versiona .env.example ---
+.env
+*.secret
+k8s/**/secret*.yaml
+
+# --- Herramientas descargadas y archivos generados ---
+tools/
+k8s/kind-config.generado.yaml
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+docs/informe/*.html
+
+# --- Power BI: cache local y configuracion por usuario (el proyecto PBIP si se versiona) ---
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+*.pbix
+
+# --- Editor / sistema ---
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
